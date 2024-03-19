@@ -4,7 +4,8 @@ class RColors {
   RColors._();
 
   // -- app basic colors
-  static const Color primary = Colors.brown;
+  static const Color primaryBrown = Colors.brown;
+  static const Color primaryBlue = Color(0xff4b68ff);
   static const Color secondary = Color(0xFFFFE24B);
   static const Color accent = Color(0xFFb0c7ff);
 
