@@ -1,5 +1,6 @@
 import 'package:duara_ecommerce/features/authentication/screens/pswd_config/forgot_password.dart';
 import 'package:duara_ecommerce/features/authentication/screens/signup/signup.dart';
+import 'package:duara_ecommerce/nav_menu.dart';
 import 'package:duara_ecommerce/utils/constants/colors.dart';
 import 'package:duara_ecommerce/utils/constants/sizes.dart';
 import 'package:duara_ecommerce/utils/constants/text_strings.dart';
@@ -87,7 +88,9 @@ class LoginForm extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Get.to(() => const NavMenu());
+                },
                 child: Text(
                   RTexts.signIn.toUpperCase(),
                   style: Theme.of(context).textTheme.labelMedium?.apply(
