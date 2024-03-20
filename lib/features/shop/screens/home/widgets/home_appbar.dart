@@ -30,6 +30,7 @@ class CHomeAppBarWidget extends StatelessWidget {
         ],
       ),
       actions: [
+        // -- cart counter icon --
         CCartCounterIcon(
           onPressed: () {},
           iconColor: Colors.white,
