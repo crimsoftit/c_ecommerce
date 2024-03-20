@@ -11,7 +11,7 @@ class RAppBarTheme {
     backgroundColor: Colors.transparent,
     surfaceTintColor: Colors.transparent,
     iconTheme: IconThemeData(
-      color: RColors.rBrown,
+      color: Colors.white,
       size: 24,
     ),
     actionsIconTheme: IconThemeData(
@@ -32,7 +32,7 @@ class RAppBarTheme {
     backgroundColor: Colors.transparent,
     surfaceTintColor: Colors.transparent,
     iconTheme: IconThemeData(
-      color: RColors.rBrown,
+      color: Colors.white,
       size: 24,
     ),
     actionsIconTheme: IconThemeData(

@@ -56,12 +56,12 @@ class RTextTheme {
       color: Colors.brown,
     ),
     labelMedium: const TextStyle().copyWith(
-      fontSize: 9.0,
+      fontSize: 11.0,
       fontWeight: FontWeight.normal,
       color: Colors.brown,
     ),
     labelSmall: const TextStyle().copyWith(
-      fontSize: 8.0,
+      fontSize: 9.0,
       fontWeight: FontWeight.normal,
       color: Colors.brown,
     ),

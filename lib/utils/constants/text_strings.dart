@@ -60,4 +60,8 @@ class RTexts {
       "for seamless transactions, choose your payment path; your convenience, our priority!";
   static const String rOnbaordingSubTitle3 =
       "from our doorstep to yours; swift, secure, and contactless delivery!";
+
+  // -- home(dashboard screen)
+  static const String homeAppbarTitle = "good day for shopping";
+  static const String homeAppbarSubTitle = "crimsoftit@gmail.com";
 }
