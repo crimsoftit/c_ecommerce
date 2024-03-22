@@ -3,7 +3,9 @@ import 'package:duara_ecommerce/common/widgets/custom_shapes/containers/search_c
 import 'package:duara_ecommerce/common/widgets/text_widgets/section_headings.dart';
 import 'package:duara_ecommerce/features/shop/screens/home/widgets/home_appbar.dart';
 import 'package:duara_ecommerce/features/shop/screens/home/widgets/home_categories.dart';
+import 'package:duara_ecommerce/features/shop/screens/home/widgets/promo_slider.dart';
 import 'package:duara_ecommerce/utils/constants/colors.dart';
+import 'package:duara_ecommerce/utils/constants/image_strings.dart';
 import 'package:duara_ecommerce/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
@@ -57,11 +59,25 @@ class HomeScreen extends StatelessWidget {
                           height: RSizes.spaceBtnItems,
                         ),
 
-                        // -- categories (ListView) --
+                        // -- categories (ListView.builder) --
                         CHomeCategories(),
                       ],
                     ),
                   ),
+                ],
+              ),
+            ),
+
+            // -- ## BODY ## --
+            const Padding(
+              padding: EdgeInsets.all(RSizes.defaultSpace),
+              child: CPromoSlider(
+                banners: [
+                  RImages.promoBanner1,
+                  RImages.promoBanner2,
+                  RImages.promoBanner3,
+                  RImages.promoBanner2,
+                  RImages.promoBanner3,
                 ],
               ),
             ),

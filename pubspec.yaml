@@ -38,6 +38,7 @@ dependencies:
   logger: ^2.0.1
   url_launcher: ^6.1.12
   flutter_native_splash: ^2.3.2
+  carousel_slider: ^4.2.1
 
   # swipe/slideshow and indicator - onboardng packages
   liquid_swipe: ^3.0.0
@@ -113,15 +114,18 @@ flutter:
 
   uses-material-design: true
 
+  # --- local assets --- #
   assets:
-    - assets/images/
-    - assets/images/on_boarding_images/
-    - assets/images/animations/
-    - assets/logos/
     - assets/icons/
     - assets/icons/categories/
+    - assets/images/    
+    - assets/images/animations/
+    - assets/images/banners/
+    - assets/images/on_boarding_images/
+    - assets/logos/
+    
 
-
+  # --- local fonts --- #
   fonts:
     - family: Poppins
       fonts:
