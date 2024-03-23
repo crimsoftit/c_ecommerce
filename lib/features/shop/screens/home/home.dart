@@ -1,5 +1,6 @@
 import 'package:duara_ecommerce/common/widgets/custom_shapes/containers/primary_header_container.dart';
 import 'package:duara_ecommerce/common/widgets/custom_shapes/containers/search_container.dart';
+import 'package:duara_ecommerce/common/widgets/products/product_cards/p_card_vert.dart';
 import 'package:duara_ecommerce/common/widgets/text_widgets/section_headings.dart';
 import 'package:duara_ecommerce/features/shop/screens/home/widgets/home_appbar.dart';
 import 'package:duara_ecommerce/features/shop/screens/home/widgets/home_categories.dart';
@@ -26,7 +27,7 @@ class HomeScreen extends StatelessWidget {
                   const CHomeAppBarWidget(),
 
                   const SizedBox(
-                    height: RSizes.spaceBtnSections,
+                    height: CSizes.spaceBtnSections,
                   ),
 
                   // -- ## SEARCH BAR ## --
@@ -37,13 +38,13 @@ class HomeScreen extends StatelessWidget {
                   ),
 
                   const SizedBox(
-                    height: RSizes.spaceBtnSections,
+                    height: CSizes.spaceBtnSections,
                   ),
 
                   // -- ## ALL ABOUT CATEGORIES ## --
                   const Padding(
                     padding: EdgeInsets.only(
-                      left: RSizes.defaultSpace,
+                      left: CSizes.defaultSpace,
                     ),
                     child: Column(
                       children: [
@@ -51,12 +52,12 @@ class HomeScreen extends StatelessWidget {
                         CSectionHeading(
                           showActionBtn: false,
                           title: 'popular categories',
-                          txtColor: RColors.white,
+                          txtColor: CColors.white,
                           btnTitle: 'view all',
-                          btnTxtColor: RColors.grey,
+                          btnTxtColor: CColors.grey,
                         ),
                         SizedBox(
-                          height: RSizes.spaceBtnItems,
+                          height: CSizes.spaceBtnItems,
                         ),
 
                         // -- categories (ListView.builder) --
@@ -70,14 +71,23 @@ class HomeScreen extends StatelessWidget {
 
             // -- ## BODY ## --
             const Padding(
-              padding: EdgeInsets.all(RSizes.defaultSpace),
-              child: CPromoSlider(
-                banners: [
-                  RImages.promoBanner1,
-                  RImages.promoBanner2,
-                  RImages.promoBanner3,
-                  RImages.promoBanner2,
-                  RImages.promoBanner3,
+              padding: EdgeInsets.all(CSizes.defaultSpace),
+              child: Column(
+                children: [
+                  // -- promo slider --
+                  CPromoSlider(
+                    banners: [
+                      CImages.promoBanner1,
+                      CImages.promoBanner2,
+                      CImages.promoBanner3,
+                    ],
+                  ),
+
+                  SizedBox(
+                    height: CSizes.spaceBtnSections,
+                  ),
+                  // -- popular products --
+                  CProductCardVertical(),
                 ],
               ),
             ),

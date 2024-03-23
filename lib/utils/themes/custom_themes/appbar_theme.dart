@@ -15,13 +15,13 @@ class RAppBarTheme {
       size: 24,
     ),
     actionsIconTheme: IconThemeData(
-      color: RColors.rBrown,
+      color: CColors.rBrown,
       size: 24,
     ),
     titleTextStyle: TextStyle(
       fontSize: 18.0,
       fontWeight: FontWeight.w600,
-      color: RColors.rBrown,
+      color: CColors.rBrown,
     ),
   );
 
@@ -36,13 +36,13 @@ class RAppBarTheme {
       size: 24,
     ),
     actionsIconTheme: IconThemeData(
-      color: RColors.rBrown,
+      color: CColors.rBrown,
       size: 24,
     ),
     titleTextStyle: TextStyle(
       fontSize: 18.0,
       fontWeight: FontWeight.w600,
-      color: RColors.white,
+      color: CColors.white,
     ),
   );
 }

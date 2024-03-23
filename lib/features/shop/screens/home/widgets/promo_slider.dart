@@ -1,3 +1,5 @@
+// ignore_for_file: unrelated_type_equality_checks
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:duara_ecommerce/common/widgets/custom_shapes/containers/circular_container.dart';
 import 'package:duara_ecommerce/common/widgets/img_widgets/c_rounded_img.dart';
@@ -30,17 +32,12 @@ class CPromoSlider extends StatelessWidget {
           ),
           items: banners
               .map((iUrl) => CRoundedImages(
-                    isNetworkImg: false,
-                    borderRadius: RSizes.md,
                     imgUrl: iUrl,
-                    applyImgRadius: true,
-                    bgColor: RColors.light,
-                    fit: BoxFit.contain,
                   ))
               .toList(),
         ),
         const SizedBox(
-          height: RSizes.spaceBtnItems,
+          height: CSizes.spaceBtnItems,
         ),
         Center(
           child: Obx(
@@ -48,7 +45,7 @@ class CPromoSlider extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 for (int i = 0; i < banners.length; i++)
-                  RCircularContainer(
+                  CCircularContainer(
                     width: 20.0,
                     height: 4.0,
                     margin: const EdgeInsets.only(
@@ -56,7 +53,7 @@ class CPromoSlider extends StatelessWidget {
                     ),
                     bgColor: homeController.carouselCurrentIndex == i
                         ? Colors.orange
-                        : RColors.grey,
+                        : CColors.grey,
                   ),
               ],
             ),

@@ -6,8 +6,8 @@ class RBottomSheetTheme {
 
   static BottomSheetThemeData lightBottomSheetTheme = BottomSheetThemeData(
     showDragHandle: true,
-    backgroundColor: RColors.white,
-    modalBackgroundColor: RColors.white,
+    backgroundColor: CColors.white,
+    modalBackgroundColor: CColors.white,
     constraints: const BoxConstraints(
       minWidth: double.infinity,
     ),
@@ -18,8 +18,8 @@ class RBottomSheetTheme {
 
   static BottomSheetThemeData darkBottomSheetTheme = BottomSheetThemeData(
     showDragHandle: true,
-    backgroundColor: RColors.rBrown,
-    modalBackgroundColor: RColors.rBrown,
+    backgroundColor: CColors.rBrown,
+    modalBackgroundColor: CColors.rBrown,
     constraints: const BoxConstraints(
       minWidth: double.infinity,
     ),

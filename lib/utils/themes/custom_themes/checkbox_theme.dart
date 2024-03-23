@@ -15,16 +15,16 @@ class RCheckboxTheme {
     checkColor: MaterialStateProperty.resolveWith(
       (states) {
         if (states.contains(MaterialState.selected)) {
-          return RColors.white;
+          return CColors.white;
         } else {
-          return RColors.rBrown;
+          return CColors.rBrown;
         }
       },
     ),
     fillColor: MaterialStateProperty.resolveWith(
       (states) {
         if (states.contains(MaterialState.selected)) {
-          return RColors.rBrown;
+          return CColors.rBrown;
         } else {
           return Colors.transparent;
         }
@@ -40,16 +40,16 @@ class RCheckboxTheme {
     checkColor: MaterialStateProperty.resolveWith(
       (states) {
         if (states.contains(MaterialState.selected)) {
-          return RColors.white;
+          return CColors.white;
         } else {
-          return RColors.rBrown;
+          return CColors.rBrown;
         }
       },
     ),
     fillColor: MaterialStateProperty.resolveWith(
       (states) {
         if (states.contains(MaterialState.selected)) {
-          return RColors.rBrown;
+          return CColors.rBrown;
         } else {
           return Colors.transparent;
         }

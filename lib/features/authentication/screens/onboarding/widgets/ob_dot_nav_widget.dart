@@ -16,13 +16,13 @@ class OnboardingDotNavWidget extends StatelessWidget {
 
     return Positioned(
       bottom: RDeviceUtils.getBottomNavigationBarHeight() + 25,
-      left: RSizes.defaultSpace,
+      left: CSizes.defaultSpace,
       child: SmoothPageIndicator(
         count: 3,
         controller: obController.pageController,
         onDotClicked: obController.dotNavigationClick,
         effect: const ExpandingDotsEffect(
-          activeDotColor: RColors.rBrown,
+          activeDotColor: CColors.rBrown,
           dotHeight: 6,
         ),
       ),

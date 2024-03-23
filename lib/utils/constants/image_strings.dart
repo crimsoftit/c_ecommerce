@@ -1,4 +1,4 @@
-class RImages {
+class CImages {
   // -- app logos
   static const String lightAppLogo = "assets/logos/dmanu_icon.png";
   static const String darkAppLogo = "assets/logos/dm_icon_no_bg.png";
@@ -72,4 +72,44 @@ class RImages {
   static const String promoBanner1 = "assets/images/banners/banner_2.jpg";
   static const String promoBanner2 = "assets/images/banners/banner_3.jpg";
   static const String promoBanner3 = "assets/images/banners/banner_4.jpg";
+  static const String promoBanner4 = "assets/images/banners/banner_5.jpg";
+
+  // -- product images --
+  static const String pImg1 = "assets/images/products/acer_laptop_1.png";
+  static const String pImg2 = "assets/images/products/acer_laptop_2.png";
+  static const String pImg3 = "assets/images/products/acer_laptop_3.png";
+  static const String pImg4 = "assets/images/products/acer_laptop_4.png";
+  static const String pImg5 = "assets/images/products/acer_laptop_var_1.png";
+  static const String pImg6 = "assets/images/products/acer_laptop_var_2.png";
+  static const String pImg7 = "assets/images/products/acer_laptop_var_3.png";
+  static const String pImg8 = "assets/images/products/acer_laptop_var_4.png";
+  static const String pImg9 = "assets/images/products/Adidas_Football.png";
+  static const String pImg10 = "assets/images/products/baseball_bat.png";
+  static const String pImg11 = "assets/images/products/bedroom_bed_black.png";
+  static const String pImg12 = "assets/images/products/bedroom_bed_grey.png";
+  static const String pImg13 =
+      "assets/images/products/bedroom_bed_simple_brown.png";
+  static const String pImg14 =
+      "assets/images/products/bedroom_bed_with_comforter.png";
+  static const String pImg15 = "assets/images/products/bedroom_bed.png";
+  static const String pImg16 = "assets/images/products/bedroom_lamp.png";
+
+  static const String pImg17 = "assets/images/products/bedroom_sofa.png";
+  static const String pImg18 = "assets/images/products/bedroom_wardrobe.png";
+  static const String pImg19 = "assets/images/products/cricket_bat.png";
+  static const String pImg20 = "assets/images/products/iphone_12_black.png";
+  static const String pImg21 = "assets/images/products/acer_laptop_var_1.png";
+  static const String pImg22 = "assets/images/products/iphone_12_blue.png";
+  static const String pImg23 = "assets/images/products/iphone_12_green.png";
+  static const String pImg24 = "assets/images/products/iphone_12_red.png";
+  static const String pImg25 = "assets/images/products/iphone_13_pro.png";
+  static const String pImg26 = "assets/images/products/iphone_14_pro.png";
+  static const String pImg27 = "assets/images/products/iphone_14_white.png";
+  static const String pImg28 = "assets/images/products/iphone8_mobile_back.png";
+  static const String pImg29 =
+      "assets/images/products/iphone8_mobile_dual_side.png";
+  static const String pImg30 =
+      "assets/images/products/iphone8_mobile_front.png";
+  static const String pImg31 = "assets/images/products/iphone8_mobile.png";
+  static const String pImg32 = "assets/images/products/kitchen_counter.png";
 }

@@ -8,13 +8,13 @@ class ROutlinedButtonTheme {
   static final outlinedBtnLightTheme = OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
       elevation: 0,
-      foregroundColor: RColors.rBrown,
+      foregroundColor: CColors.rBrown,
       side: const BorderSide(
-        color: RColors.rBrown,
+        color: CColors.rBrown,
       ),
       textStyle: const TextStyle(
         fontSize: 11.0,
-        color: RColors.rBrown,
+        color: CColors.rBrown,
         fontWeight: FontWeight.w600,
       ),
       padding: const EdgeInsets.symmetric(
@@ -29,13 +29,13 @@ class ROutlinedButtonTheme {
   /* -- dark mode (theme)) -- */
   static final outlinedBtnDarkTheme = OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
-      foregroundColor: RColors.white,
+      foregroundColor: CColors.white,
       side: const BorderSide(
         color: rPrimaryBrown,
       ),
       textStyle: const TextStyle(
         fontSize: 11.0,
-        color: RColors.white,
+        color: CColors.white,
         fontWeight: FontWeight.w600,
       ),
       padding: const EdgeInsets.symmetric(

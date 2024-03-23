@@ -17,7 +17,7 @@ class LoginForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return Form(
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: RSizes.spaceBtnSections),
+        padding: const EdgeInsets.symmetric(vertical: CSizes.spaceBtnSections),
         child: Column(
           children: [
             // -- email field --
@@ -32,7 +32,7 @@ class LoginForm extends StatelessWidget {
             ),
 
             const SizedBox(
-              height: RSizes.spaceBtnInputFields,
+              height: CSizes.spaceBtnInputFields,
             ),
 
             // -- password field --
@@ -47,7 +47,7 @@ class LoginForm extends StatelessWidget {
               ),
             ),
             const SizedBox(
-              height: RSizes.spaceBtnInputFields / 2,
+              height: CSizes.spaceBtnInputFields / 2,
             ),
 
             // -- remember me & forgot password checkbox and textbutton --
@@ -81,7 +81,7 @@ class LoginForm extends StatelessWidget {
               ],
             ),
             const SizedBox(
-              height: RSizes.spaceBtnInputFields / 2,
+              height: CSizes.spaceBtnInputFields / 2,
             ),
 
             // -- sign in button --
@@ -94,14 +94,14 @@ class LoginForm extends StatelessWidget {
                 child: Text(
                   RTexts.signIn.toUpperCase(),
                   style: Theme.of(context).textTheme.labelMedium?.apply(
-                        color: RColors.white,
+                        color: CColors.white,
                       ),
                 ),
               ),
             ),
 
             const SizedBox(
-              height: RSizes.spaceBtnItems / 2,
+              height: CSizes.spaceBtnItems / 2,
             ),
 
             // -- create account button --

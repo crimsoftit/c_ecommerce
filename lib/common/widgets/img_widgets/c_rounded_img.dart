@@ -1,3 +1,4 @@
+import 'package:duara_ecommerce/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 
 class CRoundedImages extends StatelessWidget {
@@ -6,21 +7,21 @@ class CRoundedImages extends StatelessWidget {
     this.width,
     this.height,
     required this.imgUrl,
-    required this.applyImgRadius,
+    this.applyImgRadius = true,
     this.border,
-    required this.bgColor,
-    this.fit,
+    this.bgColor,
+    this.fit = BoxFit.contain,
     this.padding,
-    required this.isNetworkImg,
+    this.isNetworkImg = false,
     this.onPressed,
-    required this.borderRadius,
+    this.borderRadius = CSizes.md,
   });
 
   final double? width, height;
   final String imgUrl;
   final bool applyImgRadius;
   final BoxBorder? border;
-  final Color bgColor;
+  final Color? bgColor;
   final BoxFit? fit;
   final EdgeInsetsGeometry? padding;
   final bool isNetworkImg;
@@ -37,7 +38,7 @@ class CRoundedImages extends StatelessWidget {
         padding: padding,
         decoration: BoxDecoration(
           border: border,
-          color: bgColor,
+          //color: bgColor,
           borderRadius: BorderRadius.circular(borderRadius),
         ),
         child: ClipRRect(

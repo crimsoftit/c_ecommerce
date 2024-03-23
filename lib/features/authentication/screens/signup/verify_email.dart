@@ -29,17 +29,17 @@ class VerifyEmailScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(
-            RSizes.defaultSpace,
+            CSizes.defaultSpace,
           ),
           child: Column(
             children: [
               // -- header image --
               Image(
-                image: const AssetImage(RImages.deliveredEmailIllustration),
-                width: RHelperFunctions.screenWidth() * 0.6,
+                image: const AssetImage(CImages.deliveredEmailIllustration),
+                width: CHelperFunctions.screenWidth() * 0.6,
               ),
               const SizedBox(
-                height: RSizes.spaceBtnSections,
+                height: CSizes.spaceBtnSections,
               ),
 
               // -- title & subtitle --
@@ -49,27 +49,27 @@ class VerifyEmailScreen extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
               const SizedBox(
-                height: RSizes.spaceBtnItems,
+                height: CSizes.spaceBtnItems,
               ),
               Text(
                 'crimsoftit@gmail.com',
                 style: Theme.of(context).textTheme.labelMedium!.apply(
-                      color: RColors.darkerGrey,
+                      color: CColors.darkerGrey,
                     ),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(
-                height: RSizes.spaceBtnItems,
+                height: CSizes.spaceBtnItems,
               ),
               Text(
                 RTexts.confirmEmailSubTitle,
                 style: Theme.of(context).textTheme.labelMedium!.apply(
-                      color: RColors.darkGrey,
+                      color: CColors.darkGrey,
                     ),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(
-                height: RSizes.spaceBtnSections,
+                height: CSizes.spaceBtnSections,
               ),
 
               // -- buttons --
@@ -78,7 +78,7 @@ class VerifyEmailScreen extends StatelessWidget {
                 child: ElevatedButton(
                   onPressed: () {
                     Get.to(() => SuccessScreen(
-                          image: RImages.staticSuccessIllustration,
+                          image: CImages.staticSuccessIllustration,
                           title: RTexts.accountCreatedTitle,
                           subTitle: RTexts.accountCreatedSubTitle,
                           onPressed: () {
@@ -89,13 +89,13 @@ class VerifyEmailScreen extends StatelessWidget {
                   child: Text(
                     'CONTINUE',
                     style: Theme.of(context).textTheme.labelMedium?.apply(
-                          color: RColors.white,
+                          color: CColors.white,
                         ),
                   ),
                 ),
               ),
               const SizedBox(
-                height: RSizes.spaceBtnItems,
+                height: CSizes.spaceBtnItems,
               ),
               SizedBox(
                 width: double.infinity,

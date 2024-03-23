@@ -29,7 +29,7 @@ class CCartCounterIcon extends StatelessWidget {
             width: 18,
             height: 18,
             decoration: BoxDecoration(
-              color: RColors.darkerGrey,
+              color: CColors.darkerGrey,
               borderRadius: BorderRadius.circular(100),
             ),
             child: Center(

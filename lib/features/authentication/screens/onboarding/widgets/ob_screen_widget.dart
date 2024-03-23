@@ -15,12 +15,12 @@ class OnboardingScreenWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(RSizes.defaultSpace),
+      padding: const EdgeInsets.all(CSizes.defaultSpace),
       child: Column(
         children: [
           Image(
-            width: RHelperFunctions.screenWidth() * 0.8,
-            height: RHelperFunctions.screenHeight() * 0.6,
+            width: CHelperFunctions.screenWidth() * 0.8,
+            height: CHelperFunctions.screenHeight() * 0.6,
             image: AssetImage(img),
           ),
           Text(
@@ -29,7 +29,7 @@ class OnboardingScreenWidget extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           const SizedBox(
-            height: RSizes.spaceBtnItems,
+            height: CSizes.spaceBtnItems,
           ),
           Text(
             subTitle,

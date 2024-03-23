@@ -25,17 +25,17 @@ class OnboardingScreen extends StatelessWidget {
             onPageChanged: obController.updatePageIndicator,
             children: const [
               OnboardingScreenWidget(
-                img: RImages.rOnboardingImg1,
+                img: CImages.rOnboardingImg1,
                 title: RTexts.rOnbaordingTitle1,
                 subTitle: RTexts.rOnbaordingSubTitle1,
               ),
               OnboardingScreenWidget(
-                img: RImages.rOnboardingImg2,
+                img: CImages.rOnboardingImg2,
                 title: RTexts.rOnbaordingTitle2,
                 subTitle: RTexts.rOnbaordingSubTitle2,
               ),
               OnboardingScreenWidget(
-                img: RImages.rOnboardingImg3,
+                img: CImages.rOnboardingImg3,
                 title: RTexts.rOnbaordingTitle3,
                 subTitle: RTexts.rOnbaordingSubTitle3,
               ),

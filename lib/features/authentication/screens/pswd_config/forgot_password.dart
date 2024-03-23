@@ -14,7 +14,7 @@ class ForgotPasswordScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(),
       body: Padding(
-        padding: const EdgeInsets.all(RSizes.defaultSpace),
+        padding: const EdgeInsets.all(CSizes.defaultSpace),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -26,16 +26,16 @@ class ForgotPasswordScreen extends StatelessWidget {
             ),
 
             const SizedBox(
-              height: RSizes.spaceBtnItems,
+              height: CSizes.spaceBtnItems,
             ),
             Text(
               RTexts.forgotPasswordSubTitle,
               style: Theme.of(context).textTheme.labelMedium!.apply(
-                    color: RColors.darkGrey,
+                    color: CColors.darkGrey,
                   ),
             ),
             const SizedBox(
-              height: RSizes.spaceBtnSections * 2,
+              height: CSizes.spaceBtnSections * 2,
             ),
 
             // -- email textfield --
@@ -50,7 +50,7 @@ class ForgotPasswordScreen extends StatelessWidget {
             ),
 
             const SizedBox(
-              height: RSizes.spaceBtnInputFields,
+              height: CSizes.spaceBtnInputFields,
             ),
 
             // -- submit button --
@@ -63,7 +63,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                 child: Text(
                   'Submit',
                   style: Theme.of(context).textTheme.labelMedium?.apply(
-                        color: RColors.white,
+                        color: CColors.white,
                       ),
                 ),
               ),

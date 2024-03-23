@@ -25,7 +25,7 @@ class CAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(
-        horizontal: RSizes.md,
+        horizontal: CSizes.md,
       ),
       child: AppBar(
         automaticallyImplyLeading: false,
@@ -41,7 +41,7 @@ class CAppBar extends StatelessWidget implements PreferredSizeWidget {
                     onPressed: leadingOnPressed,
                     icon: Icon(
                       leadingIcon,
-                      color: RColors.white,
+                      color: CColors.white,
                     ),
                   )
                 : null,

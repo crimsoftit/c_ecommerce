@@ -8,19 +8,19 @@ class RElevatedButtonTheme {
   static final elevatedBtnLightTheme = ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       elevation: 0,
-      foregroundColor: RColors.white,
-      backgroundColor: RColors.rBrown,
-      disabledForegroundColor: RColors.grey,
-      disabledBackgroundColor: RColors.grey,
+      foregroundColor: CColors.white,
+      backgroundColor: CColors.rBrown,
+      disabledForegroundColor: CColors.grey,
+      disabledBackgroundColor: CColors.grey,
       side: const BorderSide(
-        color: RColors.rBrown,
+        color: CColors.rBrown,
       ),
       padding: const EdgeInsets.symmetric(
         vertical: 10.0,
       ),
       textStyle: const TextStyle(
         fontSize: 11.0,
-        color: RColors.white,
+        color: CColors.white,
         fontWeight: FontWeight.w600,
       ),
       shape: RoundedRectangleBorder(
@@ -33,16 +33,16 @@ class RElevatedButtonTheme {
   static final elevatedBtnDarkTheme = ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       elevation: 0,
-      foregroundColor: RColors.white,
-      backgroundColor: RColors.rBrown,
-      disabledForegroundColor: RColors.grey,
-      disabledBackgroundColor: RColors.grey,
+      foregroundColor: CColors.white,
+      backgroundColor: CColors.rBrown,
+      disabledForegroundColor: CColors.grey,
+      disabledBackgroundColor: CColors.grey,
       side: const BorderSide(
-        color: RColors.rBrown,
+        color: CColors.rBrown,
       ),
       textStyle: const TextStyle(
         fontSize: 11.0,
-        color: RColors.white,
+        color: CColors.white,
         fontWeight: FontWeight.w600,
       ),
       padding: const EdgeInsets.symmetric(

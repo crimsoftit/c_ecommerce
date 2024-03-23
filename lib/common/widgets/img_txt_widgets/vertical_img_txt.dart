@@ -20,13 +20,13 @@ class CVerticalImgTxt extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = RHelperFunctions.isDarkMode(context);
+    final isDark = CHelperFunctions.isDarkMode(context);
 
     return GestureDetector(
       onTap: onTap,
       child: Padding(
         padding: const EdgeInsets.only(
-          right: RSizes.spaceBtnItems,
+          right: CSizes.spaceBtnItems,
         ),
         child: Column(
           children: [
@@ -34,22 +34,22 @@ class CVerticalImgTxt extends StatelessWidget {
             Container(
               width: 56.0,
               height: 56.0,
-              padding: const EdgeInsets.all(RSizes.sm),
+              padding: const EdgeInsets.all(CSizes.sm),
               decoration: BoxDecoration(
-                color: bgColor ?? (isDark ? RColors.darkerGrey : RColors.white),
+                color: bgColor ?? (isDark ? CColors.darkerGrey : CColors.white),
                 borderRadius: BorderRadius.circular(100),
               ),
               child: Center(
                 child: Image(
                   image: AssetImage(img),
                   fit: BoxFit.cover,
-                  color: isDark ? RColors.light : RColors.dark,
+                  color: CColors.dark,
                 ),
               ),
             ),
 
             const SizedBox(
-              height: RSizes.spaceBtnItems / 2,
+              height: CSizes.spaceBtnItems / 2,
             ),
 
             // -- categories texts --

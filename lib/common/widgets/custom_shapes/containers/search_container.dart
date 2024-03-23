@@ -21,27 +21,27 @@ class CSearchContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = RHelperFunctions.isDarkMode(context);
+    final isDark = CHelperFunctions.isDarkMode(context);
 
     return GestureDetector(
       onTap: onTap,
       child: Padding(
         padding: const EdgeInsets.symmetric(
-          horizontal: RSizes.defaultSpace,
+          horizontal: CSizes.defaultSpace,
         ),
         child: Container(
           width: RDeviceUtils.getScreenWidth(context),
-          padding: const EdgeInsets.all(RSizes.md),
+          padding: const EdgeInsets.all(CSizes.md),
           decoration: BoxDecoration(
             color: showBg
                 ? isDark
-                    ? RColors.dark
-                    : RColors.light
+                    ? CColors.dark
+                    : CColors.light
                 : Colors.transparent,
-            borderRadius: BorderRadius.circular(RSizes.cardRadiusLg),
+            borderRadius: BorderRadius.circular(CSizes.cardRadiusLg),
             border: showBorder
                 ? Border.all(
-                    color: RColors.grey,
+                    color: CColors.grey,
                   )
                 : null,
           ),
@@ -49,15 +49,15 @@ class CSearchContainer extends StatelessWidget {
             children: [
               Icon(
                 icon,
-                color: RColors.darkGrey,
+                color: CColors.darkGrey,
               ),
               const SizedBox(
-                width: RSizes.spaceBtnItems,
+                width: CSizes.spaceBtnItems,
               ),
               Text(
                 text,
                 style: Theme.of(context).textTheme.bodySmall!.apply(
-                      color: RColors.darkGrey,
+                      color: CColors.darkGrey,
                     ),
               ),
             ],

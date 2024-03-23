@@ -11,7 +11,7 @@ class TandCCheckbox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = RHelperFunctions.isDarkMode(context);
+    final isDark = CHelperFunctions.isDarkMode(context);
     return Row(
       children: [
         SizedBox(
@@ -23,7 +23,7 @@ class TandCCheckbox extends StatelessWidget {
           ),
         ),
         const SizedBox(
-          width: RSizes.spaceBtnItems,
+          width: CSizes.spaceBtnItems,
         ),
         Text.rich(
           TextSpan(
@@ -34,9 +34,9 @@ class TandCCheckbox extends StatelessWidget {
               TextSpan(
                 text: RTexts.privacyPolicy,
                 style: Theme.of(context).textTheme.labelMedium!.apply(
-                      color: isDark ? RColors.white : Colors.blue,
+                      color: isDark ? CColors.white : Colors.blue,
                       decoration: TextDecoration.underline,
-                      decorationColor: isDark ? RColors.white : Colors.blue,
+                      decorationColor: isDark ? CColors.white : Colors.blue,
                     ),
               ),
               TextSpan(
@@ -46,9 +46,9 @@ class TandCCheckbox extends StatelessWidget {
               TextSpan(
                 text: RTexts.termsOfUse,
                 style: Theme.of(context).textTheme.labelMedium!.apply(
-                      color: isDark ? RColors.white : Colors.blue,
+                      color: isDark ? CColors.white : Colors.blue,
                       decoration: TextDecoration.underline,
-                      decorationColor: isDark ? RColors.white : Colors.blue,
+                      decorationColor: isDark ? CColors.white : Colors.blue,
                     ),
               ),
             ],

@@ -12,7 +12,7 @@ class OnboardingSkipBtnWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Positioned(
       top: RDeviceUtils.getAppBarHeight(),
-      right: RSizes.defaultSpace,
+      right: CSizes.defaultSpace,
       child: TextButton(
         onPressed: () {
           OnboardingController.instance.skipPage();

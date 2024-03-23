@@ -16,38 +16,38 @@ class RSocialButtons extends StatelessWidget {
         Container(
           decoration: BoxDecoration(
             border: Border.all(
-              color: RColors.grey,
+              color: CColors.grey,
             ),
             borderRadius: BorderRadius.circular(100),
           ),
           child: IconButton(
             onPressed: () {},
             icon: const Image(
-              width: RSizes.iconMd,
-              height: RSizes.iconMd,
+              width: CSizes.iconMd,
+              height: CSizes.iconMd,
               image: AssetImage(
-                RImages.google,
+                CImages.google,
               ),
             ),
           ),
         ),
         const SizedBox(
-          width: RSizes.spaceBtnItems,
+          width: CSizes.spaceBtnItems,
         ),
         Container(
           decoration: BoxDecoration(
             border: Border.all(
-              color: RColors.grey,
+              color: CColors.grey,
             ),
             borderRadius: BorderRadius.circular(100),
           ),
           child: IconButton(
             onPressed: () {},
             icon: const Image(
-              width: RSizes.iconMd,
-              height: RSizes.iconMd,
+              width: CSizes.iconMd,
+              height: CSizes.iconMd,
               image: AssetImage(
-                RImages.fb,
+                CImages.fb,
               ),
             ),
           ),

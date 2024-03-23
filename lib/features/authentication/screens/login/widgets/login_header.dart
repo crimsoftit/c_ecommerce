@@ -20,14 +20,14 @@ class LoginHeader extends StatelessWidget {
           height: 150.0,
           //image: AssetImage( isDark ? RImages.darkAppLogo_1 : RImages.lightAppLogo_1),
           image:
-              AssetImage(isDark ? RImages.darkAppLogo : RImages.lightAppLogo),
+              AssetImage(isDark ? CImages.darkAppLogo : CImages.lightAppLogo),
         ),
         Text(
           RTexts.loginTitle,
           style: Theme.of(context).textTheme.headlineMedium,
         ),
         const SizedBox(
-          height: RSizes.sm,
+          height: CSizes.sm,
         ),
         Text(
           RTexts.loginSubTitle,

@@ -15,7 +15,7 @@ class SignupScreen extends StatelessWidget {
       appBar: AppBar(),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(RSizes.defaultSpace),
+          padding: const EdgeInsets.all(CSizes.defaultSpace),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -25,7 +25,7 @@ class SignupScreen extends StatelessWidget {
                 style: Theme.of(context).textTheme.headlineSmall,
               ),
               const SizedBox(
-                height: RSizes.spaceBtnSections,
+                height: CSizes.spaceBtnSections,
               ),
 
               // -- signup form --
@@ -37,7 +37,7 @@ class SignupScreen extends StatelessWidget {
               ),
 
               const SizedBox(
-                height: RSizes.spaceBtnSections,
+                height: CSizes.spaceBtnSections,
               ),
 
               // -- footer --

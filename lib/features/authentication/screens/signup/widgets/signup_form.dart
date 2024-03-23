@@ -32,7 +32,7 @@ class RSignupForm extends StatelessWidget {
           ),
 
           const SizedBox(
-            height: RSizes.spaceBtnInputFields,
+            height: CSizes.spaceBtnInputFields,
           ),
 
           // -- username field --
@@ -48,7 +48,7 @@ class RSignupForm extends StatelessWidget {
           ),
 
           const SizedBox(
-            height: RSizes.spaceBtnInputFields,
+            height: CSizes.spaceBtnInputFields,
           ),
 
           // -- email field --
@@ -63,7 +63,7 @@ class RSignupForm extends StatelessWidget {
           ),
 
           const SizedBox(
-            height: RSizes.spaceBtnInputFields,
+            height: CSizes.spaceBtnInputFields,
           ),
 
           // -- phone number field --
@@ -81,7 +81,7 @@ class RSignupForm extends StatelessWidget {
               focusedBorder: OutlineInputBorder(
                 borderSide: BorderSide(
                   width: 2.0,
-                  color: RColors.rBrown,
+                  color: CColors.rBrown,
                 ),
               ),
             ),
@@ -96,12 +96,12 @@ class RSignupForm extends StatelessWidget {
               //print(controller.cell_no.value);
             },
             onCountryChanged: (country) {
-              print('country changed to: ${country.code}');
+              //print('country changed to: ${country.code}');
             },
           ),
 
           const SizedBox(
-            height: RSizes.spaceBtnInputFields,
+            height: CSizes.spaceBtnInputFields,
           ),
 
           // -- password field --
@@ -118,14 +118,14 @@ class RSignupForm extends StatelessWidget {
           ),
 
           const SizedBox(
-            height: RSizes.spaceBtnSections,
+            height: CSizes.spaceBtnSections,
           ),
 
           // -- terms & conditions checkbox --
           const TandCCheckbox(),
 
           const SizedBox(
-            height: RSizes.spaceBtnSections,
+            height: CSizes.spaceBtnSections,
           ),
 
           SizedBox(
@@ -137,7 +137,7 @@ class RSignupForm extends StatelessWidget {
               child: Text(
                 RTexts.createAccount.toUpperCase(),
                 style: Theme.of(context).textTheme.labelMedium?.apply(
-                      color: RColors.white,
+                      color: CColors.white,
                     ),
               ),
             ),

@@ -18,13 +18,14 @@ class CHomeAppBarWidget extends StatelessWidget {
           Text(
             RTexts.homeAppbarTitle,
             style: Theme.of(context).textTheme.labelMedium!.apply(
-                  color: RColors.grey,
+                  color: CColors.grey,
                 ),
           ),
           Text(
             RTexts.homeAppbarSubTitle,
             style: Theme.of(context).textTheme.headlineSmall!.apply(
-                  color: RColors.white,
+                  color: CColors.white,
+                  fontSizeFactor: 0.7,
                 ),
           ),
         ],

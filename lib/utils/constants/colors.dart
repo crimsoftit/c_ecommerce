@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class RColors {
-  RColors._();
+class CColors {
+  CColors._();
 
   // -- app basic colors
   static const Color primaryBrown = Colors.brown;
@@ -32,7 +32,7 @@ class RColors {
 
   // -- container bg colors
   static const Color lightContainer = Color(0xfff6f6f6);
-  static Color darkContainer = RColors.white.withOpacity(0.1);
+  static Color darkContainer = CColors.white.withOpacity(0.1);
 
   // -- button colors
   static const Color btnPrimary = Color(0xff4b68ff);

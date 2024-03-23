@@ -24,18 +24,18 @@ class ResetPasswordScreen extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(RSizes.defaultSpace),
+          padding: const EdgeInsets.all(CSizes.defaultSpace),
           child: Column(
             children: [
               // -- header image --
               Image(
                 image: const AssetImage(
-                  RImages.deliveredEmailIllustration,
+                  CImages.deliveredEmailIllustration,
                 ),
-                width: RHelperFunctions.screenWidth() * 0.6,
+                width: CHelperFunctions.screenWidth() * 0.6,
               ),
               const SizedBox(
-                height: RSizes.spaceBtnSections,
+                height: CSizes.spaceBtnSections,
               ),
 
               // -- title & subtitle --
@@ -45,27 +45,27 @@ class ResetPasswordScreen extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
               const SizedBox(
-                height: RSizes.spaceBtnItems,
+                height: CSizes.spaceBtnItems,
               ),
               Text(
                 'crimsoftit@gmail.com',
                 style: Theme.of(context).textTheme.labelMedium!.apply(
-                      color: RColors.darkerGrey,
+                      color: CColors.darkerGrey,
                     ),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(
-                height: RSizes.spaceBtnItems,
+                height: CSizes.spaceBtnItems,
               ),
               Text(
                 RTexts.resetPswdSubTitle,
                 style: Theme.of(context).textTheme.labelMedium!.apply(
-                      color: RColors.darkGrey,
+                      color: CColors.darkGrey,
                     ),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(
-                height: RSizes.spaceBtnSections,
+                height: CSizes.spaceBtnSections,
               ),
 
               // -- buttons --
@@ -76,14 +76,14 @@ class ResetPasswordScreen extends StatelessWidget {
                   child: Text(
                     'Done',
                     style: Theme.of(context).textTheme.labelMedium?.apply(
-                          color: RColors.white,
+                          color: CColors.white,
                         ),
                   ),
                 ),
               ),
 
               const SizedBox(
-                height: RSizes.spaceBtnItems,
+                height: CSizes.spaceBtnItems,
               ),
 
               SizedBox(

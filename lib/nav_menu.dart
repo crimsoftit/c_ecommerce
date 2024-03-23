@@ -11,7 +11,7 @@ class NavMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final navController = Get.put(NavMenuController());
-    final isDark = RHelperFunctions.isDarkMode(context);
+    final isDark = CHelperFunctions.isDarkMode(context);
 
     return Scaffold(
       bottomNavigationBar: Obx(
@@ -23,10 +23,10 @@ class NavMenu extends StatelessWidget {
             navController.selectedIndex.value = index;
           },
           backgroundColor:
-              isDark ? RColors.rBrown : RColors.rBrown.withOpacity(0.1),
+              isDark ? CColors.rBrown : CColors.rBrown.withOpacity(0.1),
           indicatorColor: isDark
-              ? RColors.rBrown.withOpacity(0.1)
-              : RColors.rBrown.withOpacity(0.3),
+              ? CColors.rBrown.withOpacity(0.1)
+              : CColors.rBrown.withOpacity(0.3),
           destinations: const [
             NavigationDestination(
               icon: Icon(Iconsax.home),

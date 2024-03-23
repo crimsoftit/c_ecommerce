@@ -7,43 +7,43 @@ class RTextFormFieldTheme {
   // -- light theme (mode) settings
   static InputDecorationTheme lightInputDecorationTheme = InputDecorationTheme(
     errorMaxLines: 3,
-    prefixIconColor: RColors.grey,
-    suffixIconColor: RColors.grey,
+    prefixIconColor: CColors.grey,
+    suffixIconColor: CColors.grey,
     labelStyle: const TextStyle().copyWith(
       fontSize: 11.0,
-      color: RColors.rBrown,
+      color: CColors.rBrown,
       fontWeight: FontWeight.normal,
     ),
     hintStyle: const TextStyle().copyWith(
       fontSize: 11.0,
-      color: RColors.rBrown,
+      color: CColors.rBrown,
       fontWeight: FontWeight.normal,
     ),
     errorStyle: const TextStyle().copyWith(
       fontStyle: FontStyle.italic,
     ),
     floatingLabelStyle: const TextStyle().copyWith(
-      color: RColors.rBrown.withOpacity(0.8),
+      color: CColors.rBrown.withOpacity(0.8),
     ),
     border: const OutlineInputBorder().copyWith(
       borderRadius: BorderRadius.circular(10),
       borderSide: const BorderSide(
         width: 1.0,
-        color: RColors.grey,
+        color: CColors.grey,
       ),
     ),
     enabledBorder: const OutlineInputBorder().copyWith(
       borderRadius: BorderRadius.circular(10),
       borderSide: const BorderSide(
         width: 1.0,
-        color: RColors.grey,
+        color: CColors.grey,
       ),
     ),
     focusedBorder: const OutlineInputBorder().copyWith(
       borderRadius: BorderRadius.circular(10),
       borderSide: BorderSide(
         width: 1.0,
-        color: RColors.rBrown.shade100,
+        color: CColors.rBrown.shade100,
       ),
     ),
     errorBorder: const OutlineInputBorder().copyWith(
@@ -65,43 +65,43 @@ class RTextFormFieldTheme {
   // -- dark theme (mode) settings
   static InputDecorationTheme darkInputDecorationTheme = InputDecorationTheme(
     errorMaxLines: 3,
-    prefixIconColor: RColors.grey,
-    suffixIconColor: RColors.grey,
+    prefixIconColor: CColors.grey,
+    suffixIconColor: CColors.grey,
     labelStyle: const TextStyle().copyWith(
       fontSize: 11.0,
-      color: RColors.white,
+      color: CColors.white,
       fontWeight: FontWeight.normal,
     ),
     hintStyle: const TextStyle().copyWith(
       fontSize: 11.0,
-      color: RColors.white,
+      color: CColors.white,
       fontWeight: FontWeight.normal,
     ),
     errorStyle: const TextStyle().copyWith(
       fontStyle: FontStyle.italic,
     ),
     floatingLabelStyle: const TextStyle().copyWith(
-      color: RColors.white.withOpacity(0.8),
+      color: CColors.white.withOpacity(0.8),
     ),
     border: const OutlineInputBorder().copyWith(
       borderRadius: BorderRadius.circular(10),
       borderSide: const BorderSide(
         width: 1.0,
-        color: RColors.grey,
+        color: CColors.grey,
       ),
     ),
     enabledBorder: const OutlineInputBorder().copyWith(
       borderRadius: BorderRadius.circular(10),
       borderSide: const BorderSide(
         width: 1.0,
-        color: RColors.grey,
+        color: CColors.grey,
       ),
     ),
     focusedBorder: const OutlineInputBorder().copyWith(
       borderRadius: BorderRadius.circular(10),
       borderSide: const BorderSide(
         width: 1.0,
-        color: RColors.white,
+        color: CColors.white,
       ),
     ),
     errorBorder: const OutlineInputBorder().copyWith(

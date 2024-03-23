@@ -5,29 +5,29 @@ class RChipTheme {
   RChipTheme._();
 
   static ChipThemeData lightChipTheme = const ChipThemeData(
-    disabledColor: RColors.lightGrey,
+    disabledColor: CColors.lightGrey,
     //disabledColor: rGrey.withOpacity(0.4),
     labelStyle: TextStyle(
-      color: RColors.rBrown,
+      color: CColors.rBrown,
     ),
     selectedColor: rBlue,
     padding: EdgeInsets.symmetric(
       horizontal: 12.0,
       vertical: 12.0,
     ),
-    checkmarkColor: RColors.white,
+    checkmarkColor: CColors.white,
   );
 
   static ChipThemeData darkChipTheme = const ChipThemeData(
-    disabledColor: RColors.lightGrey,
+    disabledColor: CColors.lightGrey,
     labelStyle: TextStyle(
-      color: RColors.white,
+      color: CColors.white,
     ),
     selectedColor: rBlue,
     padding: EdgeInsets.symmetric(
       horizontal: 12.0,
       vertical: 12.0,
     ),
-    checkmarkColor: RColors.white,
+    checkmarkColor: CColors.white,
   );
 }

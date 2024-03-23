@@ -14,7 +14,7 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = RHelperFunctions.isDarkMode(context);
+    final isDark = CHelperFunctions.isDarkMode(context);
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -33,7 +33,7 @@ class LoginScreen extends StatelessWidget {
                 dividerText: RTexts.orSignInWith.capitalize!,
               ),
               const SizedBox(
-                height: RSizes.spaceBtnSections,
+                height: CSizes.spaceBtnSections,
               ),
 
               // -- footer --

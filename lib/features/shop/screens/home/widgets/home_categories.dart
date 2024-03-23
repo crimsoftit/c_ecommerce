@@ -11,17 +11,17 @@ class CHomeCategories extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 80.0,
+      height: 100.0,
       child: ListView.builder(
         shrinkWrap: true,
-        itemCount: 9,
+        itemCount: 6,
         scrollDirection: Axis.horizontal,
         itemBuilder: (_, index) {
           return CVerticalImgTxt(
-            img: RImages.electronicsIcon,
+            img: CImages.electronicsIcon,
             title: 'shoe categories',
-            txtColor: RColors.txtWhite,
-            bgColor: RColors.white,
+            txtColor: CColors.txtWhite,
+            bgColor: CColors.white,
             onTap: () {},
           );
         },

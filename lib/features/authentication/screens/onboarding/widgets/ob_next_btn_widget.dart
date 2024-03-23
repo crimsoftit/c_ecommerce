@@ -14,7 +14,7 @@ class OnboardingNextBtnWidget extends StatelessWidget {
     final obController = OnboardingController.instance;
 
     return Positioned(
-      right: RSizes.defaultSpace,
+      right: CSizes.defaultSpace,
       bottom: RDeviceUtils.getBottomNavigationBarHeight(),
       child: ElevatedButton(
         onPressed: () {

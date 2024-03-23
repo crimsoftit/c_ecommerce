@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
-class RHelperFunctions {
+class CHelperFunctions {
   static Color? getColor(String value) {
     // -- define products' specific colors and it will match the attribute colors and show specific colors
     if (value == 'red' || value == 'Red') {
