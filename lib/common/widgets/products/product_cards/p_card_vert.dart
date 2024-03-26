@@ -2,6 +2,7 @@ import 'package:duara_ecommerce/common/styles/shadows.dart';
 import 'package:duara_ecommerce/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:duara_ecommerce/common/widgets/icons/circular_icon.dart';
 import 'package:duara_ecommerce/common/widgets/img_widgets/c_rounded_img.dart';
+import 'package:duara_ecommerce/common/widgets/text_widgets/p_price_txt.dart';
 import 'package:duara_ecommerce/common/widgets/text_widgets/product_title_texts.dart';
 import 'package:duara_ecommerce/utils/constants/colors.dart';
 import 'package:duara_ecommerce/utils/constants/image_strings.dart';
@@ -17,107 +18,143 @@ class CProductCardVertical extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDark = CHelperFunctions.isDarkMode(context);
 
-    return Container(
-      width: 150,
-      padding: const EdgeInsets.all(1),
-      decoration: BoxDecoration(
-        boxShadow: [CShadowStyle.verticalProductShadow],
-        borderRadius: BorderRadius.circular(CSizes.pImgRadius),
-        color: isDark ? CColors.darkGrey : CColors.white,
-      ),
-      child: Column(
-        children: [
-          // -- thumbnail, wishlist button, and discount tag --
-          CRoundedContainer(
-            //height: 180,
-            padding: const EdgeInsets.all(CSizes.sm),
-            //bgColor: isDark ? CColors.dark : CColors.light,
-            child: Stack(
-              children: [
-                // thumbnail image
-                const CRoundedImages(
-                  imgUrl: CImages.pImg1,
-                  applyImgRadius: true,
-                  width: 180,
-                ),
+    return GestureDetector(
+      onTap: () {},
+      child: Container(
+        width: 150,
+        padding: const EdgeInsets.all(1),
+        decoration: BoxDecoration(
+          boxShadow: [CShadowStyle.verticalProductShadow],
+          borderRadius: BorderRadius.circular(CSizes.pImgRadius),
+          color: isDark ? CColors.darkGrey : CColors.white,
+        ),
+        child: Column(
+          children: [
+            // -- thumbnail, wishlist button, and discount tag --
+            CRoundedContainer(
+              //height: 180,
+              padding: const EdgeInsets.all(CSizes.sm),
+              //bgColor: isDark ? CColors.dark : CColors.light,
+              child: Stack(
+                children: [
+                  // thumbnail image
+                  const CRoundedImages(
+                    imgUrl: CImages.pImg1,
+                    applyImgRadius: true,
+                    width: 180,
+                  ),
 
-                // sale tag
-                Positioned(
-                  top: 12.0,
-                  child: CRoundedContainer(
-                    radius: CSizes.sm,
-                    bgColor: CColors.secondary.withOpacity(0.8),
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: CSizes.sm,
-                      vertical: CSizes.xs,
-                    ),
-                    child: Text(
-                      '25%',
-                      style: Theme.of(context).textTheme.labelSmall!.apply(
-                            color: CColors.black,
-                            //fontSizeFactor: 0.7,
-                          ),
+                  // sale tag
+                  Positioned(
+                    top: 12.0,
+                    child: CRoundedContainer(
+                      radius: CSizes.sm,
+                      bgColor: CColors.secondary.withOpacity(0.8),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: CSizes.sm,
+                        vertical: CSizes.xs,
+                      ),
+                      child: Text(
+                        '25%',
+                        style: Theme.of(context).textTheme.labelSmall!.apply(
+                              color: CColors.black,
+                              //fontSizeFactor: 0.7,
+                            ),
+                      ),
                     ),
                   ),
-                ),
 
-                // favorite icon button
-                const Positioned(
-                  top: 0,
-                  right: 0,
-                  child: CCircularIcon(
-                    icon: Iconsax.heart5,
-                    color: Colors.red,
+                  // favorite icon button
+                  const Positioned(
+                    top: 0,
+                    right: 0,
+                    child: CCircularIcon(
+                      icon: Iconsax.heart5,
+                      color: Colors.red,
+                    ),
                   ),
-                ),
 
-                // product details
-              ],
+                  // product details
+                ],
+              ),
             ),
-          ),
-          const SizedBox(
-            height: CSizes.spaceBtnItems / 2,
-          ),
+            const SizedBox(
+              height: CSizes.spaceBtnItems / 2,
+            ),
 
-          // -- product details --
-          Padding(
-            padding: const EdgeInsets.only(
-              left: CSizes.sm,
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const CProductTitleText(
-                  title: 'Acer laptop gen 10',
-                  smallSize: true,
-                ),
-                const SizedBox(
-                  height: CSizes.spaceBtnItems / 2,
-                ),
-                Row(
-                  children: [
-                    Text(
-                      'Acer',
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 1,
-                      style: Theme.of(context).textTheme.labelMedium!.apply(
-                            color: CColors.grey,
+            // -- product details --
+            Padding(
+              padding: const EdgeInsets.only(
+                left: CSizes.sm,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const CProductTitleText(
+                    title: 'Acer laptop gen 10',
+                    smallSize: true,
+                  ),
+                  const SizedBox(
+                    height: CSizes.spaceBtnItems / 2,
+                  ),
+                  Row(
+                    children: [
+                      Text(
+                        'Acer',
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 1,
+                        style: Theme.of(context).textTheme.labelMedium!.apply(
+                              color: CColors.grey,
+                            ),
+                      ),
+                      const SizedBox(
+                        width: CSizes.xs,
+                      ),
+                      const Icon(
+                        Iconsax.verify5,
+                        color: CColors.primaryBlue,
+                        size: CSizes.iconXs,
+                      ),
+                    ],
+                  ),
+                  //Spacer(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      // product price
+                      const CProductPriceText(
+                        price: '30000',
+                      ),
+
+                      // add item to cart button
+                      Container(
+                        width: 30.0,
+                        height: 30.0,
+                        decoration: const BoxDecoration(
+                          color: CColors.rBrown,
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(CSizes.cardRadiusMd),
+                            bottomRight: Radius.circular(CSizes.pImgRadius),
                           ),
-                    ),
-                    const SizedBox(
-                      width: CSizes.xs,
-                    ),
-                    const Icon(
-                      Iconsax.verify5,
-                      color: CColors.primaryBlue,
-                      size: CSizes.iconXs,
-                    ),
-                  ],
-                ),
-              ],
+                        ),
+                        child: const SizedBox(
+                          width: CSizes.iconLg * 1.2,
+                          height: CSizes.iconLg * 1.2,
+                          child: Center(
+                            child: Icon(
+                              Iconsax.add,
+                              color: CColors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

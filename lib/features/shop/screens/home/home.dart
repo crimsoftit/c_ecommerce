@@ -1,5 +1,6 @@
 import 'package:duara_ecommerce/common/widgets/custom_shapes/containers/primary_header_container.dart';
 import 'package:duara_ecommerce/common/widgets/custom_shapes/containers/search_container.dart';
+import 'package:duara_ecommerce/common/widgets/layouts/grid_layout.dart';
 import 'package:duara_ecommerce/common/widgets/products/product_cards/p_card_vert.dart';
 import 'package:duara_ecommerce/common/widgets/text_widgets/section_headings.dart';
 import 'package:duara_ecommerce/features/shop/screens/home/widgets/home_appbar.dart';
@@ -70,12 +71,12 @@ class HomeScreen extends StatelessWidget {
             ),
 
             // -- ## BODY ## --
-            const Padding(
-              padding: EdgeInsets.all(CSizes.defaultSpace),
+            Padding(
+              padding: const EdgeInsets.all(CSizes.defaultSpace),
               child: Column(
                 children: [
                   // -- promo slider --
-                  CPromoSlider(
+                  const CPromoSlider(
                     banners: [
                       CImages.promoBanner1,
                       CImages.promoBanner2,
@@ -83,11 +84,16 @@ class HomeScreen extends StatelessWidget {
                     ],
                   ),
 
-                  SizedBox(
+                  const SizedBox(
                     height: CSizes.spaceBtnSections,
                   ),
                   // -- popular products --
-                  CProductCardVertical(),
+                  CGridLayout(
+                    itemCount: 4,
+                    itemBuilder: (_, index) {
+                      return const CProductCardVertical();
+                    },
+                  ),
                 ],
               ),
             ),
