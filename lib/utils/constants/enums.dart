@@ -1,7 +1,7 @@
 /* -- list of enums -- */
 // cannot be created inside a class
 
-enum TextSizes {
+enum CTextSizes {
   small,
   medium,
   large,

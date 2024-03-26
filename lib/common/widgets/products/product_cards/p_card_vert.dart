@@ -83,39 +83,19 @@ class CProductCardVertical extends StatelessWidget {
             ),
 
             // -- product details --
-            Padding(
-              padding: const EdgeInsets.only(
+            const Padding(
+              padding: EdgeInsets.only(
                 left: CSizes.sm,
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const CProductTitleText(
+                  CProductTitleText(
                     title: 'Acer laptop gen 10',
                     smallSize: true,
                   ),
-                  const SizedBox(
+                  SizedBox(
                     height: CSizes.spaceBtnItems / 2,
-                  ),
-                  Row(
-                    children: [
-                      Text(
-                        'Acer',
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 1,
-                        style: Theme.of(context).textTheme.labelMedium!.apply(
-                              color: CColors.grey,
-                            ),
-                      ),
-                      const SizedBox(
-                        width: CSizes.xs,
-                      ),
-                      const Icon(
-                        Iconsax.verify5,
-                        color: CColors.primaryBlue,
-                        size: CSizes.iconXs,
-                      ),
-                    ],
                   ),
                 ],
               ),

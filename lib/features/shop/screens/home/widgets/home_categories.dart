@@ -19,7 +19,7 @@ class CHomeCategories extends StatelessWidget {
         itemBuilder: (_, index) {
           return CVerticalImgTxt(
             img: CImages.electronicsIcon,
-            title: 'shoe categories',
+            title: 'phone categories',
             txtColor: CColors.txtWhite,
             bgColor: CColors.white,
             onTap: () {},

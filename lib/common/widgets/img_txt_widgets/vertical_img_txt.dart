@@ -43,7 +43,7 @@ class CVerticalImgTxt extends StatelessWidget {
                 child: Image(
                   image: AssetImage(img),
                   fit: BoxFit.cover,
-                  color: CColors.dark,
+                  color: CColors.rBrown,
                 ),
               ),
             ),
