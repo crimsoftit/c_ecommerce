@@ -87,7 +87,21 @@ class HomeScreen extends StatelessWidget {
                   const SizedBox(
                     height: CSizes.spaceBtnSections,
                   ),
-                  // -- popular products --
+
+                  // -- popular products heading --
+                  CSectionHeading(
+                    showActionBtn: true,
+                    title: 'popular products',
+                    txtColor: CColors.rBrown,
+                    btnTitle: 'view all...',
+                    btnTxtColor: CColors.darkerGrey,
+                    onPressed: () {},
+                  ),
+                  const SizedBox(
+                    height: CSizes.spaceBtnItems,
+                  ),
+
+                  // -- popular products grid display --
                   CGridLayout(
                     itemCount: 4,
                     itemBuilder: (_, index) {

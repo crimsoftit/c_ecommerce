@@ -117,41 +117,48 @@ class CProductCardVertical extends StatelessWidget {
                       ),
                     ],
                   ),
-                  //Spacer(),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      // product price
-                      const CProductPriceText(
-                        price: '30000',
-                      ),
-
-                      // add item to cart button
-                      Container(
-                        width: 30.0,
-                        height: 30.0,
-                        decoration: const BoxDecoration(
-                          color: CColors.rBrown,
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(CSizes.cardRadiusMd),
-                            bottomRight: Radius.circular(CSizes.pImgRadius),
-                          ),
-                        ),
-                        child: const SizedBox(
-                          width: CSizes.iconLg * 1.2,
-                          height: CSizes.iconLg * 1.2,
-                          child: Center(
-                            child: Icon(
-                              Iconsax.add,
-                              color: CColors.white,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
                 ],
               ),
+            ),
+
+            const Spacer(),
+
+            // -- product price and add item to cart button --
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Padding(
+                  padding: EdgeInsets.only(
+                    left: CSizes.sm,
+                  ),
+                  child: CProductPriceText(
+                    price: '30000',
+                  ),
+                ),
+
+                // add item to cart button
+                Container(
+                  width: 30.0,
+                  height: 30.0,
+                  decoration: const BoxDecoration(
+                    color: CColors.rBrown,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(CSizes.cardRadiusMd),
+                      bottomRight: Radius.circular(CSizes.pImgRadius),
+                    ),
+                  ),
+                  child: const SizedBox(
+                    width: CSizes.iconLg * 1.2,
+                    height: CSizes.iconLg * 1.2,
+                    child: Center(
+                      child: Icon(
+                        Iconsax.add,
+                        color: CColors.white,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ],
         ),

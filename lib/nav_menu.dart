@@ -1,4 +1,5 @@
 import 'package:duara_ecommerce/features/shop/screens/home/home.dart';
+import 'package:duara_ecommerce/features/shop/screens/store/store.dart';
 import 'package:duara_ecommerce/utils/constants/colors.dart';
 import 'package:duara_ecommerce/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
@@ -57,9 +58,7 @@ class NavMenuController extends GetxController {
 
   final screens = [
     const HomeScreen(),
-    Container(
-      color: Colors.orange,
-    ),
+    const CStoreScreen(),
     Container(
       color: Colors.brown,
     ),

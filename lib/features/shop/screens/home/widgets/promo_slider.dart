@@ -52,7 +52,7 @@ class CPromoSlider extends StatelessWidget {
                       right: 10.0,
                     ),
                     bgColor: homeController.carouselCurrentIndex == i
-                        ? Colors.orange
+                        ? CColors.rBrown
                         : CColors.grey,
                   ),
               ],

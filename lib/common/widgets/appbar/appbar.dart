@@ -13,11 +13,13 @@ class CAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.leadingIcon,
     this.leadingOnPressed,
     this.showBackArrow = true,
+    this.backIconColor,
   });
 
   final Widget? title;
   final bool showBackArrow;
   final IconData? leadingIcon;
+  final Color? backIconColor;
   final List<Widget>? actions;
   final VoidCallback? leadingOnPressed;
 
@@ -34,7 +36,10 @@ class CAppBar extends StatelessWidget implements PreferredSizeWidget {
                 onPressed: () {
                   Get.back();
                 },
-                icon: const Icon(Iconsax.arrow_left),
+                icon: Icon(
+                  Iconsax.arrow_left,
+                  color: backIconColor,
+                ),
               )
             : leadingIcon != null
                 ? IconButton(
