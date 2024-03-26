@@ -11,9 +11,9 @@ class CCircularImg extends StatelessWidget {
     this.isNetworkImg = false,
     this.overlayColor,
     this.bgColor,
-    this.width = 56.0,
-    this.height = 56.0,
-    this.padding = CSizes.sm,
+    this.width = 40.0,
+    this.height = 40.0,
+    this.padding = CSizes.sm / 2,
   });
 
   final BoxFit? fit;

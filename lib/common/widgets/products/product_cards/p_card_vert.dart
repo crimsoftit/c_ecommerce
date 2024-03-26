@@ -32,7 +32,7 @@ class CProductCardVertical extends StatelessWidget {
           children: [
             // -- thumbnail, wishlist button, and discount tag --
             CRoundedContainer(
-              //height: 180,
+              //height: 100,
               padding: const EdgeInsets.all(CSizes.sm),
               //bgColor: isDark ? CColors.dark : CColors.light,
               child: Stack(
@@ -93,9 +93,6 @@ class CProductCardVertical extends StatelessWidget {
                   CProductTitleText(
                     title: 'Acer laptop gen 10',
                     smallSize: true,
-                  ),
-                  SizedBox(
-                    height: CSizes.spaceBtnItems / 2,
                   ),
                 ],
               ),

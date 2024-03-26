@@ -9,6 +9,7 @@ import 'package:duara_ecommerce/features/shop/screens/home/widgets/promo_slider.
 import 'package:duara_ecommerce/utils/constants/colors.dart';
 import 'package:duara_ecommerce/utils/constants/image_strings.dart';
 import 'package:duara_ecommerce/utils/constants/sizes.dart';
+import 'package:duara_ecommerce/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -17,6 +18,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkTheme = CHelperFunctions.isDarkMode(context);
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -92,7 +94,7 @@ class HomeScreen extends StatelessWidget {
                   CSectionHeading(
                     showActionBtn: true,
                     title: 'popular products',
-                    txtColor: CColors.rBrown,
+                    txtColor: isDarkTheme ? CColors.white : CColors.rBrown,
                     btnTitle: 'view all...',
                     btnTxtColor: CColors.darkerGrey,
                     onPressed: () {},
