@@ -77,8 +77,6 @@ class CProductCardVertical extends StatelessWidget {
                       color: Colors.red,
                     ),
                   ),
-
-                  // product details
                 ],
               ),
             ),
@@ -88,21 +86,27 @@ class CProductCardVertical extends StatelessWidget {
 
             // -- product details --
             const Padding(
-              padding: EdgeInsets.only(
-                left: CSizes.sm,
+              padding: EdgeInsets.symmetric(
+                horizontal: CSizes.sm,
               ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  CProductTitleText(
-                    title: 'Acer laptop gen 10 with backlit keyboard',
-                    smallSize: false,
-                    txtAlign: TextAlign.left,
-                  ),
-                  CBrandTitleWithVerifiedIcon(
-                    title: 'acer',
-                  ),
-                ],
+              child: SizedBox(
+                width: double.infinity,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    CProductTitleText(
+                      title: 'Acer laptop gen 10 with backlit keyboard',
+                      smallSize: false,
+                      txtAlign: TextAlign.left,
+                    ),
+                    SizedBox(
+                      height: CSizes.spaceBtnItems / 4,
+                    ),
+                    CBrandTitleWithVerifiedIcon(
+                      title: 'acer',
+                    ),
+                  ],
+                ),
               ),
             ),
 
