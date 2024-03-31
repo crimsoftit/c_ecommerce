@@ -1,16 +1,13 @@
 import 'package:duara_ecommerce/common/widgets/appbar/appbar.dart';
 import 'package:duara_ecommerce/common/widgets/appbar/c_tabbar.dart';
-import 'package:duara_ecommerce/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:duara_ecommerce/common/widgets/custom_shapes/containers/search_container.dart';
-import 'package:duara_ecommerce/common/widgets/img_widgets/c_circular_img.dart';
 import 'package:duara_ecommerce/common/widgets/layouts/grid_layout.dart';
+import 'package:duara_ecommerce/common/widgets/brands/c_brand_cards.dart';
 import 'package:duara_ecommerce/common/widgets/products/cart/cart_menu_icon.dart';
-import 'package:duara_ecommerce/common/widgets/text_widgets/c_brand_title_with_verified_icon.dart';
 import 'package:duara_ecommerce/common/widgets/text_widgets/c_tabbar_headings.dart';
 import 'package:duara_ecommerce/common/widgets/text_widgets/section_headings.dart';
+import 'package:duara_ecommerce/features/shop/screens/store/widgets/categories_tab.dart';
 import 'package:duara_ecommerce/utils/constants/colors.dart';
-import 'package:duara_ecommerce/utils/constants/enums.dart';
-import 'package:duara_ecommerce/utils/constants/image_strings.dart';
 import 'package:duara_ecommerce/utils/constants/sizes.dart';
 import 'package:duara_ecommerce/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
@@ -86,54 +83,8 @@ class CStoreScreen extends StatelessWidget {
                           itemCount: 4,
                           mainAxisExtent: 80,
                           itemBuilder: (_, index) {
-                            return GestureDetector(
-                              onTap: () {},
-                              child: CRoundedContainer(
-                                padding: const EdgeInsets.all(CSizes.sm),
-                                showBorder: true,
-                                bgColor: Colors.transparent,
-                                child: Row(
-                                  children: [
-                                    // icon
-                                    Flexible(
-                                      child: CCircularImg(
-                                        isNetworkImg: false,
-                                        img: CImages.clothIcon,
-                                        bgColor: Colors.transparent,
-                                        overlayColor: isDarkTheme
-                                            ? CColors.white
-                                            : CColors.rBrown,
-                                      ),
-                                    ),
-
-                                    const SizedBox(
-                                      width: CSizes.spaceBtnItems / 8,
-                                    ),
-
-                                    // text for popular brands
-                                    Expanded(
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.min,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          const CBrandTitleWithVerifiedIcon(
-                                            title: 'iPhone 14',
-                                            brandTxtSize: CTextSizes.small,
-                                          ),
-                                          Text(
-                                            '200 products',
-                                            overflow: TextOverflow.ellipsis,
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .labelSmall,
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
+                            return const CBrandCard(
+                              showBorder: true,
                             );
                           },
                         ),
@@ -174,35 +125,13 @@ class CStoreScreen extends StatelessWidget {
                 ),
               ];
             },
-            body: TabBarView(
+            body: const TabBarView(
               children: [
-                Padding(
-                  padding: const EdgeInsets.all(CSizes.defaultSpace),
-                  child: Column(
-                    children: [
-                      // -- brands --
-                      CRoundedContainer(
-                        showBorder: true,
-                        borderColor: CColors.rBrown,
-                        bgColor: Colors.transparent,
-                        margin: const EdgeInsets.only(
-                          bottom: CSizes.spaceBtnItems,
-                        ),
-                        child: Column(
-                          children: [
-
-                            // brand with products count
-                            const CBrandCard
-
-                            // brand top 3 product images
-                          ],
-                        ),
-                      ),
-
-                      // -- products --
-                    ],
-                  ),
-                ),
+                CCategoriesTab(),
+                CCategoriesTab(),
+                CCategoriesTab(),
+                CCategoriesTab(),
+                CCategoriesTab(),
               ],
             ),
           ),

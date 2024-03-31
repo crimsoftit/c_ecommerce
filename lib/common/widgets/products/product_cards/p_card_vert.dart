@@ -2,6 +2,7 @@ import 'package:duara_ecommerce/common/styles/shadows.dart';
 import 'package:duara_ecommerce/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:duara_ecommerce/common/widgets/icons/circular_icon.dart';
 import 'package:duara_ecommerce/common/widgets/img_widgets/c_rounded_img.dart';
+import 'package:duara_ecommerce/common/widgets/text_widgets/c_brand_title_with_verified_icon.dart';
 import 'package:duara_ecommerce/common/widgets/text_widgets/p_price_txt.dart';
 import 'package:duara_ecommerce/common/widgets/text_widgets/product_title_texts.dart';
 import 'package:duara_ecommerce/utils/constants/colors.dart';
@@ -21,7 +22,7 @@ class CProductCardVertical extends StatelessWidget {
     return GestureDetector(
       onTap: () {},
       child: Container(
-        width: 150,
+        width: 180,
         padding: const EdgeInsets.all(1),
         decoration: BoxDecoration(
           boxShadow: [CShadowStyle.verticalProductShadow],
@@ -29,10 +30,11 @@ class CProductCardVertical extends StatelessWidget {
           color: isDark ? CColors.darkGrey : CColors.white,
         ),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // -- thumbnail, wishlist button, and discount tag --
             CRoundedContainer(
-              //height: 100,
+              height: 130,
               padding: const EdgeInsets.all(CSizes.sm),
               //bgColor: isDark ? CColors.dark : CColors.light,
               child: Stack(
@@ -42,6 +44,8 @@ class CProductCardVertical extends StatelessWidget {
                     imgUrl: CImages.pImg1,
                     applyImgRadius: true,
                     width: 180,
+                    padding: EdgeInsets.all(2.0),
+                    //height: 120,
                   ),
 
                   // sale tag
@@ -79,7 +83,7 @@ class CProductCardVertical extends StatelessWidget {
               ),
             ),
             const SizedBox(
-              height: CSizes.spaceBtnItems / 2,
+              height: CSizes.spaceBtnItems / 4,
             ),
 
             // -- product details --
@@ -91,8 +95,12 @@ class CProductCardVertical extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   CProductTitleText(
-                    title: 'Acer laptop gen 10',
-                    smallSize: true,
+                    title: 'Acer laptop gen 10 with backlit keyboard',
+                    smallSize: false,
+                    txtAlign: TextAlign.left,
+                  ),
+                  CBrandTitleWithVerifiedIcon(
+                    title: 'acer',
                   ),
                 ],
               ),
