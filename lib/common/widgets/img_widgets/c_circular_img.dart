@@ -11,16 +11,17 @@ class CCircularImg extends StatelessWidget {
     this.isNetworkImg = false,
     this.overlayColor,
     this.bgColor,
-    this.width = 40.0,
-    this.height = 40.0,
-    this.padding = CSizes.sm / 2,
+    this.width,
+    this.height,
+    this.padding = CSizes.sm,
   });
 
   final BoxFit? fit;
   final String img;
   final bool isNetworkImg;
   final Color? overlayColor, bgColor;
-  final double width, height, padding;
+  final double? width, height;
+  final double padding;
 
   @override
   Widget build(BuildContext context) {

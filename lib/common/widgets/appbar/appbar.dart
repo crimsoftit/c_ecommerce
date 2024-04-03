@@ -1,4 +1,3 @@
-import 'package:duara_ecommerce/utils/constants/colors.dart';
 import 'package:duara_ecommerce/utils/constants/sizes.dart';
 import 'package:duara_ecommerce/utils/device/device_utility.dart';
 import 'package:flutter/material.dart';
@@ -46,7 +45,8 @@ class CAppBar extends StatelessWidget implements PreferredSizeWidget {
                     onPressed: leadingOnPressed,
                     icon: Icon(
                       leadingIcon,
-                      color: CColors.white,
+                      color: backIconColor,
+                      //color: CColors.white,
                     ),
                   )
                 : null,

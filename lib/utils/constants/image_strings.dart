@@ -33,6 +33,7 @@ class CImages {
   static const rBannerImg1 = "assets/images/dashboard/banner_1.jpeg";
 
   // -- profile screen images
+  static const user = "assets/images/profile/user.jpg";
   static const rUserProfileImg = "assets/images/profile/dp_new.jpg";
 
   // -- animations

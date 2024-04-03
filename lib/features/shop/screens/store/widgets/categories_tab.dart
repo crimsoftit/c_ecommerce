@@ -15,7 +15,7 @@ class CCategoriesTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        physics: const NeverScrollableScrollPhysics(),
+        //physics: const NeverScrollableScrollPhysics(),
         child: Padding(
           padding: const EdgeInsets.all(CSizes.defaultSpace),
           child: Column(
@@ -28,13 +28,7 @@ class CCategoriesTab extends StatelessWidget {
                   CImages.pImg28,
                 ],
               ),
-              const CBrandedShowcase(
-                productImages: [
-                  CImages.pImg23,
-                  CImages.pImg25,
-                  CImages.pImg28,
-                ],
-              ),
+
               const SizedBox(
                 height: CSizes.spaceBtnItems,
               ),
@@ -50,14 +44,17 @@ class CCategoriesTab extends StatelessWidget {
                 height: CSizes.spaceBtnItems,
               ),
 
-              CGridLayout(
-                itemCount: 4,
-                itemBuilder: (_, index) {
-                  return const CProductCardVertical();
-                },
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: CGridLayout(
+                  itemCount: 4,
+                  itemBuilder: (_, index) {
+                    return const CProductCardVertical();
+                  },
+                ),
               ),
               const SizedBox(
-                height: CSizes.spaceBtnSections,
+                height: CSizes.spaceBtnItems,
               ),
             ],
           ),

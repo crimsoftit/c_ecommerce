@@ -34,7 +34,7 @@ class CProductCardVertical extends StatelessWidget {
           children: [
             // -- thumbnail, wishlist button, and discount tag --
             CRoundedContainer(
-              height: 130,
+              height: 127,
               padding: const EdgeInsets.all(CSizes.sm),
               //bgColor: isDark ? CColors.dark : CColors.light,
               child: Stack(

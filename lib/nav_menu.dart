@@ -1,3 +1,5 @@
+import 'package:duara_ecommerce/features/personalization/screens/profile/profile.dart';
+import 'package:duara_ecommerce/features/personalization/screens/settings/settings.dart';
 import 'package:duara_ecommerce/features/shop/screens/home/home.dart';
 import 'package:duara_ecommerce/features/shop/screens/store/store.dart';
 import 'package:duara_ecommerce/features/shop/screens/wishlist/wishlist.dart';
@@ -43,6 +45,10 @@ class NavMenu extends StatelessWidget {
               label: 'wishlist',
             ),
             NavigationDestination(
+              icon: Icon(Iconsax.setting),
+              label: 'account',
+            ),
+            NavigationDestination(
               icon: Icon(Iconsax.user),
               label: 'profile',
             ),
@@ -61,8 +67,7 @@ class NavMenuController extends GetxController {
     const HomeScreen(),
     const CStoreScreen(),
     const WishlistScreen(),
-    Container(
-      color: Colors.blue,
-    ),
+    const SettingsScreen(),
+    const ProfileScreen(),
   ];
 }

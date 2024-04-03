@@ -124,6 +124,7 @@ flutter:
     - assets/images/on_boarding_images/
     - assets/images/products/
     - assets/logos/
+    - assets/images/profile/
     
 
   # --- local fonts --- #

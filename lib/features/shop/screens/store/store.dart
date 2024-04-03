@@ -26,7 +26,10 @@ class CStoreScreen extends StatelessWidget {
         appBar: CAppBar(
           showBackArrow: true,
           backIconColor: isDarkTheme ? CColors.white : CColors.rBrown,
-          title: const Text('store'),
+          title: Text(
+            'store',
+            style: Theme.of(context).textTheme.headlineSmall,
+          ),
           actions: [
             CCartCounterIcon(
               onPressed: () {},
@@ -88,6 +91,10 @@ class CStoreScreen extends StatelessWidget {
                             );
                           },
                         ),
+
+                        const SizedBox(
+                          height: CSizes.spaceBtnItems / 4,
+                        ),
                       ],
                     ),
                   ),
@@ -126,6 +133,7 @@ class CStoreScreen extends StatelessWidget {
               ];
             },
             body: const TabBarView(
+              physics: NeverScrollableScrollPhysics(),
               children: [
                 CCategoriesTab(),
                 CCategoriesTab(),
