@@ -31,7 +31,8 @@ class CCircularImg extends StatelessWidget {
       height: height,
       padding: EdgeInsets.all(padding),
       decoration: BoxDecoration(
-        color: isDarkTheme ? CColors.rBrown : CColors.white,
+        color:
+            isDarkTheme ? CColors.rBrown.withOpacity(0.3) : Colors.transparent,
         borderRadius: BorderRadius.circular(100),
       ),
       child: Center(

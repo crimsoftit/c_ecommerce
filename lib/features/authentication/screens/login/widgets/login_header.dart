@@ -16,11 +16,14 @@ class LoginHeader extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Image(
-          height: 150.0,
-          //image: AssetImage( isDark ? RImages.darkAppLogo_1 : RImages.lightAppLogo_1),
-          image:
-              AssetImage(isDark ? CImages.darkAppLogo : CImages.lightAppLogo),
+        SizedBox(
+          //width: double.infinity,
+          child: Image(
+            height: 120.0,
+            //image: AssetImage( isDark ? RImages.darkAppLogo_1 : RImages.lightAppLogo_1),
+            image:
+                AssetImage(isDark ? CImages.darkAppLogo : CImages.lightAppLogo),
+          ),
         ),
         Text(
           RTexts.loginTitle,

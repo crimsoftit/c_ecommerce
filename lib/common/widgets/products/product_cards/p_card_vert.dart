@@ -5,11 +5,13 @@ import 'package:duara_ecommerce/common/widgets/img_widgets/c_rounded_img.dart';
 import 'package:duara_ecommerce/common/widgets/text_widgets/c_brand_title_with_verified_icon.dart';
 import 'package:duara_ecommerce/common/widgets/text_widgets/p_price_txt.dart';
 import 'package:duara_ecommerce/common/widgets/text_widgets/product_title_texts.dart';
+import 'package:duara_ecommerce/features/shop/screens/p_details/p_details.dart';
 import 'package:duara_ecommerce/utils/constants/colors.dart';
 import 'package:duara_ecommerce/utils/constants/image_strings.dart';
 import 'package:duara_ecommerce/utils/constants/sizes.dart';
 import 'package:duara_ecommerce/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class CProductCardVertical extends StatelessWidget {
@@ -20,7 +22,9 @@ class CProductCardVertical extends StatelessWidget {
     final isDark = CHelperFunctions.isDarkMode(context);
 
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Get.to(() => const ProductDetailsScreen());
+      },
       child: Container(
         width: 180,
         padding: const EdgeInsets.all(1),

@@ -38,7 +38,7 @@ class CRoundedImages extends StatelessWidget {
         padding: padding,
         decoration: BoxDecoration(
           border: border,
-          //color: bgColor,
+          color: bgColor,
           borderRadius: BorderRadius.circular(borderRadius),
         ),
         child: ClipRRect(
