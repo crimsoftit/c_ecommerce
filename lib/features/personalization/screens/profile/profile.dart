@@ -91,6 +91,7 @@ class ProfileScreen extends StatelessWidget {
                       showActionBtn: false,
                       title: 'profile info...',
                       btnTitle: '',
+                      editFontSize: false,
                     ),
                     const SizedBox(
                       height: CSizes.spaceBtnItems,
@@ -121,6 +122,7 @@ class ProfileScreen extends StatelessWidget {
                       showActionBtn: false,
                       title: 'personal info...',
                       btnTitle: '',
+                      editFontSize: false,
                     ),
                     const SizedBox(
                       height: CSizes.spaceBtnItems,

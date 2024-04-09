@@ -38,6 +38,7 @@ class CCategoriesTab extends StatelessWidget {
                 showActionBtn: true,
                 title: 'you might also like ...',
                 btnTitle: 'view all',
+                editFontSize: false,
                 onPressed: () {},
               ),
               const SizedBox(

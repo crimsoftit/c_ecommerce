@@ -46,7 +46,7 @@ class CProductMetaData extends StatelessWidget {
 
             // price
             Text(
-              'ksh.250',
+              'ksh.2500',
               style: Theme.of(context).textTheme.labelSmall!.apply(
                     decoration: TextDecoration.lineThrough,
                   ),
@@ -55,7 +55,7 @@ class CProductMetaData extends StatelessWidget {
               width: CSizes.spaceBtnItems,
             ),
             const CProductPriceText(
-              price: '175',
+              price: '2000',
               isLarge: true,
             ),
           ],

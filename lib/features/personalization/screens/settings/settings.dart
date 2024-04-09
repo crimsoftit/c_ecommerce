@@ -59,6 +59,7 @@ class SettingsScreen extends StatelessWidget {
                     showActionBtn: false,
                     title: 'account settings',
                     btnTitle: '',
+                    editFontSize: false,
                   ),
                   const SizedBox(
                     height: CSizes.spaceBtnItems,
@@ -114,6 +115,7 @@ class SettingsScreen extends StatelessWidget {
                     showActionBtn: false,
                     title: 'app settings',
                     btnTitle: '',
+                    editFontSize: false,
                   ),
                   const SizedBox(
                     height: CSizes.spaceBtnItems,

@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 class RChipTheme {
   RChipTheme._();
 
-  static ChipThemeData lightChipTheme = const ChipThemeData(
-    disabledColor: CColors.lightGrey,
+  static ChipThemeData lightChipTheme = ChipThemeData(
+    disabledColor: CColors.grey.withOpacity(0.4),
     //disabledColor: rGrey.withOpacity(0.4),
-    labelStyle: TextStyle(
+    labelStyle: const TextStyle(
       color: CColors.rBrown,
     ),
     selectedColor: rBlue,
-    padding: EdgeInsets.symmetric(
+    padding: const EdgeInsets.symmetric(
       horizontal: 12.0,
       vertical: 12.0,
     ),
@@ -19,7 +19,7 @@ class RChipTheme {
   );
 
   static ChipThemeData darkChipTheme = const ChipThemeData(
-    disabledColor: CColors.lightGrey,
+    disabledColor: CColors.darkerGrey,
     labelStyle: TextStyle(
       color: CColors.white,
     ),
