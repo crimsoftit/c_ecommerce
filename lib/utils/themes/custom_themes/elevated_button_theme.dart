@@ -12,8 +12,8 @@ class RElevatedButtonTheme {
       backgroundColor: CColors.rBrown,
       disabledForegroundColor: CColors.grey,
       disabledBackgroundColor: CColors.grey,
-      side: const BorderSide(
-        color: CColors.rBrown,
+      side: BorderSide(
+        color: CColors.rBrown.withOpacity(0.2),
       ),
       padding: const EdgeInsets.symmetric(
         vertical: 10.0,
@@ -37,8 +37,8 @@ class RElevatedButtonTheme {
       backgroundColor: CColors.rBrown,
       disabledForegroundColor: CColors.grey,
       disabledBackgroundColor: CColors.grey,
-      side: const BorderSide(
-        color: CColors.rBrown,
+      side: BorderSide(
+        color: CColors.rBrown.withOpacity(0.2),
       ),
       textStyle: const TextStyle(
         fontSize: 11.0,

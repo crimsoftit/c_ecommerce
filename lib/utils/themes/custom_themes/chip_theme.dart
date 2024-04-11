@@ -10,7 +10,7 @@ class RChipTheme {
     labelStyle: const TextStyle(
       color: CColors.rBrown,
     ),
-    selectedColor: rBlue,
+    selectedColor: CColors.rBrown,
     padding: const EdgeInsets.symmetric(
       horizontal: 12.0,
       vertical: 12.0,
@@ -23,7 +23,7 @@ class RChipTheme {
     labelStyle: TextStyle(
       color: CColors.white,
     ),
-    selectedColor: rBlue,
+    selectedColor: CColors.rBrown,
     padding: EdgeInsets.symmetric(
       horizontal: 12.0,
       vertical: 12.0,

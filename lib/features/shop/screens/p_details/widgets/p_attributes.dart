@@ -159,6 +159,10 @@ class CProductAttributes extends StatelessWidget {
           ],
         ),
 
+        const SizedBox(
+          height: CSizes.spaceBtnSections / 2,
+        ),
+
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

@@ -21,29 +21,39 @@ class CChoiceChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isColored = CHelperFunctions.getColor(txt) != null;
-    return ChoiceChip(
-      label: isColored ? const SizedBox() : Text(txt),
-      selected: selected,
-
-      labelStyle: TextStyle(
-        color: selected ? CColors.white : null,
+    return Theme(
+      data: Theme.of(context).copyWith(
+        canvasColor: Colors.transparent,
       ),
-
-      // disabledColor: disabledColor,
-      avatar: isColored
-          ? CCircularContainer(
-              width: 50.0,
-              height: 50.0,
-              bgColor: CHelperFunctions.getColor(txt)!,
-            )
-          : null,
-      labelPadding: isColored ? const EdgeInsets.all(0) : null,
-      padding: isColored ? const EdgeInsets.all(0) : null,
-      shape: isColored ? const CircleBorder() : null,
-      backgroundColor:
-          isColored ? CHelperFunctions.getColor(txt) : Colors.transparent,
-      //selectedColor: selectedColor,
-      onSelected: onSelected,
+      child: ChoiceChip(
+        label: isColored
+            ? const SizedBox()
+            : Text(
+                txt,
+                style: Theme.of(context).textTheme.labelMedium!.apply(
+                      color: selected ? CColors.white : CColors.rBrown,
+                    ),
+              ),
+        selected: selected,
+        labelStyle: TextStyle(
+          color: selected ? CColors.white : CColors.rBrown,
+        ),
+        disabledColor: disabledColor,
+        avatar: isColored
+            ? CCircularContainer(
+                width: 50.0,
+                height: 50.0,
+                bgColor: CHelperFunctions.getColor(txt)!,
+              )
+            : null,
+        labelPadding: isColored ? const EdgeInsets.all(0) : null,
+        padding: isColored ? const EdgeInsets.all(0) : null,
+        shape: isColored ? const CircleBorder() : null,
+        backgroundColor: isColored ? CHelperFunctions.getColor(txt) : null,
+        //CColors.rBrown.withOpacity(0.1),
+        selectedColor: selectedColor,
+        onSelected: onSelected,
+      ),
     );
   }
 }

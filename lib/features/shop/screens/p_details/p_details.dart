@@ -1,10 +1,14 @@
 import 'package:duara_ecommerce/common/widgets/text_widgets/section_headings.dart';
+import 'package:duara_ecommerce/features/shop/screens/p_details/widgets/add_to_cart_bottom_nav.dart';
 import 'package:duara_ecommerce/features/shop/screens/p_details/widgets/p_attributes.dart';
 import 'package:duara_ecommerce/features/shop/screens/p_details/widgets/p_details_img_slider.dart';
 import 'package:duara_ecommerce/features/shop/screens/p_details/widgets/p_metadata.dart';
 import 'package:duara_ecommerce/features/shop/screens/p_details/widgets/rating_share_widget.dart';
+import 'package:duara_ecommerce/utils/constants/colors.dart';
 import 'package:duara_ecommerce/utils/constants/sizes.dart';
+import 'package:duara_ecommerce/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:readmore/readmore.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
@@ -12,7 +16,10 @@ class ProductDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkTheme = CHelperFunctions.isDarkMode(context);
+
     return Scaffold(
+      bottomNavigationBar: const CAddToCartBottomNavBar(),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -27,6 +34,7 @@ class ProductDetailsScreen extends StatelessWidget {
                 bottom: CSizes.defaultSpace,
               ),
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   // - rating & share button
 
@@ -38,7 +46,7 @@ class ProductDetailsScreen extends StatelessWidget {
                   // - product attributes
                   const CProductAttributes(),
                   const SizedBox(
-                    height: CSizes.spaceBtnSections,
+                    height: CSizes.spaceBtnSections / 3,
                   ),
 
                   // - checkout button
@@ -46,8 +54,11 @@ class ProductDetailsScreen extends StatelessWidget {
                     width: double.infinity,
                     child: ElevatedButton(
                       onPressed: () {},
-                      child: const Text(
-                        'checkout',
+                      child: Text(
+                        'checkout'.toUpperCase(),
+                        style: Theme.of(context).textTheme.labelMedium?.apply(
+                              color: CColors.white,
+                            ),
                       ),
                     ),
                   ),
@@ -73,19 +84,49 @@ class ProductDetailsScreen extends StatelessWidget {
                     trimCollapsedText: ' show more',
                     trimExpandedText: 'less',
                     moreStyle: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w800,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w600,
                     ),
                     lessStyle: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w800,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w600,
                     ),
+                  ),
+
+                  const Divider(),
+                  const SizedBox(
+                    height: CSizes.spaceBtnItems,
+                  ),
+
+                  // - reviews
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                        flex: 10,
+                        child: CSectionHeading(
+                          showActionBtn: false,
+                          title: 'reviews (1999)',
+                          btnTitle: 'view all',
+                          editFontSize: true,
+                          onPressed: () {},
+                        ),
+                      ),
+                      Expanded(
+                        child: IconButton(
+                          onPressed: () {},
+                          icon: Icon(
+                            Iconsax.arrow_right_34,
+                            size: 18.0,
+                            color: isDarkTheme ? CColors.white : CColors.rBrown,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                   const SizedBox(
                     height: CSizes.spaceBtnSections,
                   ),
-
-                  // - reviews
                 ],
               ),
             ),
