@@ -11,7 +11,7 @@ class OnboardingSkipBtnWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      top: RDeviceUtils.getAppBarHeight(),
+      top: CDeviceUtils.getAppBarHeight(),
       right: CSizes.defaultSpace,
       child: TextButton(
         onPressed: () {

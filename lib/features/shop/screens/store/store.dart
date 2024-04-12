@@ -76,7 +76,8 @@ class CStoreScreen extends StatelessWidget {
                           btnTitle: 'view all',
                           btnTxtColor: CColors.darkGrey,
                           onPressed: () {},
-                          editFontSize: false,
+                          editFontSize: true,
+                          fSize: 13,
                         ),
                         const SizedBox(
                           height: CSizes.spaceBtnItems / 4,

@@ -75,6 +75,14 @@ class CImages {
   static const String promoBanner3 = "assets/images/banners/banner_4.jpg";
   static const String promoBanner4 = "assets/images/banners/banner_5.jpg";
 
+  // -- product reviews --
+  static const String userProfileImg1 =
+      'assets/images/reviews/review_profile_image_1.jpg';
+  static const String userProfileImg2 =
+      'assets/images/reviews/review_profile_image_2.jpg';
+  static const String userProfileImg3 =
+      'assets/images/reviews/review_profile_image_3.jpg';
+
   // -- product images --
   static const String pImg1 = "assets/images/products/acer_laptop_1.png";
   static const String pImg2 = "assets/images/products/acer_laptop_2.png";

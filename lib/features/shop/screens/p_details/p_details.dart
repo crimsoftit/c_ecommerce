@@ -4,10 +4,12 @@ import 'package:duara_ecommerce/features/shop/screens/p_details/widgets/p_attrib
 import 'package:duara_ecommerce/features/shop/screens/p_details/widgets/p_details_img_slider.dart';
 import 'package:duara_ecommerce/features/shop/screens/p_details/widgets/p_metadata.dart';
 import 'package:duara_ecommerce/features/shop/screens/p_details/widgets/rating_share_widget.dart';
+import 'package:duara_ecommerce/features/shop/screens/p_reviews/p_reviews.dart';
 import 'package:duara_ecommerce/utils/constants/colors.dart';
 import 'package:duara_ecommerce/utils/constants/sizes.dart';
 import 'package:duara_ecommerce/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:readmore/readmore.dart';
 
@@ -19,11 +21,14 @@ class ProductDetailsScreen extends StatelessWidget {
     final isDarkTheme = CHelperFunctions.isDarkMode(context);
 
     return Scaffold(
+      // -- bottom nav bar --
       bottomNavigationBar: const CAddToCartBottomNavBar(),
+
+      // -- body --
       body: SingleChildScrollView(
         child: Column(
           children: [
-            // -- product image slider --
+            // -- product image slider with appBar --
             const CProductImgSlider(),
 
             // -- product details display --
@@ -77,19 +82,27 @@ class ProductDetailsScreen extends StatelessWidget {
                     height: CSizes.spaceBtnItems,
                   ),
 
-                  const ReadMoreText(
-                    'this is a product description for acer generation 10 laptop with backlit keyboard',
+                  ReadMoreText(
+                    'this is a product description for acer generation 10 laptop with backlit keyboard. ',
                     trimLines: 2,
                     trimMode: TrimMode.Line,
                     trimCollapsedText: ' show more',
-                    trimExpandedText: 'less',
+                    trimExpandedText: ' less',
                     moreStyle: TextStyle(
                       fontSize: 12,
-                      fontWeight: FontWeight.w600,
+                      fontWeight: FontWeight.w500,
+                      fontStyle: FontStyle.italic,
+                      color: isDarkTheme
+                          ? CColors.rBrown
+                          : CColors.rBrown.withOpacity(0.5),
                     ),
                     lessStyle: TextStyle(
                       fontSize: 12,
-                      fontWeight: FontWeight.w600,
+                      fontWeight: FontWeight.w500,
+                      fontStyle: FontStyle.italic,
+                      color: isDarkTheme
+                          ? CColors.rBrown
+                          : CColors.rBrown.withOpacity(0.4),
                     ),
                   ),
 
@@ -113,8 +126,11 @@ class ProductDetailsScreen extends StatelessWidget {
                         ),
                       ),
                       Expanded(
+                        //flex: 10,
                         child: IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Get.to(const ProductReviewsScreen());
+                          },
                           icon: Icon(
                             Iconsax.arrow_right_34,
                             size: 18.0,

@@ -10,7 +10,7 @@ class CSectionHeading extends StatelessWidget {
     this.onPressed,
     this.btnTxtColor,
     required this.editFontSize,
-    this.fSize = 11.0,
+    this.fSize = 13.0,
   });
 
   final Color? txtColor, btnTxtColor;
@@ -30,7 +30,7 @@ class CSectionHeading extends StatelessWidget {
                 style: TextStyle(
                   color: txtColor,
                   fontSize: fSize,
-                  fontWeight: FontWeight.w500,
+                  fontWeight: FontWeight.w800,
                 ),
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,

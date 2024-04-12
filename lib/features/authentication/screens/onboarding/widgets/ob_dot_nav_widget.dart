@@ -15,7 +15,7 @@ class OnboardingDotNavWidget extends StatelessWidget {
     final obController = OnboardingController.instance;
 
     return Positioned(
-      bottom: RDeviceUtils.getBottomNavigationBarHeight() + 25,
+      bottom: CDeviceUtils.getBottomNavigationBarHeight() + 25,
       left: CSizes.defaultSpace,
       child: SmoothPageIndicator(
         count: 3,

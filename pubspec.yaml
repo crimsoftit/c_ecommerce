@@ -125,8 +125,10 @@ flutter:
     - assets/images/banners/
     - assets/images/on_boarding_images/
     - assets/images/products/
-    - assets/logos/
     - assets/images/profile/
+    - assets/images/reviews/
+    - assets/logos/
+    
     
 
   # --- local fonts --- #

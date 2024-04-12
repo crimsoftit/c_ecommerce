@@ -32,7 +32,7 @@ class CSearchContainer extends StatelessWidget {
       child: Padding(
         padding: padding,
         child: Container(
-          width: RDeviceUtils.getScreenWidth(context),
+          width: CDeviceUtils.getScreenWidth(context),
           padding: const EdgeInsets.all(CSizes.md),
           decoration: BoxDecoration(
             color: showBg

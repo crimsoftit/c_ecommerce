@@ -93,7 +93,9 @@ class CProductAttributes extends StatelessWidget {
               ),
 
               // -- product variation description
-
+              const SizedBox(
+                height: CSizes.spaceBtnItems,
+              ),
               const CProductTitleText(
                 title:
                     'this is the description of the product and it can cover up to a maximum of 4 lines',

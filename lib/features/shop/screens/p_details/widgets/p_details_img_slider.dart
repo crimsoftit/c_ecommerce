@@ -72,6 +72,10 @@ class CProductImgSlider extends StatelessWidget {
             // -- appBar icons --
             CAppBar(
               showBackArrow: true,
+              title: Text(
+                'product details',
+                style: Theme.of(context).textTheme.headlineSmall,
+              ),
               backIconColor: isDarkTheme ? CColors.white : CColors.rBrown,
               actions: const [
                 CCircularIcon(

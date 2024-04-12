@@ -37,11 +37,11 @@ class CBrandTitleWithVerifiedIcon extends StatelessWidget {
           ),
         ),
         const SizedBox(
-          width: CSizes.xs,
+          width: CSizes.sm,
         ),
-        const Icon(
+        Icon(
           Iconsax.verify5,
-          color: CColors.primaryBlue,
+          color: iconColor,
           size: CSizes.iconXs,
         ),
       ],

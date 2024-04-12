@@ -33,7 +33,7 @@ class CProductRatingWidget extends StatelessWidget {
                       text: '5.0',
                       style: Theme.of(context).textTheme.bodyLarge),
                   const TextSpan(
-                    text: '(1999)',
+                    text: ' (1999)',
                   ),
                 ],
               ),

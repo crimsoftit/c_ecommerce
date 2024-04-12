@@ -58,7 +58,7 @@ class HomeScreen extends StatelessWidget {
                           txtColor: CColors.white,
                           btnTitle: 'view all',
                           btnTxtColor: CColors.grey,
-                          editFontSize: false,
+                          editFontSize: true,
                         ),
                         SizedBox(
                           height: CSizes.spaceBtnItems,
@@ -102,7 +102,7 @@ class HomeScreen extends StatelessWidget {
                     btnTitle: 'view all...',
                     btnTxtColor: CColors.darkerGrey,
                     onPressed: () {},
-                    editFontSize: false,
+                    editFontSize: true,
                   ),
                   const SizedBox(
                     height: CSizes.spaceBtnItems,

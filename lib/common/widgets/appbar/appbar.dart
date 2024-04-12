@@ -57,5 +57,5 @@ class CAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(RDeviceUtils.getAppBarHeight());
+  Size get preferredSize => Size.fromHeight(CDeviceUtils.getAppBarHeight());
 }

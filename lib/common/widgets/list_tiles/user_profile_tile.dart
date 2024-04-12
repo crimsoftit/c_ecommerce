@@ -32,7 +32,7 @@ class CUserProfileTile extends StatelessWidget {
         RTexts.homeAppbarSubTitle,
         style: Theme.of(context).textTheme.headlineSmall!.apply(
               color: CColors.white,
-              fontSizeFactor: 0.8,
+              fontSizeFactor: 0.6,
             ),
       ),
       trailing: IconButton(

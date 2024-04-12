@@ -26,12 +26,12 @@ class RTextTheme {
       color: Colors.brown,
     ),
     titleMedium: const TextStyle().copyWith(
-      fontSize: 16.0,
+      fontSize: 14.0,
       fontWeight: FontWeight.w500,
       color: Colors.brown,
     ),
     titleSmall: const TextStyle().copyWith(
-      fontSize: 16.0,
+      fontSize: 12.0,
       fontWeight: FontWeight.w400,
       color: Colors.brown,
     ),
