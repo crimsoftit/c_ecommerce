@@ -29,10 +29,9 @@ class CCircularContainer extends StatelessWidget {
       margin: margin,
       padding: EdgeInsets.all(padding),
       decoration: BoxDecoration(
-        // border: const Border.symmetric(
-        //   horizontal: BorderSide.none,
-        //   vertical: BorderSide.none,
-        // ),
+        border: Border.all(
+          color: Colors.transparent,
+        ),
         borderRadius: BorderRadius.circular(radius),
         color: bgColor,
       ),

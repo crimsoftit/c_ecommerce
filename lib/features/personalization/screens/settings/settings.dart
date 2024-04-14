@@ -3,6 +3,7 @@ import 'package:duara_ecommerce/common/widgets/custom_shapes/containers/primary_
 import 'package:duara_ecommerce/common/widgets/list_tiles/settings_menu_tile.dart';
 import 'package:duara_ecommerce/common/widgets/list_tiles/user_profile_tile.dart';
 import 'package:duara_ecommerce/common/widgets/text_widgets/section_headings.dart';
+import 'package:duara_ecommerce/features/personalization/screens/addresses/addresses.dart';
 import 'package:duara_ecommerce/features/personalization/screens/profile/profile.dart';
 import 'package:duara_ecommerce/utils/constants/colors.dart';
 import 'package:duara_ecommerce/utils/constants/sizes.dart';
@@ -68,7 +69,9 @@ class SettingsScreen extends StatelessWidget {
                     icon: Iconsax.safe_home,
                     title: 'my addresses',
                     subTitle: 'set shopping delivery address',
-                    onTap: () {},
+                    onTap: () {
+                      Get.to(() => const UserAddressesScreen());
+                    },
                   ),
                   CSettingsMenuTile(
                     icon: Iconsax.shopping_cart,

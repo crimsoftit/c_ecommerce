@@ -39,6 +39,7 @@ class CChoiceChip extends StatelessWidget {
           color: selected ? CColors.white : CColors.rBrown,
         ),
         disabledColor: disabledColor,
+
         avatar: isColored
             ? CCircularContainer(
                 width: 50.0,
@@ -48,7 +49,11 @@ class CChoiceChip extends StatelessWidget {
             : null,
         labelPadding: isColored ? const EdgeInsets.all(0) : null,
         padding: isColored ? const EdgeInsets.all(0) : null,
-        shape: isColored ? const CircleBorder() : null,
+        shape: isColored
+            ? const CircleBorder(
+                side: BorderSide.none,
+              )
+            : null,
         backgroundColor: isColored ? CHelperFunctions.getColor(txt) : null,
         //CColors.rBrown.withOpacity(0.1),
         selectedColor: selectedColor,
