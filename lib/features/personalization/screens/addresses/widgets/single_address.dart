@@ -54,9 +54,12 @@ class CSingleAddress extends StatelessWidget {
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: selectedAddress
-                    ? Theme.of(context).textTheme.titleMedium
+                    ? Theme.of(context).textTheme.titleMedium!.apply(
+                          fontSizeFactor: 0.8,
+                        )
                     : Theme.of(context).textTheme.titleSmall!.apply(
                           color: CColors.darkGrey,
+                          fontSizeFactor: 0.8,
                         ),
               ),
               const SizedBox(
@@ -67,9 +70,12 @@ class CSingleAddress extends StatelessWidget {
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: selectedAddress
-                    ? Theme.of(context).textTheme.titleMedium
+                    ? Theme.of(context).textTheme.titleMedium!.apply(
+                          fontSizeFactor: 0.8,
+                        )
                     : Theme.of(context).textTheme.titleSmall!.apply(
                           color: CColors.darkGrey,
+                          fontSizeFactor: 0.8,
                         ),
               ),
               const SizedBox(
@@ -80,9 +86,12 @@ class CSingleAddress extends StatelessWidget {
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
                 style: selectedAddress
-                    ? Theme.of(context).textTheme.titleMedium
+                    ? Theme.of(context).textTheme.titleMedium!.apply(
+                          fontSizeFactor: 0.8,
+                        )
                     : Theme.of(context).textTheme.titleSmall!.apply(
                           color: CColors.darkGrey,
+                          fontSizeFactor: 0.8,
                         ),
               ),
             ],

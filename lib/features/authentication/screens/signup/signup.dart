@@ -1,8 +1,11 @@
 import 'package:duara_ecommerce/common/widgets/login_signup/form_divider.dart';
 import 'package:duara_ecommerce/common/widgets/login_signup/social_buttons.dart';
+import 'package:duara_ecommerce/features/authentication/screens/login/login.dart';
 import 'package:duara_ecommerce/features/authentication/screens/signup/widgets/signup_form.dart';
+import 'package:duara_ecommerce/utils/constants/colors.dart';
 import 'package:duara_ecommerce/utils/constants/sizes.dart';
 import 'package:duara_ecommerce/utils/constants/text_strings.dart';
+import 'package:duara_ecommerce/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -11,6 +14,8 @@ class SignupScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkTheme = CHelperFunctions.isDarkMode(context);
+
     return Scaffold(
       appBar: AppBar(),
       body: SingleChildScrollView(
@@ -25,7 +30,29 @@ class SignupScreen extends StatelessWidget {
                 style: Theme.of(context).textTheme.headlineSmall,
               ),
               const SizedBox(
-                height: CSizes.spaceBtnSections,
+                height: CSizes.spaceBtnSections / 4,
+              ),
+
+              // -- divider --
+              const RFormDivider(
+                dividerText: 'already have an account?',
+              ),
+
+              TextButton(
+                onPressed: () {
+                  Get.offAll(const LoginScreen());
+                },
+                child: Text(
+                  'click here to sign in',
+                  style: Theme.of(context).textTheme.bodySmall!.apply(
+                        color: isDarkTheme ? CColors.grey : CColors.rBrown,
+                      ),
+                  textAlign: TextAlign.left,
+                ),
+              ),
+
+              const SizedBox(
+                height: CSizes.spaceBtnSections / 4,
               ),
 
               // -- signup form --

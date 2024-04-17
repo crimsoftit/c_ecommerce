@@ -28,6 +28,7 @@ class WishlistScreen extends StatelessWidget {
         actions: [
           CCircularIcon(
             icon: Iconsax.add,
+            color: isDarkTheme ? CColors.white : CColors.rBrown,
             onPressed: () {
               Get.to(const HomeScreen());
             },

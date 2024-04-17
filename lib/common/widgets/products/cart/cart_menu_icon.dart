@@ -1,23 +1,23 @@
+import 'package:duara_ecommerce/features/shop/screens/cart/cart.dart';
 import 'package:duara_ecommerce/utils/constants/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class CCartCounterIcon extends StatelessWidget {
   const CCartCounterIcon({
     super.key,
     this.iconColor,
-    required this.onPressed,
   });
 
   final Color? iconColor;
-  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
         IconButton(
-          onPressed: onPressed,
+          onPressed: () => Get.to(() => const CCartScreen()),
           icon: Icon(
             Iconsax.shopping_bag,
             color: iconColor,

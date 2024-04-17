@@ -1,3 +1,4 @@
+import 'package:duara_ecommerce/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:duara_ecommerce/common/widgets/img_widgets/c_circular_img.dart';
 import 'package:duara_ecommerce/utils/constants/colors.dart';
 import 'package:duara_ecommerce/utils/constants/image_strings.dart';
@@ -16,11 +17,16 @@ class CUserProfileTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: const CCircularImg(
-        img: CImages.user,
-        width: 50.0,
-        height: 50.0,
-        padding: 10.0,
+      leading: CRoundedContainer(
+        showBorder: true,
+        radius: 120,
+        borderColor: CColors.rBrown.withOpacity(0.3),
+        child: const CCircularImg(
+          img: CImages.user,
+          width: 47.0,
+          height: 47.0,
+          //padding: 10.0,
+        ),
       ),
       title: Text(
         'Retail Intelligence',

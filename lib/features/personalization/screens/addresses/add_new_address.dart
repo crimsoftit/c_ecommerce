@@ -29,7 +29,10 @@ class CAddNewAddressesScren extends StatelessWidget {
               children: [
                 TextFormField(
                   decoration: const InputDecoration(
-                    prefixIcon: Icon(Iconsax.user),
+                    prefixIcon: Icon(
+                      Iconsax.user,
+                      color: CColors.rBrown,
+                    ),
                     labelText: 'name',
                   ),
                 ),
@@ -38,7 +41,10 @@ class CAddNewAddressesScren extends StatelessWidget {
                 ),
                 TextFormField(
                   decoration: const InputDecoration(
-                    prefixIcon: Icon(Iconsax.mobile),
+                    prefixIcon: Icon(
+                      Iconsax.mobile,
+                      color: CColors.rBrown,
+                    ),
                     labelText: 'phone no.',
                   ),
                 ),
@@ -50,7 +56,10 @@ class CAddNewAddressesScren extends StatelessWidget {
                     Expanded(
                       child: TextFormField(
                         decoration: const InputDecoration(
-                          prefixIcon: Icon(Iconsax.building_31),
+                          prefixIcon: Icon(
+                            Iconsax.building_31,
+                            color: CColors.rBrown,
+                          ),
                           labelText: 'street',
                         ),
                       ),
@@ -61,7 +70,10 @@ class CAddNewAddressesScren extends StatelessWidget {
                     Expanded(
                       child: TextFormField(
                         decoration: const InputDecoration(
-                          prefixIcon: Icon(Iconsax.building_31),
+                          prefixIcon: Icon(
+                            Iconsax.code,
+                            color: CColors.rBrown,
+                          ),
                           labelText: 'postal code',
                         ),
                       ),
@@ -76,7 +88,10 @@ class CAddNewAddressesScren extends StatelessWidget {
                     Expanded(
                       child: TextFormField(
                         decoration: const InputDecoration(
-                          prefixIcon: Icon(Iconsax.building),
+                          prefixIcon: Icon(
+                            Iconsax.building,
+                            color: CColors.rBrown,
+                          ),
                           labelText: 'city',
                         ),
                       ),
@@ -87,7 +102,10 @@ class CAddNewAddressesScren extends StatelessWidget {
                     Expanded(
                       child: TextFormField(
                         decoration: const InputDecoration(
-                          prefixIcon: Icon(Iconsax.activity),
+                          prefixIcon: Icon(
+                            Iconsax.activity,
+                            color: CColors.rBrown,
+                          ),
                           labelText: 'state',
                         ),
                       ),
@@ -99,7 +117,10 @@ class CAddNewAddressesScren extends StatelessWidget {
                 ),
                 TextFormField(
                   decoration: const InputDecoration(
-                    prefixIcon: Icon(Iconsax.global),
+                    prefixIcon: Icon(
+                      Iconsax.global,
+                      color: CColors.rBrown,
+                    ),
                     labelText: 'country',
                   ),
                 ),

@@ -29,7 +29,7 @@ class NavMenu extends StatelessWidget {
           backgroundColor:
               isDark ? CColors.rBrown : CColors.rBrown.withOpacity(0.1),
           indicatorColor: isDark
-              ? CColors.rBrown.withOpacity(0.1)
+              ? CColors.white.withOpacity(0.3)
               : CColors.rBrown.withOpacity(0.3),
           destinations: const [
             NavigationDestination(

@@ -31,7 +31,9 @@ class UserAddressesScreen extends StatelessWidget {
         backIconColor: isDarkTheme ? CColors.white : CColors.rBrown,
         title: Text(
           'me addresses',
-          style: Theme.of(context).textTheme.headlineSmall,
+          style: Theme.of(context).textTheme.headlineSmall!.apply(
+            fontSizeFactor: 0.8,
+          ),
         ),
       ),
       body: const SingleChildScrollView(

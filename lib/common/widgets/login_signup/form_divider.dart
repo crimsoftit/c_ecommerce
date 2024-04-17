@@ -12,13 +12,14 @@ class RFormDivider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = CHelperFunctions.isDarkMode(context);
+    final isDarkTheme = CHelperFunctions.isDarkMode(context);
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Flexible(
           child: Divider(
-            color: isDark ? CColors.darkGrey : CColors.grey,
+            color: isDarkTheme ? CColors.grey : CColors.darkGrey,
             thickness: 0.5,
             indent: 60,
             endIndent: 5,
@@ -28,12 +29,12 @@ class RFormDivider extends StatelessWidget {
           dividerText,
           style: Theme.of(context).textTheme.labelMedium?.apply(
                 color: CColors.darkGrey,
-                fontSizeFactor: 0.6,
+                fontSizeFactor: 0.8,
               ),
         ),
         Flexible(
           child: Divider(
-            color: isDark ? CColors.darkGrey : CColors.grey,
+            color: isDarkTheme ? CColors.darkGrey : CColors.grey,
             thickness: 0.5,
             indent: 5,
             endIndent: 60,

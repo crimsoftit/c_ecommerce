@@ -19,6 +19,7 @@ class CStoreScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDarkTheme = CHelperFunctions.isDarkMode(context);
+
     return DefaultTabController(
       length: 5,
       child: Scaffold(
@@ -32,7 +33,7 @@ class CStoreScreen extends StatelessWidget {
           ),
           actions: [
             CCartCounterIcon(
-              onPressed: () {},
+              iconColor: isDarkTheme ? CColors.white : CColors.rBrown,
             ),
           ],
         ),

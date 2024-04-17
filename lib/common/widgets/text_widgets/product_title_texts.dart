@@ -7,12 +7,14 @@ class CProductTitleText extends StatelessWidget {
     this.smallSize = false,
     this.maxLines = 2,
     this.txtAlign = TextAlign.left,
+    this.overflow = TextOverflow.ellipsis,
   });
 
   final String title;
   final bool smallSize;
   final int maxLines;
   final TextAlign? txtAlign;
+  final TextOverflow? overflow;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +23,7 @@ class CProductTitleText extends StatelessWidget {
       style: smallSize
           ? Theme.of(context).textTheme.labelSmall
           : Theme.of(context).textTheme.labelMedium,
-      overflow: TextOverflow.ellipsis,
+      overflow: overflow,
       maxLines: maxLines,
       textAlign: txtAlign,
     );
