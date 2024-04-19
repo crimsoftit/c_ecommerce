@@ -7,8 +7,8 @@ import 'package:duara_ecommerce/utils/constants/sizes.dart';
 import 'package:duara_ecommerce/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 
-class CCartItems extends StatelessWidget {
-  const CCartItems({
+class CSingleCartItem extends StatelessWidget {
+  const CSingleCartItem({
     super.key,
   });
 

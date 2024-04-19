@@ -23,12 +23,12 @@ class CProductPriceText extends StatelessWidget {
       style: isLarge
           ? Theme.of(context).textTheme.labelMedium!.apply(
                 decoration: lineThrough ? TextDecoration.lineThrough : null,
-                //fontSizeFactor: 0.9,
+                fontSizeFactor: 1.0,
                 fontWeightDelta: 2,
               )
           : Theme.of(context).textTheme.labelMedium!.apply(
                 decoration: lineThrough ? TextDecoration.lineThrough : null,
-                //fontSizeFactor: 0.7,
+                fontSizeFactor: 0.9,
                 fontWeightDelta: 2,
               ),
     );

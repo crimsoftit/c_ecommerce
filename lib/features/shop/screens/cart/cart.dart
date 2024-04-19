@@ -1,11 +1,11 @@
 import 'package:duara_ecommerce/common/widgets/appbar/appbar.dart';
-import 'package:duara_ecommerce/common/widgets/products/cart/c_adjust_cart_qty_btn.dart';
-import 'package:duara_ecommerce/common/widgets/products/cart/cart_items.dart';
-import 'package:duara_ecommerce/common/widgets/text_widgets/p_price_txt.dart';
+import 'package:duara_ecommerce/features/shop/screens/cart/widgets/all_cart_items.dart';
+import 'package:duara_ecommerce/features/shop/screens/checkout/checkout.dart';
 import 'package:duara_ecommerce/utils/constants/colors.dart';
 import 'package:duara_ecommerce/utils/constants/sizes.dart';
 import 'package:duara_ecommerce/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CCartScreen extends StatelessWidget {
   const CCartScreen({super.key});
@@ -25,49 +25,22 @@ class CCartScreen extends StatelessWidget {
       ),
 
       // -- body --
-      body: Padding(
-        padding: const EdgeInsets.all(
+      body: const Padding(
+        padding: EdgeInsets.all(
           CSizes.defaultSpace,
         ),
-        child: ListView.separated(
-          shrinkWrap: true,
-          separatorBuilder: (_, __) => const SizedBox(
-            height: CSizes.spaceBtnSections,
-          ),
-          itemCount: 4,
-          itemBuilder: (_, index) => const Column(
-            children: [
-              CCartItems(),
-              SizedBox(
-                height: CSizes.spaceBtnItems,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      // some extra space
-                      SizedBox(
-                        width: 75.0,
-                      ),
 
-                      // add & remove items from cart button
-                      CAdjustPQtyBtnWidget(),
-                    ],
-                  ),
-                  CProductPriceText(
-                    price: '25600',
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
+        // -- list cart items
+        child: CCartItemsList(),
       ),
+
+      // -- checkout button
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(CSizes.defaultSpace),
         child: ElevatedButton(
-          onPressed: () {},
+          onPressed: () {
+            Get.to(() => const CCheckoutScreen());
+          },
           child: Text(
             'checkout Ksh. 25,600'.toUpperCase(),
             style: Theme.of(context).textTheme.labelMedium?.apply(
