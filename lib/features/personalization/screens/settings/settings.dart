@@ -5,6 +5,7 @@ import 'package:duara_ecommerce/common/widgets/list_tiles/user_profile_tile.dart
 import 'package:duara_ecommerce/common/widgets/text_widgets/section_headings.dart';
 import 'package:duara_ecommerce/features/personalization/screens/addresses/addresses.dart';
 import 'package:duara_ecommerce/features/personalization/screens/profile/profile.dart';
+import 'package:duara_ecommerce/features/shop/screens/orders/orders.dart';
 import 'package:duara_ecommerce/utils/constants/colors.dart';
 import 'package:duara_ecommerce/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
@@ -83,12 +84,14 @@ class SettingsScreen extends StatelessWidget {
                     icon: Iconsax.bag_tick,
                     title: 'my orders',
                     subTitle: 'in-progress and completed orders',
-                    onTap: () {},
+                    onTap: () {
+                      Get.to(() => const OrdersScreen());
+                    },
                   ),
                   CSettingsMenuTile(
                     icon: Iconsax.bank,
                     title: 'bank account',
-                    subTitle: 'withdraw balance to registered bank account',
+                    subTitle: 'withdraw balance to a registered bank account',
                     onTap: () {},
                   ),
                   CSettingsMenuTile(

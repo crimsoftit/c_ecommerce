@@ -3,6 +3,7 @@ import 'package:duara_ecommerce/common/widgets/custom_shapes/containers/search_c
 import 'package:duara_ecommerce/common/widgets/layouts/grid_layout.dart';
 import 'package:duara_ecommerce/common/widgets/products/product_cards/p_card_vert.dart';
 import 'package:duara_ecommerce/common/widgets/text_widgets/section_headings.dart';
+import 'package:duara_ecommerce/features/shop/screens/all_products/all_products.dart';
 import 'package:duara_ecommerce/features/shop/screens/home/widgets/home_appbar.dart';
 import 'package:duara_ecommerce/features/shop/screens/home/widgets/home_categories.dart';
 import 'package:duara_ecommerce/features/shop/screens/home/widgets/promo_slider.dart';
@@ -11,6 +12,7 @@ import 'package:duara_ecommerce/utils/constants/image_strings.dart';
 import 'package:duara_ecommerce/utils/constants/sizes.dart';
 import 'package:duara_ecommerce/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -101,7 +103,9 @@ class HomeScreen extends StatelessWidget {
                     txtColor: isDarkTheme ? CColors.white : CColors.rBrown,
                     btnTitle: 'view all...',
                     btnTxtColor: CColors.darkerGrey,
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.to(() => const CAllProducts());
+                    },
                     editFontSize: true,
                   ),
                   const SizedBox(

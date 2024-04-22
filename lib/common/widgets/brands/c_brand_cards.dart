@@ -1,11 +1,9 @@
 import 'package:duara_ecommerce/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:duara_ecommerce/common/widgets/img_widgets/c_circular_img.dart';
 import 'package:duara_ecommerce/common/widgets/text_widgets/c_brand_title_with_verified_icon.dart';
-import 'package:duara_ecommerce/utils/constants/colors.dart';
 import 'package:duara_ecommerce/utils/constants/enums.dart';
 import 'package:duara_ecommerce/utils/constants/image_strings.dart';
 import 'package:duara_ecommerce/utils/constants/sizes.dart';
-import 'package:duara_ecommerce/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 
 class CBrandCard extends StatelessWidget {
@@ -20,7 +18,7 @@ class CBrandCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDarkTheme = CHelperFunctions.isDarkMode(context);
+    //final isDarkTheme = CHelperFunctions.isDarkMode(context);
     return GestureDetector(
       onTap: onTap,
       child: CRoundedContainer(
@@ -30,12 +28,12 @@ class CBrandCard extends StatelessWidget {
         child: Row(
           children: [
             // icon
-            Flexible(
+            const Flexible(
               child: CCircularImg(
                 isNetworkImg: false,
-                img: CImages.clothIcon,
+                img: CImages.pImg27,
                 bgColor: Colors.transparent,
-                overlayColor: isDarkTheme ? CColors.white : CColors.rBrown,
+                //overlayColor: isDarkTheme ? CColors.white : CColors.rBrown,
               ),
             ),
 

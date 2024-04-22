@@ -1,7 +1,9 @@
 import 'package:duara_ecommerce/common/widgets/img_txt_widgets/vertical_img_txt.dart';
+import 'package:duara_ecommerce/features/shop/screens/subcategories/subcategories.dart';
 import 'package:duara_ecommerce/utils/constants/colors.dart';
 import 'package:duara_ecommerce/utils/constants/image_strings.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CHomeCategories extends StatelessWidget {
   const CHomeCategories({
@@ -19,10 +21,12 @@ class CHomeCategories extends StatelessWidget {
         itemBuilder: (_, index) {
           return CVerticalImgTxt(
             img: CImages.electronicsIcon,
-            title: 'phone categories',
+            title: 'Electronics',
             txtColor: CColors.txtWhite,
             bgColor: CColors.white,
-            onTap: () {},
+            onTap: () {
+              Get.to(() => const CSubCategoriesScreen());
+            },
           );
         },
       ),

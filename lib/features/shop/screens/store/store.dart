@@ -6,11 +6,14 @@ import 'package:duara_ecommerce/common/widgets/brands/c_brand_cards.dart';
 import 'package:duara_ecommerce/common/widgets/products/cart/cart_menu_icon.dart';
 import 'package:duara_ecommerce/common/widgets/text_widgets/c_tabbar_headings.dart';
 import 'package:duara_ecommerce/common/widgets/text_widgets/section_headings.dart';
+import 'package:duara_ecommerce/features/shop/screens/brands/all_brands.dart';
+import 'package:duara_ecommerce/features/shop/screens/brands/brand_products.dart';
 import 'package:duara_ecommerce/features/shop/screens/store/widgets/categories_tab.dart';
 import 'package:duara_ecommerce/utils/constants/colors.dart';
 import 'package:duara_ecommerce/utils/constants/sizes.dart';
 import 'package:duara_ecommerce/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class CStoreScreen extends StatelessWidget {
@@ -76,7 +79,9 @@ class CStoreScreen extends StatelessWidget {
                           title: 'featured brands',
                           btnTitle: 'view all',
                           btnTxtColor: CColors.darkGrey,
-                          onPressed: () {},
+                          onPressed: () {
+                            Get.to(() => const CAllBrandsScreen());
+                          },
                           editFontSize: true,
                           fSize: 13,
                         ),
@@ -89,8 +94,11 @@ class CStoreScreen extends StatelessWidget {
                           itemCount: 4,
                           mainAxisExtent: 80,
                           itemBuilder: (_, index) {
-                            return const CBrandCard(
+                            return CBrandCard(
                               showBorder: true,
+                              onTap: () {
+                                Get.to(() => const CBrandProducts());
+                              },
                             );
                           },
                         ),
