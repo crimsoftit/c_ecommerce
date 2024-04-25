@@ -26,35 +26,35 @@ class RTextFormFieldTheme {
       color: CColors.rBrown.withOpacity(0.8),
     ),
     border: const OutlineInputBorder().copyWith(
-      borderRadius: BorderRadius.circular(10),
+      borderRadius: BorderRadius.circular(5.0),
       borderSide: const BorderSide(
         width: 1.0,
         color: CColors.grey,
       ),
     ),
     enabledBorder: const OutlineInputBorder().copyWith(
-      borderRadius: BorderRadius.circular(10),
+      borderRadius: BorderRadius.circular(5.0),
       borderSide: const BorderSide(
         width: 1.0,
         color: CColors.grey,
       ),
     ),
     focusedBorder: const OutlineInputBorder().copyWith(
-      borderRadius: BorderRadius.circular(10),
+      borderRadius: BorderRadius.circular(5.0),
       borderSide: BorderSide(
         width: 1.0,
         color: CColors.rBrown.shade100,
       ),
     ),
     errorBorder: const OutlineInputBorder().copyWith(
-      borderRadius: BorderRadius.circular(10),
+      borderRadius: BorderRadius.circular(2.0),
       borderSide: const BorderSide(
         width: 1.0,
         color: Colors.red,
       ),
     ),
     focusedErrorBorder: const OutlineInputBorder().copyWith(
-      borderRadius: BorderRadius.circular(10),
+      borderRadius: BorderRadius.circular(2.0),
       borderSide: const BorderSide(
         width: 2.0,
         color: rOrange,
@@ -84,35 +84,35 @@ class RTextFormFieldTheme {
       color: CColors.white.withOpacity(0.8),
     ),
     border: const OutlineInputBorder().copyWith(
-      borderRadius: BorderRadius.circular(10),
+      borderRadius: BorderRadius.circular(5.0),
       borderSide: const BorderSide(
         width: 1.0,
         color: CColors.grey,
       ),
     ),
     enabledBorder: const OutlineInputBorder().copyWith(
-      borderRadius: BorderRadius.circular(10),
+      borderRadius: BorderRadius.circular(5.0),
       borderSide: const BorderSide(
         width: 1.0,
         color: CColors.grey,
       ),
     ),
     focusedBorder: const OutlineInputBorder().copyWith(
-      borderRadius: BorderRadius.circular(10),
+      borderRadius: BorderRadius.circular(5.0),
       borderSide: const BorderSide(
         width: 1.0,
         color: CColors.white,
       ),
     ),
     errorBorder: const OutlineInputBorder().copyWith(
-      borderRadius: BorderRadius.circular(10),
+      borderRadius: BorderRadius.circular(2.0),
       borderSide: const BorderSide(
         width: 1.0,
         color: Colors.red,
       ),
     ),
     focusedErrorBorder: const OutlineInputBorder().copyWith(
-      borderRadius: BorderRadius.circular(10),
+      borderRadius: BorderRadius.circular(2.0),
       borderSide: const BorderSide(
         width: 2.0,
         color: rOrange,

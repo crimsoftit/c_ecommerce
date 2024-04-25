@@ -36,6 +36,11 @@ class CImages {
   static const user = "assets/images/profile/user.jpg";
   static const rUserProfileImg = "assets/images/profile/dp_new.jpg";
 
+  // -- animated loaders
+  static const aLoader_1 = "assets/images/animations/loader_1.gif";
+  static const aLoader_2 = "assets/images/animations/loader_2.gif";
+  static const aLoader_3 = "assets/images/animations/loading_duck.gif";
+
   // -- animations
   static const productsIllustration =
       "assets/images/animations/sammy-line-workout.gif";
