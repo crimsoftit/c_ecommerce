@@ -30,6 +30,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  
+  timezone: any
 
   # utility packages
   http: ^1.1.0

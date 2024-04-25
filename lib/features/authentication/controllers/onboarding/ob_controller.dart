@@ -1,12 +1,14 @@
 import 'package:duara_ecommerce/features/authentication/screens/login/login.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 class OnboardingController extends GetxController {
   static OnboardingController get instance => Get.find();
 
   // -- variables
   final pageController = PageController();
+  final localStorage = GetStorage();
   Rx<int> currentPageIndex = 0.obs;
 
   // -- update current index on page scroll
@@ -23,6 +25,7 @@ class OnboardingController extends GetxController {
   // -- update current index and jump to next page
   void nextPage() {
     if (currentPageIndex.value == 2) {
+      localStorage.write('IsFirstTime', false);
       Get.offAll(const LoginScreen());
     } else {
       int nextPage = currentPageIndex.value + 1;
@@ -34,6 +37,7 @@ class OnboardingController extends GetxController {
   void skipPage() {
     // currentPageIndex.value = 2;
     // pageController.jumpToPage(2);
+    localStorage.write('IsFirstTime', false);
     Get.offAll(const LoginScreen());
   }
 }
