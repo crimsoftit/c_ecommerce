@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:duara_ecommerce/utils/popups/snackbars.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
@@ -37,15 +38,15 @@ class CNetworkManager extends GetxController {
   Future<void> _updateConnectionStatus(ConnectivityResult result) async {
     _connectionStatus.value = result;
     if (result == ConnectivityResult.none) {
-      CLoaders.warningSnackBar(
-        title: 'no internet connection',
+      CPopupSnackBar.warningSnackBar(
+        title: 'check your internet connection',
       );
     }
   }
 
   // -- dispose or close the active connectivity stream
   @override
-  void onCLose() {
+  void onClose() {
     super.onClose();
     _connectivitySubscription.cancel();
   }

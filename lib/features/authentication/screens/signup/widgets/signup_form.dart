@@ -33,10 +33,8 @@ class RSignupForm extends StatelessWidget {
               prefixIcon: Icon(Iconsax.user),
               labelText: 'full name',
             ),
-            validator: (value) {
-              CValidator.validateEmptyText('full name', value);
-              return null;
-            },
+            validator: (value) =>
+                CValidator.validateFullName('full name', value),
           ),
 
           const SizedBox(
@@ -53,10 +51,7 @@ class RSignupForm extends StatelessWidget {
               prefixIcon: Icon(Iconsax.direct),
               labelText: RTexts.email,
             ),
-            validator: (value) {
-              CValidator.validateEmail(value);
-              return null;
-            },
+            validator: (value) => CValidator.validateEmail(value),
           ),
 
           const SizedBox(
@@ -94,12 +89,10 @@ class RSignupForm extends StatelessWidget {
               //print(controller.cell_no.value);
             },
             onCountryChanged: (country) {
-              //print('country changed to: ${country.code}');
+              print('country changed to: ${country.dialCode}');
             },
-            validator: (phone) {
-              CValidator.validatePhoneNumber(phone.toString());
-              return null;
-            },
+            validator: (phone) =>
+                CValidator.validatePhoneNumber(phone.toString()),
           ),
 
           const SizedBox(
@@ -107,43 +100,68 @@ class RSignupForm extends StatelessWidget {
           ),
 
           // -- password field --
-          TextFormField(
-            controller: signupController.password,
-            obscureText: true,
-            style: const TextStyle(
-              height: 0.7,
+          Obx(
+            () => TextFormField(
+              controller: signupController.password,
+              obscureText: signupController.hidePswdTxt.value,
+              style: const TextStyle(
+                height: 0.7,
+              ),
+              decoration: InputDecoration(
+                labelText: RTexts.password,
+                prefixIcon: const Icon(Iconsax.password_check),
+                suffixIcon: IconButton(
+                  onPressed: () {
+                    signupController.hidePswdTxt.value =
+                        !signupController.hidePswdTxt.value;
+                  },
+                  icon: Icon(
+                    signupController.hidePswdTxt.value
+                        ? Iconsax.eye_slash
+                        : Iconsax.eye,
+                    color: signupController.hidePswdTxt.value
+                        ? CColors.grey
+                        : CColors.rBrown,
+                  ),
+                ),
+              ),
+              validator: (value) => CValidator.validatePassword(value),
             ),
-            decoration: const InputDecoration(
-              labelText: RTexts.password,
-              prefixIcon: Icon(Iconsax.password_check),
-              suffixIcon: Icon(Iconsax.eye_slash),
-            ),
-            validator: (value) {
-              CValidator.validatePassword(value);
-              return null;
-            },
           ),
 
           const SizedBox(
-            height: CSizes.spaceBtnSections,
+            height: CSizes.spaceBtnInputFields,
           ),
 
           // -- confirm password field --
-          TextFormField(
-            controller: signupController.confirmPasswordd,
-            obscureText: true,
-            style: const TextStyle(
-              height: 0.7,
+          Obx(
+            () => TextFormField(
+              controller: signupController.confirmPasswordd,
+              obscureText: signupController.hideConfirmPswdTxt.value,
+              style: const TextStyle(
+                height: 0.7,
+              ),
+              decoration: InputDecoration(
+                labelText: 're-type password',
+                prefixIcon: const Icon(Iconsax.password_check),
+                suffixIcon: IconButton(
+                  onPressed: () {
+                    signupController.hideConfirmPswdTxt.value =
+                        !signupController.hideConfirmPswdTxt.value;
+                  },
+                  icon: Icon(
+                    signupController.hideConfirmPswdTxt.value
+                        ? Iconsax.eye_slash
+                        : Iconsax.eye,
+                    color: signupController.hideConfirmPswdTxt.value
+                        ? CColors.grey
+                        : CColors.rBrown,
+                  ),
+                ),
+              ),
+              validator: (value) => CValidator.validateConfirmPassword(
+                  signupController.password.text, value),
             ),
-            decoration: const InputDecoration(
-              labelText: 're-type password',
-              prefixIcon: Icon(Iconsax.password_check),
-              suffixIcon: Icon(Iconsax.eye_slash),
-            ),
-            validator: (value) {
-              CValidator.validateConfirmPassword(value);
-              return null;
-            },
           ),
 
           const SizedBox(

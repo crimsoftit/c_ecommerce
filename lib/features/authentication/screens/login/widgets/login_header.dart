@@ -1,18 +1,18 @@
 import 'package:duara_ecommerce/utils/constants/image_strings.dart';
 import 'package:duara_ecommerce/utils/constants/sizes.dart';
 import 'package:duara_ecommerce/utils/constants/text_strings.dart';
+import 'package:duara_ecommerce/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 
 class LoginHeader extends StatelessWidget {
   const LoginHeader({
     super.key,
-    required this.isDark,
   });
-
-  final bool isDark;
 
   @override
   Widget build(BuildContext context) {
+    final isDarkTheme = CHelperFunctions.isDarkMode(context);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -21,8 +21,8 @@ class LoginHeader extends StatelessWidget {
           child: Image(
             height: 120.0,
             //image: AssetImage( isDark ? RImages.darkAppLogo_1 : RImages.lightAppLogo_1),
-            image:
-                AssetImage(isDark ? CImages.darkAppLogo : CImages.lightAppLogo),
+            image: AssetImage(
+                isDarkTheme ? CImages.darkAppLogo : CImages.lightAppLogo),
           ),
         ),
         Text(

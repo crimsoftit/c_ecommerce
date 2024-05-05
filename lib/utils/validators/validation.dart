@@ -1,8 +1,10 @@
 class CValidator {
-  // -- empty text validation --
-  static String? validateEmptyText(String? fieldName, String? value) {
+  /* ========== empty text validation ========== */
+  static String? validateFullName(String? fieldName, String? value) {
     if (value == null || value.isEmpty) {
       return '$fieldName field is required!';
+    } else if (value.length <= 3) {
+      return '$fieldName entry is too short!';
     }
 
     return null;
@@ -69,10 +71,11 @@ class CValidator {
     return null;
   }
 
-  static String? validateConfirmPassword(String? value) {
-    if (value == null || value.isEmpty) {
+  static String? validateConfirmPassword(
+      String? originalPswdTxt, String? confirmPswdTxt) {
+    if (confirmPswdTxt == null || confirmPswdTxt.isEmpty) {
       return 'please retype password!';
-    } else if (value != validatePassword(value)) {
+    } else if (confirmPswdTxt != originalPswdTxt) {
       return 'passwords do not match!';
     }
     return null;

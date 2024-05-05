@@ -2,8 +2,8 @@ import 'package:duara_ecommerce/utils/constants/colors.dart';
 import 'package:duara_ecommerce/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 
-class RFormDivider extends StatelessWidget {
-  const RFormDivider({
+class CFormDivider extends StatelessWidget {
+  const CFormDivider({
     super.key,
     required this.dividerText,
   });

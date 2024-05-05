@@ -9,8 +9,8 @@ import 'package:duara_ecommerce/utils/themes/custom_themes/text_field_theme.dart
 import 'package:duara_ecommerce/utils/themes/custom_themes/txt_themes.dart';
 import 'package:flutter/material.dart';
 
-class RAppTheme {
-  RAppTheme._();
+class CAppTheme {
+  CAppTheme._();
 
   static ThemeData lightTheme = ThemeData(
     useMaterial3: true,

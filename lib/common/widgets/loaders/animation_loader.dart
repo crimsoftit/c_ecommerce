@@ -3,6 +3,7 @@ import 'package:duara_ecommerce/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
+/* ===== a widget for displaying an animated loading indicator with optional text & action button ===== */
 class CAnimationLoaderWidget extends StatelessWidget {
   /* === default constructor for the CAnimationLoaderWidget === */
   const CAnimationLoaderWidget({

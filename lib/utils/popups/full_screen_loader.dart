@@ -1,4 +1,4 @@
-import 'package:duara_ecommerce/common/widgets/loaders/animation_loader.dart';
+import 'package:duara_ecommerce/common/widgets/loaders/animated_loader.dart';
 import 'package:duara_ecommerce/utils/constants/colors.dart';
 import 'package:duara_ecommerce/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
@@ -6,24 +6,37 @@ import 'package:get/get.dart';
 
 /* === a utility class to handle a full-screen loading dialog === */
 class CFullScreenLoader {
+  // -- open a full-screen loading dialog with a given text & animation
+  // -- this method doesn't return anything
+  // --
+  // -- Parameters:
+  //    - txt: text to be diplayed in the loading dialog widget
+  //    - animation: the lottie animation to be displayed
+
   static void openLoadingDialog(String txt, String animator) {
     showDialog(
-      context: Get.overlayContext!,
-      barrierDismissible: false,
+      context:
+          Get.overlayContext!, // use Get.overlayContext for overlay dialogs
+      barrierDismissible:
+          false, // dialog won't be dismissed upon tapping outside it
       builder: (_) => PopScope(
-        canPop: false,
+        canPop: false, // disable popping with the back button
         child: Container(
           color: CHelperFunctions.isDarkMode(Get.context!)
               ? CColors.dark
               : CColors.rBrown.withOpacity(0.1),
           width: double.infinity,
           height: double.infinity,
-          child: Column(
+          child: Wrap(
+            direction: Axis.vertical,
+            alignment: WrapAlignment.center,
+            runSpacing: 32.0,
             children: [
+              // adjust spacing as required
               const SizedBox(
                 height: 250.0,
               ),
-              CAnimationLoaderWidget(
+              CAnimatedLoaderWidget(
                 text: txt,
                 animation: animator,
               ),
@@ -36,7 +49,7 @@ class CFullScreenLoader {
 
   // -- stop the currently open loading dialog --
   // this method doesn't return anything
-  static stopLoader() {
+  static stopLoading() {
     Navigator.of(Get.overlayContext!).pop();
   }
 }

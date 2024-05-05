@@ -34,16 +34,16 @@ class SignupScreen extends StatelessWidget {
               ),
 
               // -- divider --
-              const RFormDivider(
-                dividerText: 'already have an account?',
-              ),
+              // const CFormDivider(
+              //   dividerText: 'already have an account?',
+              // ),
 
               TextButton(
                 onPressed: () {
                   Get.offAll(const LoginScreen());
                 },
                 child: Text(
-                  'click here to sign in',
+                  'or click here to sign in',
                   style: Theme.of(context).textTheme.bodySmall!.apply(
                         color: isDarkTheme ? CColors.grey : CColors.rBrown,
                       ),
@@ -59,7 +59,7 @@ class SignupScreen extends StatelessWidget {
               const RSignupForm(),
 
               // -- divider --
-              RFormDivider(
+              CFormDivider(
                 dividerText: RTexts.orSignInWith.capitalize!,
               ),
 

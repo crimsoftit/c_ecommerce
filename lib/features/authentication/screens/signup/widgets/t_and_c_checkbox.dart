@@ -1,8 +1,10 @@
+import 'package:duara_ecommerce/features/authentication/controllers/signup/signup_controller.dart';
 import 'package:duara_ecommerce/utils/constants/colors.dart';
 import 'package:duara_ecommerce/utils/constants/sizes.dart';
 import 'package:duara_ecommerce/utils/constants/text_strings.dart';
 import 'package:duara_ecommerce/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class TandCCheckbox extends StatelessWidget {
   const TandCCheckbox({
@@ -12,14 +14,21 @@ class TandCCheckbox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = CHelperFunctions.isDarkMode(context);
+    final controller = SignupController.instance;
+
     return Row(
       children: [
         SizedBox(
           width: 24.0,
           height: 24.0,
-          child: Checkbox(
-            value: true,
-            onChanged: (value) {},
+          child: Obx(
+            () => Checkbox(
+              value: controller.checkPrivacyPolicy.value,
+              onChanged: (value) {
+                controller.checkPrivacyPolicy.value =
+                    !controller.checkPrivacyPolicy.value;
+              },
+            ),
           ),
         ),
         const SizedBox(

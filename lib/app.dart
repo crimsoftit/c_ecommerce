@@ -1,4 +1,4 @@
-
+import 'package:duara_ecommerce/bindings/general_bindings.dart';
 import 'package:duara_ecommerce/utils/constants/colors.dart';
 import 'package:duara_ecommerce/utils/themes/themes.dart';
 import 'package:flutter/material.dart';
@@ -14,8 +14,9 @@ class App extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.system,
-      theme: RAppTheme.lightTheme,
-      darkTheme: RAppTheme.darkTheme,
+      theme: CAppTheme.lightTheme,
+      darkTheme: CAppTheme.darkTheme,
+      initialBinding: CGeneralBindings(),
 
       // -- show loader or circular progress indicator as AuthRepo decides on the relevant screen to load --
 
