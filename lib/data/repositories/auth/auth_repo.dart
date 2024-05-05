@@ -1,5 +1,8 @@
 import 'package:duara_ecommerce/features/authentication/screens/login/login.dart';
 import 'package:duara_ecommerce/features/authentication/screens/onboarding/onboarding_screen.dart';
+import 'package:duara_ecommerce/utils/exceptions/firebase_auth_exceptions.dart';
+import 'package:duara_ecommerce/utils/exceptions/format_exceptions.dart';
+import 'package:duara_ecommerce/utils/exceptions/platform_exceptions.dart';
 import 'package:duara_ecommerce/utils/popups/snackbars.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
@@ -24,18 +27,11 @@ class AuthRepo extends GetxController {
   // -- function to load the relevant screen
   screenRedirect() async {
     // local storage
-    // if (kDebugMode) {
-    //   print('========== GET STORAGE (initially) ==========');
-    //   print(deviceStorage.read('IsFirstTime'));
-    // }
+
     deviceStorage.writeIfNull('IsFirstTime', true);
     deviceStorage.read('IsFirstTime') != true
         ? Get.offAll(() => const LoginScreen())
         : Get.offAll(() => const OnboardingScreen());
-    // if (kDebugMode) {
-    //   print('========== GET STORAGE (after) ==========');
-    //   print(deviceStorage.read('IsFirstTime'));
-    // }
   }
 
   /* ========== email & password sign-in, registration ========== */
@@ -49,33 +45,33 @@ class AuthRepo extends GetxController {
         password: password,
       );
     } on FirebaseAuthException catch (e) {
-      throw CPopupSnackBar.errorSnackBar(
-        title: "firbaseAuth exception error",
+      CPopupSnackBar.errorSnackBar(
+        title: "firebaseAuth exception error",
         message: e.code.toString(),
       );
+      throw CFirebaseAuthExceptions(e.code).message;
     } on FirebaseException catch (e) {
-      throw CPopupSnackBar.errorSnackBar(
-        title: "firbase exception error",
+      CPopupSnackBar.errorSnackBar(
+        title: "firebase exception error",
         message: e.code.toString(),
       );
+      throw CFirebaseAuthExceptions(e.code).message;
     } on FormatException catch (e) {
-      // CPopupLoader.errorSnackBar(
-      //   title: "format exception error",
-      //   message: e.message,
-      // );
-      throw CPopupSnackBar.errorSnackBar(
+      CPopupSnackBar.errorSnackBar(
         title: "platform exception error",
         message: e.message,
       );
+      throw CFormatExceptions(e.message);
     } on PlatformException catch (e) {
       // CPopupLoader.errorSnackBar(
       //   title: "platform exception error",
       //   message: e.code.toString(),
       // );
-      throw CPopupSnackBar.errorSnackBar(
+      CPopupSnackBar.errorSnackBar(
         title: "platform exception error",
         message: e.code.toString(),
       );
+      throw CPlatformExceptions(e.code).message;
     } catch (e) {
       CPopupSnackBar.errorSnackBar(
         title: "An error occurred",
@@ -85,7 +81,46 @@ class AuthRepo extends GetxController {
     }
   }
 
-  // -- [EmailAuthentication] - signIn --
+  // -- [EmailAuthentication] -- MAIL VERIFICATION
+  Future<void> sendEmailVerification() async {
+    try {
+      await _auth.currentUser?.sendEmailVerification();
+    } on FirebaseAuthException catch (e) {
+      CPopupSnackBar.errorSnackBar(
+        title: "firebaseAuth exception error",
+        message: e.code.toString(),
+      );
+      throw CFirebaseAuthExceptions(e.code).message;
+    } on FirebaseException catch (e) {
+      CPopupSnackBar.errorSnackBar(
+        title: "firebase exception error",
+        message: e.code.toString(),
+      );
+      throw CFirebaseAuthExceptions(e.code).message;
+    } on FormatException catch (e) {
+      CPopupSnackBar.errorSnackBar(
+        title: "platform exception error",
+        message: e.message,
+      );
+      throw CFormatExceptions(e.message);
+    } on PlatformException catch (e) {
+      // CPopupLoader.errorSnackBar(
+      //   title: "platform exception error",
+      //   message: e.code.toString(),
+      // );
+      CPopupSnackBar.errorSnackBar(
+        title: "platform exception error",
+        message: e.code.toString(),
+      );
+      throw CPlatformExceptions(e.code).message;
+    } catch (e) {
+      CPopupSnackBar.errorSnackBar(
+        title: "An error occurred",
+        message: e.toString(),
+      );
+      throw 'something went wrong! please try again!';
+    }
+  }
 
   // -- [ReAuthenticate] - re-authenticate user --
 
