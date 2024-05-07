@@ -1,5 +1,5 @@
-import 'package:duara_ecommerce/common/widgets/success_screen/success_screen.dart';
-import 'package:duara_ecommerce/features/authentication/screens/login/login.dart';
+import 'package:duara_ecommerce/data/repositories/auth/auth_repo.dart';
+import 'package:duara_ecommerce/features/authentication/controllers/signup/verify_email_controller.dart';
 import 'package:duara_ecommerce/utils/constants/colors.dart';
 import 'package:duara_ecommerce/utils/constants/image_strings.dart';
 import 'package:duara_ecommerce/utils/constants/sizes.dart';
@@ -10,17 +10,25 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class VerifyEmailScreen extends StatelessWidget {
-  const VerifyEmailScreen({super.key});
+  const VerifyEmailScreen({
+    super.key,
+    this.email,
+  });
+
+  final String? email;
 
   @override
   Widget build(BuildContext context) {
+    final verifyEmailController = Get.put(CVerifyEmailController());
+
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
         actions: [
           IconButton(
             onPressed: () {
-              Get.offAll(() => const LoginScreen());
+              //Get.offAll(() => const LoginScreen());
+              AuthRepo.instance.logout();
             },
             icon: const Icon(CupertinoIcons.clear),
           ),
@@ -44,7 +52,7 @@ class VerifyEmailScreen extends StatelessWidget {
 
               // -- title & subtitle --
               Text(
-                RTexts.confirmEmail,
+                CTexts.confirmEmail,
                 style: Theme.of(context).textTheme.headlineSmall,
                 textAlign: TextAlign.center,
               ),
@@ -52,7 +60,7 @@ class VerifyEmailScreen extends StatelessWidget {
                 height: CSizes.spaceBtnItems,
               ),
               Text(
-                'crimsoftit@gmail.com',
+                email ?? '',
                 style: Theme.of(context).textTheme.labelMedium!.apply(
                       color: CColors.darkerGrey,
                     ),
@@ -62,7 +70,7 @@ class VerifyEmailScreen extends StatelessWidget {
                 height: CSizes.spaceBtnItems,
               ),
               Text(
-                RTexts.confirmEmailSubTitle,
+                CTexts.confirmEmailSubTitle,
                 style: Theme.of(context).textTheme.labelMedium!.apply(
                       color: CColors.darkGrey,
                     ),
@@ -77,14 +85,7 @@ class VerifyEmailScreen extends StatelessWidget {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
-                    Get.to(() => SuccessScreen(
-                          image: CImages.staticSuccessIllustration,
-                          title: RTexts.accountCreatedTitle,
-                          subTitle: RTexts.accountCreatedSubTitle,
-                          onPressed: () {
-                            Get.to(() => const LoginScreen());
-                          },
-                        ));
+                    verifyEmailController.checkEmailVerificationStatus();
                   },
                   child: Text(
                     'CONTINUE',
@@ -100,9 +101,11 @@ class VerifyEmailScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    verifyEmailController.sendEmailVerification();
+                  },
                   child: Text(
-                    RTexts.resendEmail,
+                    CTexts.resendEmail,
                     style: Theme.of(context).textTheme.labelMedium,
                   ),
                 ),

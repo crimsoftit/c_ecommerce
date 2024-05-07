@@ -26,7 +26,7 @@ class SignupScreen extends StatelessWidget {
             children: [
               // -- title --
               Text(
-                RTexts.signUpTitle,
+                CTexts.signUpTitle,
                 style: Theme.of(context).textTheme.headlineSmall,
               ),
               const SizedBox(
@@ -60,7 +60,7 @@ class SignupScreen extends StatelessWidget {
 
               // -- divider --
               CFormDivider(
-                dividerText: RTexts.orSignInWith.capitalize!,
+                dividerText: CTexts.orSignInWith.capitalize!,
               ),
 
               const SizedBox(

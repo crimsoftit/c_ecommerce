@@ -16,13 +16,13 @@ class CHomeAppBarWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            RTexts.homeAppbarTitle,
+            CTexts.homeAppbarTitle,
             style: Theme.of(context).textTheme.labelMedium!.apply(
                   color: CColors.grey,
                 ),
           ),
           Text(
-            RTexts.homeAppbarSubTitle,
+            CTexts.homeAppbarSubTitle,
             style: Theme.of(context).textTheme.headlineSmall!.apply(
                   color: CColors.white,
                   fontSizeFactor: 0.7,

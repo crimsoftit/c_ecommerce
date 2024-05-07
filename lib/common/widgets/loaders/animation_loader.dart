@@ -3,9 +3,17 @@ import 'package:duara_ecommerce/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
-/* ===== a widget for displaying an animated loading indicator with optional text & action button ===== */
+/// -- a widget for displaying an animated loading indicator with optional text & action button --
 class CAnimationLoaderWidget extends StatelessWidget {
-  /* === default constructor for the CAnimationLoaderWidget === */
+  /// === parameters ===
+  ///   - text: text to be displayed below the animation --
+  ///   - animation: path to the lottie animation file --
+  ///   - showActionBtn: toggles displaying an action button below the text --
+  ///   - actionText: text displayed on the action button --
+  ///   - onActionPressed: callback function executed onPress of the action button --
+  ///
+  /// === default constructor for the CAnimationLoaderWidget
+
   const CAnimationLoaderWidget({
     super.key,
     required this.text,
@@ -14,13 +22,6 @@ class CAnimationLoaderWidget extends StatelessWidget {
     this.actionBtnText,
     this.onActionBtnPressed,
   });
-
-  /* === parameters === */
-  // -- text: text to be displayed below the animation --
-  // -- animation: path to the lottie animation file --
-  // -- showActionBtn: toggles displaying an action button below the text --
-  // -- actionText: text displayed on the action button --
-  // -- onActionPressed: callback function executed onPress of the action button --
 
   final bool showActionBtn;
   final String text, animation;

@@ -38,10 +38,10 @@ class TandCCheckbox extends StatelessWidget {
           TextSpan(
             children: [
               TextSpan(
-                  text: RTexts.iAgreeTo,
+                  text: CTexts.iAgreeTo,
                   style: Theme.of(context).textTheme.labelSmall),
               TextSpan(
-                text: RTexts.privacyPolicy,
+                text: CTexts.privacyPolicy,
                 style: Theme.of(context).textTheme.labelMedium!.apply(
                       color: isDark ? CColors.white : Colors.blue,
                       decoration: TextDecoration.underline,
@@ -53,7 +53,7 @@ class TandCCheckbox extends StatelessWidget {
                 style: Theme.of(context).textTheme.labelSmall,
               ),
               TextSpan(
-                text: RTexts.termsOfUse,
+                text: CTexts.termsOfUse,
                 style: Theme.of(context).textTheme.labelMedium!.apply(
                       color: isDark ? CColors.white : Colors.blue,
                       decoration: TextDecoration.underline,

@@ -26,14 +26,14 @@ class LoginHeader extends StatelessWidget {
           ),
         ),
         Text(
-          RTexts.loginTitle,
+          CTexts.loginTitle,
           style: Theme.of(context).textTheme.headlineMedium,
         ),
         const SizedBox(
           height: CSizes.sm,
         ),
         Text(
-          RTexts.loginSubTitle,
+          CTexts.loginSubTitle,
           style: Theme.of(context).textTheme.labelSmall,
         ),
       ],

@@ -28,7 +28,7 @@ class LoginScreen extends StatelessWidget {
 
               // -- divider --
               CFormDivider(
-                dividerText: RTexts.orSignInWith.capitalize!,
+                dividerText: CTexts.orSignInWith.capitalize!,
               ),
               const SizedBox(
                 height: CSizes.spaceBtnSections,

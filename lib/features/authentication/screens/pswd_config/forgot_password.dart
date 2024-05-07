@@ -20,7 +20,7 @@ class ForgotPasswordScreen extends StatelessWidget {
           children: [
             // -- headings --
             Text(
-              RTexts.forgotPasswordTitle,
+              CTexts.forgotPasswordTitle,
               style: Theme.of(context).textTheme.headlineSmall,
               textAlign: TextAlign.center,
             ),
@@ -29,7 +29,7 @@ class ForgotPasswordScreen extends StatelessWidget {
               height: CSizes.spaceBtnItems,
             ),
             Text(
-              RTexts.forgotPasswordSubTitle,
+              CTexts.forgotPasswordSubTitle,
               style: Theme.of(context).textTheme.labelMedium!.apply(
                     color: CColors.darkGrey,
                   ),
@@ -45,7 +45,7 @@ class ForgotPasswordScreen extends StatelessWidget {
               ),
               decoration: const InputDecoration(
                 prefixIcon: Icon(Iconsax.direct_right),
-                labelText: RTexts.email,
+                labelText: CTexts.email,
               ),
             ),
 

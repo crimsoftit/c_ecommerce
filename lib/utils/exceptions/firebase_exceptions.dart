@@ -54,6 +54,8 @@ class CFirebaseExceptions implements Exception {
         return 'the email address already exists! please use a different e-mail address.';
       case 'requires-recent-login':
         return 'this operation is sensitive & requires recent authentication! please sign in again.';
+      case 'uid-already-exists':
+        return 'the provided user ID is already in use by another user!';
       case 'credential-already-in-use':
         return 'this credential is already linked with another provider!';
       case 'user-mismatch':
@@ -64,6 +66,10 @@ class CFirebaseExceptions implements Exception {
         return 'invalid action code! please check the code and try again.';
       case 'missing-action-code':
         return 'the action code is missing! please provide a valid action code.';
+      case 'missing-app-credential':
+        return 'the app credential is missing! please provide a valid app credential.';
+      case 'user-token-mismatch':
+        return 'the user\'s token has a mismatch with the authenticated user\'s ID!';
       case 'user-token-expired':
         return 'the user\'s token has expired, and re-authentication is required. please sign in again.';
       case 'invalid-credential':
@@ -87,7 +93,7 @@ class CFirebaseExceptions implements Exception {
       case 'auth-domain-config-required':
         return 'the authDomain configuration is required for the action code verification link!';
       default:
-        return 'an unexpected firebase error occurred! please try again.';
+        return 'an unexpected firebase error occurred! please try again later.';
     }
   }
 }

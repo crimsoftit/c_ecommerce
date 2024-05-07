@@ -35,7 +35,7 @@ class CUserProfileTile extends StatelessWidget {
             ),
       ),
       subtitle: Text(
-        RTexts.homeAppbarSubTitle,
+        CTexts.homeAppbarSubTitle,
         style: Theme.of(context).textTheme.headlineSmall!.apply(
               color: CColors.white,
               fontSizeFactor: 0.6,

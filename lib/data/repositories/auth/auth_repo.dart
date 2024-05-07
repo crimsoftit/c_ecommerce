@@ -1,6 +1,9 @@
 import 'package:duara_ecommerce/features/authentication/screens/login/login.dart';
 import 'package:duara_ecommerce/features/authentication/screens/onboarding/onboarding_screen.dart';
+import 'package:duara_ecommerce/features/authentication/screens/signup/verify_email.dart';
+import 'package:duara_ecommerce/nav_menu.dart';
 import 'package:duara_ecommerce/utils/exceptions/firebase_auth_exceptions.dart';
+import 'package:duara_ecommerce/utils/exceptions/firebase_exceptions.dart';
 import 'package:duara_ecommerce/utils/exceptions/format_exceptions.dart';
 import 'package:duara_ecommerce/utils/exceptions/platform_exceptions.dart';
 import 'package:duara_ecommerce/utils/popups/snackbars.dart';
@@ -20,21 +23,37 @@ class AuthRepo extends GetxController {
   // -- called from main.dart on app launch --
   @override
   void onReady() {
+    // remove the native splash screen
     FlutterNativeSplash.remove();
+
+    // redirect to the relevant screen
     screenRedirect();
   }
 
   // -- function to load the relevant screen
   screenRedirect() async {
-    // local storage
+    final user = _auth.currentUser;
 
-    deviceStorage.writeIfNull('IsFirstTime', true);
-    deviceStorage.read('IsFirstTime') != true
-        ? Get.offAll(() => const LoginScreen())
-        : Get.offAll(() => const OnboardingScreen());
+    if (user != null) {
+      if (user.emailVerified) {
+        Get.offAll(() => const NavMenu());
+      } else {
+        Get.offAll(() => VerifyEmailScreen(
+              email: _auth.currentUser?.email,
+            ));
+      }
+    } else {
+      // local storage
+      deviceStorage.writeIfNull('IsFirstTime', true);
+
+      // check if it's the first time launching the app
+      deviceStorage.read('IsFirstTime') != true
+          ? Get.offAll(() => const LoginScreen())
+          : Get.offAll(() => const OnboardingScreen());
+    }
   }
 
-  /* ========== email & password sign-in, registration ========== */
+  /* ==== email & password sign-in, registration ===== */
 
   // -- [EmailAuthentication] - register --
   Future<UserCredential> signupWithEmailAndPassword(
@@ -63,10 +82,6 @@ class AuthRepo extends GetxController {
       );
       throw CFormatExceptions(e.message);
     } on PlatformException catch (e) {
-      // CPopupLoader.errorSnackBar(
-      //   title: "platform exception error",
-      //   message: e.code.toString(),
-      // );
       CPopupSnackBar.errorSnackBar(
         title: "platform exception error",
         message: e.code.toString(),
@@ -104,10 +119,6 @@ class AuthRepo extends GetxController {
       );
       throw CFormatExceptions(e.message);
     } on PlatformException catch (e) {
-      // CPopupLoader.errorSnackBar(
-      //   title: "platform exception error",
-      //   message: e.code.toString(),
-      // );
       CPopupSnackBar.errorSnackBar(
         title: "platform exception error",
         message: e.code.toString(),
@@ -122,7 +133,35 @@ class AuthRepo extends GetxController {
     }
   }
 
-  // -- [ReAuthenticate] - re-authenticate user --
+  /// -- [ReAuthenticate] - re-authenticate user --
 
-  // -- [EmailVerification] - mail verification --
+  /// -- [EmailVerification] - forgot password --
+
+  /* ===== federated identity & social media sign-in ===== */
+
+  /// -- [GoogleAuthentication] - GOOGLE --
+  /// -- [FacebookAuthentication] - FACEBOOK --
+
+  /* ===== ./end federated identity & social media sign-in ===== */
+  /// -- [LogoutUser] - valid for any authentication --
+  Future<void> logout() async {
+    try {
+      await FirebaseAuth.instance.signOut();
+      Get.offAll(() {
+        const LoginScreen();
+      });
+    } on FirebaseAuthException catch (e) {
+      throw CFirebaseAuthExceptions(e.code).message;
+    } on FirebaseException catch (e) {
+      throw CFirebaseExceptions(e.code).message;
+    } on FormatException catch (e) {
+      throw CFormatExceptions(e.message);
+    } on PlatformException catch (e) {
+      throw CPlatformExceptions(e.code).message;
+    } catch (e) {
+      throw 'something went wrong! please try again later';
+    }
+  }
+
+  /// -- [DeleteUser] - remove user Auth & Firestore account --
 }

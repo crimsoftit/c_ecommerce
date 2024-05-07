@@ -26,18 +26,18 @@ class OnboardingScreen extends StatelessWidget {
             children: const [
               OnboardingScreenWidget(
                 img: CImages.rOnboardingImg1,
-                title: RTexts.rOnbaordingTitle1,
-                subTitle: RTexts.rOnbaordingSubTitle1,
+                title: CTexts.rOnbaordingTitle1,
+                subTitle: CTexts.rOnbaordingSubTitle1,
               ),
               OnboardingScreenWidget(
                 img: CImages.rOnboardingImg2,
-                title: RTexts.rOnbaordingTitle2,
-                subTitle: RTexts.rOnbaordingSubTitle2,
+                title: CTexts.rOnbaordingTitle2,
+                subTitle: CTexts.rOnbaordingSubTitle2,
               ),
               OnboardingScreenWidget(
                 img: CImages.rOnboardingImg3,
-                title: RTexts.rOnbaordingTitle3,
-                subTitle: RTexts.rOnbaordingSubTitle3,
+                title: CTexts.rOnbaordingTitle3,
+                subTitle: CTexts.rOnbaordingSubTitle3,
               ),
             ],
           ),

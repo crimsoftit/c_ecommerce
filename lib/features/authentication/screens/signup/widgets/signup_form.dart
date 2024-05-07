@@ -49,7 +49,7 @@ class RSignupForm extends StatelessWidget {
             ),
             decoration: const InputDecoration(
               prefixIcon: Icon(Iconsax.direct),
-              labelText: RTexts.email,
+              labelText: CTexts.email,
             ),
             validator: (value) => CValidator.validateEmail(value),
           ),
@@ -108,7 +108,7 @@ class RSignupForm extends StatelessWidget {
                 height: 0.7,
               ),
               decoration: InputDecoration(
-                labelText: RTexts.password,
+                labelText: CTexts.password,
                 prefixIcon: const Icon(Iconsax.password_check),
                 suffixIcon: IconButton(
                   onPressed: () {
@@ -183,7 +183,7 @@ class RSignupForm extends StatelessWidget {
                 signupController.signup();
               },
               child: Text(
-                RTexts.createAccount.toUpperCase(),
+                CTexts.createAccount.toUpperCase(),
                 style: Theme.of(context).textTheme.labelMedium?.apply(
                       color: CColors.white,
                     ),

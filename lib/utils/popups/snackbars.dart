@@ -48,7 +48,7 @@ class CPopupSnackBar {
       isDismissible: true,
       shouldIconPulse: true,
       colorText: CColors.white,
-      backgroundColor: CColors.rBrown,
+      backgroundColor: Colors.green,
       snackPosition: SnackPosition.BOTTOM,
       duration: Duration(seconds: duration),
       margin: const EdgeInsets.all(10.0),
@@ -98,7 +98,7 @@ class CPopupSnackBar {
       colorText: CColors.white,
       backgroundColor: Colors.red.shade600,
       snackPosition: SnackPosition.BOTTOM,
-      duration: const Duration(seconds: 5),
+      duration: const Duration(seconds: 10),
       margin: const EdgeInsets.all(20.0),
       icon: const Icon(
         Iconsax.warning_2,

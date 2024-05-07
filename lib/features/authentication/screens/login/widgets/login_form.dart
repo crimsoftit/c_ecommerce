@@ -27,7 +27,7 @@ class LoginForm extends StatelessWidget {
               ),
               decoration: const InputDecoration(
                 prefixIcon: Icon(Iconsax.direct_right),
-                labelText: RTexts.email,
+                labelText: CTexts.email,
               ),
             ),
 
@@ -42,7 +42,7 @@ class LoginForm extends StatelessWidget {
               ),
               decoration: const InputDecoration(
                 prefixIcon: Icon(Iconsax.password_check),
-                labelText: RTexts.password,
+                labelText: CTexts.password,
                 suffixIcon: Icon(Iconsax.eye_slash),
               ),
             ),
@@ -62,7 +62,7 @@ class LoginForm extends StatelessWidget {
                       onChanged: (value) {},
                     ),
                     Text(
-                      RTexts.rememberMe,
+                      CTexts.rememberMe,
                       style: Theme.of(context).textTheme.labelSmall,
                     ),
                   ],
@@ -74,7 +74,7 @@ class LoginForm extends StatelessWidget {
                     Get.to(() => const ForgotPasswordScreen());
                   },
                   child: Text(
-                    RTexts.forgotPassword,
+                    CTexts.forgotPassword,
                     style: Theme.of(context).textTheme.labelMedium,
                   ),
                 ),
@@ -92,7 +92,7 @@ class LoginForm extends StatelessWidget {
                   Get.to(() => const NavMenu());
                 },
                 child: Text(
-                  RTexts.signIn.toUpperCase(),
+                  CTexts.signIn.toUpperCase(),
                   style: Theme.of(context).textTheme.labelMedium?.apply(
                         color: CColors.white,
                       ),
@@ -112,7 +112,7 @@ class LoginForm extends StatelessWidget {
                   Get.to(() => const SignupScreen());
                 },
                 child: Text(
-                  RTexts.createAccount.toUpperCase(),
+                  CTexts.createAccount.toUpperCase(),
                   style: Theme.of(context).textTheme.labelMedium,
                 ),
               ),

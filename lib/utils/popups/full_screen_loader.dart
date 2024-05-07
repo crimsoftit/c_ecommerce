@@ -1,4 +1,4 @@
-import 'package:duara_ecommerce/common/widgets/loaders/animated_loader.dart';
+import 'package:duara_ecommerce/common/widgets/loaders/animation_loader.dart';
 import 'package:duara_ecommerce/utils/constants/colors.dart';
 import 'package:duara_ecommerce/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
@@ -27,16 +27,13 @@ class CFullScreenLoader {
               : CColors.rBrown.withOpacity(0.1),
           width: double.infinity,
           height: double.infinity,
-          child: Wrap(
-            direction: Axis.vertical,
-            alignment: WrapAlignment.center,
-            runSpacing: 32.0,
+          child: Column(
             children: [
               // adjust spacing as required
               const SizedBox(
                 height: 250.0,
               ),
-              CAnimatedLoaderWidget(
+              CAnimationLoaderWidget(
                 text: txt,
                 animation: animator,
               ),

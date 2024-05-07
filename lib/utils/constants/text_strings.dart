@@ -1,4 +1,4 @@
-class RTexts {
+class CTexts {
   // -- authentication form - text
   static const String fName = "first name";
   static const String lName = "last name";

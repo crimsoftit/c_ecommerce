@@ -40,7 +40,7 @@ class ResetPasswordScreen extends StatelessWidget {
 
               // -- title & subtitle --
               Text(
-                RTexts.resetPswdTitle,
+                CTexts.resetPswdTitle,
                 style: Theme.of(context).textTheme.headlineSmall,
                 textAlign: TextAlign.center,
               ),
@@ -58,7 +58,7 @@ class ResetPasswordScreen extends StatelessWidget {
                 height: CSizes.spaceBtnItems,
               ),
               Text(
-                RTexts.resetPswdSubTitle,
+                CTexts.resetPswdSubTitle,
                 style: Theme.of(context).textTheme.labelMedium!.apply(
                       color: CColors.darkGrey,
                     ),
@@ -91,7 +91,7 @@ class ResetPasswordScreen extends StatelessWidget {
                 child: TextButton(
                   onPressed: () {},
                   child: Text(
-                    RTexts.resendEmail,
+                    CTexts.resendEmail,
                     style: Theme.of(context).textTheme.labelMedium,
                   ),
                 ),

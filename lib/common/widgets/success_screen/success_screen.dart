@@ -1,8 +1,8 @@
 import 'package:duara_ecommerce/common/styles/spacing_styles.dart';
 import 'package:duara_ecommerce/utils/constants/colors.dart';
 import 'package:duara_ecommerce/utils/constants/sizes.dart';
-import 'package:duara_ecommerce/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 class SuccessScreen extends StatelessWidget {
   const SuccessScreen({
@@ -25,10 +25,11 @@ class SuccessScreen extends StatelessWidget {
           child: Column(
             children: [
               // -- header image --
-              Image(
-                image: AssetImage(image),
-                width: CHelperFunctions.screenWidth() * 0.6,
+              Lottie.asset(
+                image,
+                width: MediaQuery.of(context).size.width * 0.8,
               ),
+
               const SizedBox(
                 height: CSizes.spaceBtnSections,
               ),
