@@ -1,5 +1,14 @@
 class CValidator {
   /* ========== empty text validation ========== */
+  static String? validateEmptyText(String? fieldName, String? value) {
+    if (value == null || value.isEmpty) {
+      return '$fieldName field is required!';
+    }
+
+    return null;
+  }
+
+  /* ========== full name field validation ========== */
   static String? validateFullName(String? fieldName, String? value) {
     if (value == null || value.isEmpty) {
       return '$fieldName field is required!';
@@ -20,7 +29,7 @@ class CValidator {
     final emailRegExp = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
 
     if (!emailRegExp.hasMatch(value)) {
-      return 'invalid e-mail address';
+      return 'invalid e-mail address!';
     }
 
     return null;

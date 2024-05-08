@@ -31,7 +31,7 @@ class AuthRepo extends GetxController {
   }
 
   // -- function to load the relevant screen
-  screenRedirect() async {
+  void screenRedirect() async {
     final user = _auth.currentUser;
 
     if (user != null) {
@@ -54,6 +54,47 @@ class AuthRepo extends GetxController {
   }
 
   /* ==== email & password sign-in, registration ===== */
+
+  // -- [EmailAuthentication] - signIn --
+  Future<UserCredential> logInWithEmailAndPassword(
+      String email, String password) async {
+    try {
+      return await _auth.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+    } on FirebaseAuthException catch (e) {
+      CPopupSnackBar.errorSnackBar(
+        title: "firebaseAuth exception error",
+        message: e.code.toString(),
+      );
+      throw CFirebaseAuthExceptions(e.code).message;
+    } on FirebaseException catch (e) {
+      CPopupSnackBar.errorSnackBar(
+        title: "firebase exception error",
+        message: e.code.toString(),
+      );
+      throw CFirebaseAuthExceptions(e.code).message;
+    } on FormatException catch (e) {
+      CPopupSnackBar.errorSnackBar(
+        title: "platform exception error",
+        message: e.message,
+      );
+      throw CFormatExceptions(e.message);
+    } on PlatformException catch (e) {
+      CPopupSnackBar.errorSnackBar(
+        title: "platform exception error",
+        message: e.code.toString(),
+      );
+      throw CPlatformExceptions(e.code).message;
+    } catch (e) {
+      CPopupSnackBar.errorSnackBar(
+        title: "An error occurred",
+        message: e.toString(),
+      );
+      throw 'something went wrong! please try again later.';
+    }
+  }
 
   // -- [EmailAuthentication] - register --
   Future<UserCredential> signupWithEmailAndPassword(
@@ -146,10 +187,8 @@ class AuthRepo extends GetxController {
   /// -- [LogoutUser] - valid for any authentication --
   Future<void> logout() async {
     try {
-      await FirebaseAuth.instance.signOut();
-      Get.offAll(() {
-        const LoginScreen();
-      });
+      await _auth.signOut();
+      Get.offAll(() => const LoginScreen());
     } on FirebaseAuthException catch (e) {
       throw CFirebaseAuthExceptions(e.code).message;
     } on FirebaseException catch (e) {
@@ -159,6 +198,10 @@ class AuthRepo extends GetxController {
     } on PlatformException catch (e) {
       throw CPlatformExceptions(e.code).message;
     } catch (e) {
+      CPopupSnackBar.errorSnackBar(
+        title: 'unknown error!',
+        message: e.toString(),
+      );
       throw 'something went wrong! please try again later';
     }
   }

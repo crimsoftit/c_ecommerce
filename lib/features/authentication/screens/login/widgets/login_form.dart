@@ -1,9 +1,10 @@
+import 'package:duara_ecommerce/features/authentication/controllers/login/login_controller.dart';
 import 'package:duara_ecommerce/features/authentication/screens/pswd_config/forgot_password.dart';
 import 'package:duara_ecommerce/features/authentication/screens/signup/signup.dart';
-import 'package:duara_ecommerce/nav_menu.dart';
 import 'package:duara_ecommerce/utils/constants/colors.dart';
 import 'package:duara_ecommerce/utils/constants/sizes.dart';
 import 'package:duara_ecommerce/utils/constants/text_strings.dart';
+import 'package:duara_ecommerce/utils/validators/validation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -15,13 +16,17 @@ class LoginForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final loginController = Get.put(CLoginController());
+
     return Form(
+      key: loginController.loginFormKey,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: CSizes.spaceBtnSections),
         child: Column(
           children: [
             // -- email field --
             TextFormField(
+              controller: loginController.email,
               style: const TextStyle(
                 height: 0.7,
               ),
@@ -29,6 +34,9 @@ class LoginForm extends StatelessWidget {
                 prefixIcon: Icon(Iconsax.direct_right),
                 labelText: CTexts.email,
               ),
+              validator: (value) {
+                return CValidator.validateEmail(value);
+              },
             ),
 
             const SizedBox(
@@ -36,16 +44,35 @@ class LoginForm extends StatelessWidget {
             ),
 
             // -- password field --
-            TextFormField(
-              style: const TextStyle(
-                height: 0.7,
-              ),
-              decoration: const InputDecoration(
-                prefixIcon: Icon(Iconsax.password_check),
-                labelText: CTexts.password,
-                suffixIcon: Icon(Iconsax.eye_slash),
+            Obx(
+              () => TextFormField(
+                controller: loginController.password,
+                obscureText: loginController.hidePswdTxt.value,
+                style: const TextStyle(
+                  height: 0.8,
+                ),
+                decoration: InputDecoration(
+                  labelText: CTexts.password,
+                  prefixIcon: const Icon(Iconsax.password_check),
+                  suffixIcon: IconButton(
+                    onPressed: () {
+                      loginController.hidePswdTxt.value =
+                          !loginController.hidePswdTxt.value;
+                    },
+                    icon: Icon(
+                      loginController.hidePswdTxt.value
+                          ? Iconsax.eye_slash
+                          : Iconsax.eye,
+                      color: loginController.hidePswdTxt.value
+                          ? CColors.grey
+                          : CColors.rBrown,
+                    ),
+                  ),
+                ),
+                validator: (value) => CValidator.validatePassword(value),
               ),
             ),
+
             const SizedBox(
               height: CSizes.spaceBtnInputFields / 2,
             ),
@@ -57,9 +84,14 @@ class LoginForm extends StatelessWidget {
                 // -- remember me
                 Row(
                   children: [
-                    Checkbox(
-                      value: true,
-                      onChanged: (value) {},
+                    Obx(
+                      () => Checkbox(
+                        value: loginController.rememberMe.value,
+                        onChanged: (value) {
+                          loginController.rememberMe.value =
+                              !loginController.rememberMe.value;
+                        },
+                      ),
                     ),
                     Text(
                       CTexts.rememberMe,
@@ -89,7 +121,7 @@ class LoginForm extends StatelessWidget {
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
-                  Get.to(() => const NavMenu());
+                  loginController.emailAndPasswdSignIn();
                 },
                 child: Text(
                   CTexts.signIn.toUpperCase(),

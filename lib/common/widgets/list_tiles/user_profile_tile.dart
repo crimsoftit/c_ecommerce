@@ -2,7 +2,7 @@ import 'package:duara_ecommerce/common/widgets/custom_shapes/containers/rounded_
 import 'package:duara_ecommerce/common/widgets/img_widgets/c_circular_img.dart';
 import 'package:duara_ecommerce/utils/constants/colors.dart';
 import 'package:duara_ecommerce/utils/constants/image_strings.dart';
-import 'package:duara_ecommerce/utils/constants/text_strings.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -16,6 +16,7 @@ class CUserProfileTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final currentUser = FirebaseAuth.instance.currentUser;
     return ListTile(
       leading: CRoundedContainer(
         showBorder: true,
@@ -35,7 +36,7 @@ class CUserProfileTile extends StatelessWidget {
             ),
       ),
       subtitle: Text(
-        CTexts.homeAppbarSubTitle,
+        currentUser!.email ?? '',
         style: Theme.of(context).textTheme.headlineSmall!.apply(
               color: CColors.white,
               fontSizeFactor: 0.6,

@@ -3,11 +3,13 @@ import 'package:duara_ecommerce/common/widgets/custom_shapes/containers/primary_
 import 'package:duara_ecommerce/common/widgets/list_tiles/settings_menu_tile.dart';
 import 'package:duara_ecommerce/common/widgets/list_tiles/user_profile_tile.dart';
 import 'package:duara_ecommerce/common/widgets/text_widgets/section_headings.dart';
+import 'package:duara_ecommerce/data/repositories/auth/auth_repo.dart';
 import 'package:duara_ecommerce/features/personalization/screens/addresses/addresses.dart';
 import 'package:duara_ecommerce/features/personalization/screens/profile/profile.dart';
 import 'package:duara_ecommerce/features/shop/screens/orders/orders.dart';
 import 'package:duara_ecommerce/utils/constants/colors.dart';
 import 'package:duara_ecommerce/utils/constants/sizes.dart';
+import 'package:duara_ecommerce/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -17,6 +19,8 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkTheme = CHelperFunctions.isDarkMode(context);
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -159,6 +163,37 @@ class SettingsScreen extends StatelessWidget {
                       value: false,
                       activeColor: CColors.rBrown,
                       onChanged: (value) {},
+                    ),
+                  ),
+                  const Divider(),
+                  const SizedBox(
+                    height: CSizes.spaceBtnItems,
+                  ),
+
+                  Center(
+                    child: Row(
+                      children: [
+                        const Icon(
+                          Iconsax.logout,
+                          size: 28.0,
+                          color: CColors.primaryBrown,
+                        ),
+                        const SizedBox(
+                          width: CSizes.spaceBtnInputFields,
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            AuthRepo.instance.logout();
+                          },
+                          child: Text(
+                            'log out',
+                            style: TextStyle(
+                              color:
+                                  isDarkTheme ? CColors.grey : CColors.darkGrey,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],

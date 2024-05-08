@@ -98,7 +98,7 @@ class CPopupSnackBar {
       colorText: CColors.white,
       backgroundColor: Colors.red.shade600,
       snackPosition: SnackPosition.BOTTOM,
-      duration: const Duration(seconds: 10),
+      duration: const Duration(seconds: 5),
       margin: const EdgeInsets.all(20.0),
       icon: const Icon(
         Iconsax.warning_2,
