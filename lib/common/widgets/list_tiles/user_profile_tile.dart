@@ -17,6 +17,7 @@ class CUserProfileTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final currentUser = FirebaseAuth.instance.currentUser;
+
     return ListTile(
       leading: CRoundedContainer(
         showBorder: true,
