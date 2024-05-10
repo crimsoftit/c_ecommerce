@@ -38,9 +38,12 @@ class CNetworkManager extends GetxController {
   Future<void> _updateConnectionStatus(ConnectivityResult result) async {
     _connectionStatus.value = result;
     if (result == ConnectivityResult.none) {
-      CPopupSnackBar.warningSnackBar(
-        title: 'check your internet connection',
+      CPopupSnackBar.customToast(
+        message: 'please check your internet connection...',
       );
+      // CPopupSnackBar.warningSnackBar(
+      //   title: 'check your internet connection',
+      // );
     }
   }
 

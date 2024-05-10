@@ -6,7 +6,6 @@ class CUserModel {
   final String email;
   String phoneNo;
   String profPic;
-  String password;
 
   CUserModel({
     required this.id,
@@ -14,20 +13,19 @@ class CUserModel {
     required this.email,
     required this.phoneNo,
     required this.profPic,
-    required this.password,
   });
 
+  // === static function to split fullName into 1st & last names ===
+  static List<String> nameParts(fullName) => fullName.split(" ");
+
   // === static function to create an empty user model ===
-  static CUserModel empty() {
-    return CUserModel(
-      id: '',
-      fullName: '',
-      email: '',
-      phoneNo: '',
-      profPic: '',
-      password: '',
-    );
-  }
+  static CUserModel empty() => CUserModel(
+        id: '',
+        fullName: '',
+        email: '',
+        phoneNo: '',
+        profPic: '',
+      );
 
   // to make it readable to firebase
   Map<String, dynamic> toJson() {
@@ -36,7 +34,6 @@ class CUserModel {
       "Email": email,
       "PhoneNo": phoneNo,
       "ProfPic": profPic,
-      "Password": password,
     };
   }
 
@@ -50,7 +47,6 @@ class CUserModel {
       email: data["Email"],
       phoneNo: data["PhoneNo"],
       profPic: data["ProfPic"],
-      password: data["Password"],
     );
     // if (document.data() != null) {
 

@@ -68,7 +68,7 @@ class SignupScreen extends StatelessWidget {
               ),
 
               // -- footer --
-              const RSocialButtons(),
+              const CSocialButtons(),
             ],
           ),
         ),

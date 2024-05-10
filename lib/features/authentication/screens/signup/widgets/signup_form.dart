@@ -4,6 +4,7 @@ import 'package:duara_ecommerce/utils/constants/colors.dart';
 import 'package:duara_ecommerce/utils/constants/sizes.dart';
 import 'package:duara_ecommerce/utils/constants/text_strings.dart';
 import 'package:duara_ecommerce/utils/validators/validation.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -89,7 +90,7 @@ class RSignupForm extends StatelessWidget {
               //print(controller.cell_no.value);
             },
             onCountryChanged: (country) {
-              print('country changed to: ${country.dialCode}');
+              if (kDebugMode) print('country changed to: ${country.dialCode}');
             },
             validator: (phone) =>
                 CValidator.validatePhoneNumber(phone.toString()),

@@ -2,6 +2,7 @@ import 'package:duara_ecommerce/features/authentication/screens/login/login.dart
 import 'package:duara_ecommerce/features/authentication/screens/onboarding/onboarding_screen.dart';
 import 'package:duara_ecommerce/features/authentication/screens/signup/verify_email.dart';
 import 'package:duara_ecommerce/nav_menu.dart';
+import 'package:duara_ecommerce/utils/exceptions/exceptions.dart';
 import 'package:duara_ecommerce/utils/exceptions/firebase_auth_exceptions.dart';
 import 'package:duara_ecommerce/utils/exceptions/firebase_exceptions.dart';
 import 'package:duara_ecommerce/utils/exceptions/format_exceptions.dart';
@@ -12,6 +13,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthRepo extends GetxController {
   static AuthRepo get instance => Get.find();
@@ -19,6 +21,7 @@ class AuthRepo extends GetxController {
   // -- variables --
   final deviceStorage = GetStorage();
   final _auth = FirebaseAuth.instance;
+  static User? user = FirebaseAuth.instance.currentUser;
 
   // -- called from main.dart on app launch --
   @override
@@ -181,12 +184,57 @@ class AuthRepo extends GetxController {
   /* ===== federated identity & social media sign-in ===== */
 
   /// -- [GoogleAuthentication] - GOOGLE --
+  Future<UserCredential> loginInWithGoogle() async {
+    try {
+      // trigger the authentication flow
+      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+
+      // obtain the auth details from the request
+      final GoogleSignInAuthentication? googleAuth =
+          await googleUser?.authentication;
+
+      // create a new credential
+      final credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth?.accessToken,
+        idToken: googleAuth?.idToken,
+      );
+
+      // once signed in, return the UserCredential Object(class)
+      return await FirebaseAuth.instance.signInWithCredential(credential);
+    } on FirebaseAuthException catch (e) {
+      final exception = CExceptions.fromCode(e.code);
+      CPopupSnackBar.customToast(message: 'AUTH ERROR!');
+      throw exception.message;
+    } catch (_) {
+      const exception = CExceptions();
+      CPopupSnackBar.customToast(message: 'AUTH ERROR!');
+      throw exception.message;
+    }
+  }
+
+  Future<User?> signInWithGoogle() async {
+    final googleAccount = await GoogleSignIn().signIn();
+
+    final googleAuth = await googleAccount?.authentication;
+
+    final credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth?.accessToken,
+      idToken: googleAuth?.idToken,
+    );
+
+    final userCredential = await FirebaseAuth.instance.signInWithCredential(
+      credential,
+    );
+    return userCredential.user;
+  }
+
   /// -- [FacebookAuthentication] - FACEBOOK --
 
   /* ===== ./end federated identity & social media sign-in ===== */
   /// -- [LogoutUser] - valid for any authentication --
   Future<void> logout() async {
     try {
+      await GoogleSignIn().signOut();
       await _auth.signOut();
       Get.offAll(() => const LoginScreen());
     } on FirebaseAuthException catch (e) {
