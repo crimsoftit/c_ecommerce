@@ -1,4 +1,4 @@
-import 'package:duara_ecommerce/data/repositories/auth/user/user_repo.dart';
+import 'package:duara_ecommerce/data/repositories/user/user_repo.dart';
 import 'package:duara_ecommerce/features/personalization/models/user_model.dart';
 import 'package:duara_ecommerce/utils/popups/snackbars.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -9,7 +9,25 @@ class CUserController extends GetxController {
 
   final userRepo = Get.put(CUserRepo());
 
-  /// save user details from any reg/authentication provide
+  Rx<CUserModel> user = CUserModel.empty().obs;
+
+  @override
+  void onInit() {
+    super.onInit();
+    fetchUserDetails();
+  }
+
+  /// fetch user details
+  Future<void> fetchUserDetails() async {
+    try {
+      final user = await userRepo.fetchUserDetails();
+      this.user(user);
+    } catch (e) {
+      user(CUserModel.empty());
+    }
+  }
+
+  /// save user details from any reg/authentication provider
   Future<void> saveUserDetails(UserCredential? userCredentials) async {
     try {
       if (userCredentials != null) {

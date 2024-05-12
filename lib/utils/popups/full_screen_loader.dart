@@ -23,7 +23,7 @@ class CFullScreenLoader {
         canPop: false, // disable popping with the back button
         child: Container(
           color: CHelperFunctions.isDarkMode(Get.context!)
-              ? CColors.dark
+              ? CColors.rBrown
               : CColors.rBrown.withOpacity(0.1),
           width: double.infinity,
           height: double.infinity,

@@ -1,7 +1,9 @@
 import 'package:duara_ecommerce/common/styles/spacing_styles.dart';
+import 'package:duara_ecommerce/features/personalization/controllers/user_controller.dart';
 import 'package:duara_ecommerce/utils/constants/colors.dart';
 import 'package:duara_ecommerce/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
 class SuccessScreen extends StatelessWidget {
@@ -18,6 +20,8 @@ class SuccessScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final userController = Get.put(CUserController());
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
@@ -43,12 +47,14 @@ class SuccessScreen extends StatelessWidget {
               const SizedBox(
                 height: CSizes.spaceBtnItems,
               ),
-              Text(
-                'crimsoftit@gmail.com',
-                style: Theme.of(context).textTheme.labelMedium!.apply(
-                      color: CColors.darkerGrey,
-                    ),
-                textAlign: TextAlign.center,
+              Obx(
+                () => Text(
+                  userController.user.value.email,
+                  style: Theme.of(context).textTheme.labelMedium!.apply(
+                        color: CColors.grey,
+                      ),
+                  textAlign: TextAlign.center,
+                ),
               ),
               const SizedBox(
                 height: CSizes.spaceBtnItems,

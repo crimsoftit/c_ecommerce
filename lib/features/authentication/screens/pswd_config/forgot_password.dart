@@ -1,7 +1,8 @@
-import 'package:duara_ecommerce/features/authentication/screens/pswd_config/reset_password.dart';
+import 'package:duara_ecommerce/features/authentication/controllers/forgot_password/forgot_pswd_controller.dart';
 import 'package:duara_ecommerce/utils/constants/colors.dart';
 import 'package:duara_ecommerce/utils/constants/sizes.dart';
 import 'package:duara_ecommerce/utils/constants/text_strings.dart';
+import 'package:duara_ecommerce/utils/validators/validation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -11,6 +12,8 @@ class ForgotPasswordScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final forgotPswdController = Get.put(ForgotPasswordController());
+
     return Scaffold(
       appBar: AppBar(),
       body: Padding(
@@ -39,13 +42,18 @@ class ForgotPasswordScreen extends StatelessWidget {
             ),
 
             // -- email textfield --
-            TextFormField(
-              style: const TextStyle(
-                height: 0.7,
-              ),
-              decoration: const InputDecoration(
-                prefixIcon: Icon(Iconsax.direct_right),
-                labelText: CTexts.email,
+            Form(
+              key: forgotPswdController.forgotPswdFormKey,
+              child: TextFormField(
+                controller: forgotPswdController.email,
+                style: const TextStyle(
+                  height: 0.7,
+                ),
+                decoration: const InputDecoration(
+                  prefixIcon: Icon(Iconsax.direct_right),
+                  labelText: CTexts.email,
+                ),
+                validator: CValidator.validateEmail,
               ),
             ),
 
@@ -58,7 +66,7 @@ class ForgotPasswordScreen extends StatelessWidget {
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
-                  Get.offAll(() => const ResetPasswordScreen());
+                  forgotPswdController.sendPasswordResetEmail();
                 },
                 child: Text(
                   'Submit',

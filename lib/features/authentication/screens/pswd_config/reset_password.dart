@@ -1,3 +1,5 @@
+import 'package:duara_ecommerce/features/authentication/controllers/forgot_password/forgot_pswd_controller.dart';
+import 'package:duara_ecommerce/features/authentication/screens/login/login.dart';
 import 'package:duara_ecommerce/utils/constants/colors.dart';
 import 'package:duara_ecommerce/utils/constants/image_strings.dart';
 import 'package:duara_ecommerce/utils/constants/sizes.dart';
@@ -8,7 +10,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ResetPasswordScreen extends StatelessWidget {
-  const ResetPasswordScreen({super.key});
+  const ResetPasswordScreen({
+    super.key,
+    required this.email,
+  });
+
+  final String email;
 
   @override
   Widget build(BuildContext context) {
@@ -38,17 +45,9 @@ class ResetPasswordScreen extends StatelessWidget {
                 height: CSizes.spaceBtnSections,
               ),
 
-              // -- title & subtitle --
+              // -- email, title & subtitle --
               Text(
-                CTexts.resetPswdTitle,
-                style: Theme.of(context).textTheme.headlineSmall,
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(
-                height: CSizes.spaceBtnItems,
-              ),
-              Text(
-                'crimsoftit@gmail.com',
+                email,
                 style: Theme.of(context).textTheme.labelMedium!.apply(
                       color: CColors.darkerGrey,
                     ),
@@ -57,6 +56,15 @@ class ResetPasswordScreen extends StatelessWidget {
               const SizedBox(
                 height: CSizes.spaceBtnItems,
               ),
+              Text(
+                CTexts.resetPswdTitle,
+                style: Theme.of(context).textTheme.headlineSmall,
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(
+                height: CSizes.spaceBtnItems,
+              ),
+
               Text(
                 CTexts.resetPswdSubTitle,
                 style: Theme.of(context).textTheme.labelMedium!.apply(
@@ -72,7 +80,9 @@ class ResetPasswordScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.offAll(() => const LoginScreen());
+                  },
                   child: Text(
                     'Done',
                     style: Theme.of(context).textTheme.labelMedium?.apply(
@@ -86,10 +96,15 @@ class ResetPasswordScreen extends StatelessWidget {
                 height: CSizes.spaceBtnItems,
               ),
 
+              // -- resend password reset link button
+
               SizedBox(
                 width: double.infinity,
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    ForgotPasswordController.instance
+                        .resendPasswordResetEmail(email);
+                  },
                   child: Text(
                     CTexts.resendEmail,
                     style: Theme.of(context).textTheme.labelMedium,

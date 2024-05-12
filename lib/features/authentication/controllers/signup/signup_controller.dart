@@ -1,5 +1,5 @@
 import 'package:duara_ecommerce/data/repositories/auth/auth_repo.dart';
-import 'package:duara_ecommerce/data/repositories/auth/user/user_repo.dart';
+import 'package:duara_ecommerce/data/repositories/user/user_repo.dart';
 import 'package:duara_ecommerce/features/authentication/screens/signup/verify_email.dart';
 import 'package:duara_ecommerce/features/personalization/models/user_model.dart';
 import 'package:duara_ecommerce/utils/constants/image_strings.dart';
@@ -40,6 +40,9 @@ class SignupController extends GetxController {
       if (!isConnected) {
         // -- remove loader
         CFullScreenLoader.stopLoading();
+        CPopupSnackBar.customToast(
+          message: 'please check your internet connection',
+        );
         return;
       }
 
@@ -47,6 +50,7 @@ class SignupController extends GetxController {
       if (!signupFormKey.currentState!.validate()) {
         // -- remove loader
         CFullScreenLoader.stopLoading();
+        return;
       }
 
       // -- privacy policy check

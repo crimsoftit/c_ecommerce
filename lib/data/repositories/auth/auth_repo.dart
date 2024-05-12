@@ -21,7 +21,9 @@ class AuthRepo extends GetxController {
   // -- variables --
   final deviceStorage = GetStorage();
   final _auth = FirebaseAuth.instance;
-  static User? user = FirebaseAuth.instance.currentUser;
+
+  // -- get authenticated user data --
+  User? get authUser => _auth.currentUser;
 
   // -- called from main.dart on app launch --
   @override
@@ -180,6 +182,41 @@ class AuthRepo extends GetxController {
   /// -- [ReAuthenticate] - re-authenticate user --
 
   /// -- [EmailVerification] - forgot password --
+  Future<void> sendPasswordResetEmail(String email) async {
+    try {
+      await _auth.sendPasswordResetEmail(email: email);
+    } on FirebaseAuthException catch (e) {
+      CPopupSnackBar.errorSnackBar(
+        title: "firebaseAuth exception error",
+        message: e.code.toString(),
+      );
+      throw CFirebaseAuthExceptions(e.code).message;
+    } on FirebaseException catch (e) {
+      CPopupSnackBar.errorSnackBar(
+        title: "firebase exception error",
+        message: e.code.toString(),
+      );
+      throw CFirebaseAuthExceptions(e.code).message;
+    } on FormatException catch (e) {
+      CPopupSnackBar.errorSnackBar(
+        title: "platform exception error",
+        message: e.message,
+      );
+      throw CFormatExceptions(e.message);
+    } on PlatformException catch (e) {
+      CPopupSnackBar.errorSnackBar(
+        title: "platform exception error",
+        message: e.code.toString(),
+      );
+      throw CPlatformExceptions(e.code).message;
+    } catch (e) {
+      CPopupSnackBar.errorSnackBar(
+        title: "An error occurred",
+        message: e.toString(),
+      );
+      throw 'something went wrong! please try again!';
+    }
+  }
 
   /* ===== federated identity & social media sign-in ===== */
 

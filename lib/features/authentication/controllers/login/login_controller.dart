@@ -5,6 +5,7 @@ import 'package:duara_ecommerce/utils/helpers/network_manager.dart';
 import 'package:duara_ecommerce/utils/popups/full_screen_loader.dart';
 import 'package:duara_ecommerce/utils/popups/snackbars.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -45,6 +46,9 @@ class CLoginController extends GetxController {
       final isConnected = await CNetworkManager.instance.isConnected();
       if (!isConnected) {
         CFullScreenLoader.stopLoading();
+        CPopupSnackBar.customToast(
+          message: 'please check your internet connection',
+        );
         return;
       }
 
@@ -115,7 +119,7 @@ class CLoginController extends GetxController {
       // -- redirect to the relevant screen
       AuthRepo.instance.screenRedirect();
     } on FirebaseAuthException catch (error) {
-      print(error.message);
+      if (kDebugMode) print(error.message);
       CPopupSnackBar.errorSnackBar(
         title: 'Oh Snap!',
         message: error.toString(),

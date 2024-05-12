@@ -69,7 +69,7 @@ class LoginForm extends StatelessWidget {
                     ),
                   ),
                 ),
-                validator: (value) => CValidator.validatePassword(value),
+                //validator: (value) => CValidator.validatePassword(value),
               ),
             ),
 
