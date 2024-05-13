@@ -2,12 +2,15 @@ import 'package:duara_ecommerce/common/widgets/appbar/appbar.dart';
 import 'package:duara_ecommerce/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:duara_ecommerce/common/widgets/img_widgets/c_circular_img.dart';
 import 'package:duara_ecommerce/common/widgets/text_widgets/section_headings.dart';
+import 'package:duara_ecommerce/features/personalization/controllers/user_controller.dart';
 import 'package:duara_ecommerce/features/personalization/screens/profile/widgets/c_profile_menu.dart';
+import 'package:duara_ecommerce/features/personalization/screens/profile/widgets/update_name.dart';
 import 'package:duara_ecommerce/utils/constants/colors.dart';
 import 'package:duara_ecommerce/utils/constants/image_strings.dart';
 import 'package:duara_ecommerce/utils/constants/sizes.dart';
 import 'package:duara_ecommerce/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -16,6 +19,8 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDarkTheme = CHelperFunctions.isDarkMode(context);
+    final userController = Get.put(CUserController());
+
     return Scaffold(
       appBar: CAppBar(
         showBackArrow: true,
@@ -98,9 +103,11 @@ class ProfileScreen extends StatelessWidget {
                     ),
 
                     CProfileMenu(
-                      title: 'business name',
-                      value: 'crimsoft inc.',
-                      onTap: () {},
+                      title: 'name',
+                      value: userController.user.value.fullName,
+                      onTap: () {
+                        Get.to(() => const CUpdateName());
+                      },
                     ),
 
                     CProfileMenu(
@@ -130,18 +137,18 @@ class ProfileScreen extends StatelessWidget {
 
                     CProfileMenu(
                       title: 'user id',
-                      value: '30010010',
+                      value: userController.user.value.id,
                       icon: Iconsax.copy,
                       onTap: () {},
                     ),
                     CProfileMenu(
                       title: 'e-mail',
-                      value: 'crimsoft47@gmail.com',
+                      value: userController.user.value.email,
                       onTap: () {},
                     ),
                     CProfileMenu(
                       title: 'phone no.',
-                      value: '+254 746 683 781',
+                      value: userController.user.value.phoneNo,
                       onTap: () {},
                     ),
                     CProfileMenu(

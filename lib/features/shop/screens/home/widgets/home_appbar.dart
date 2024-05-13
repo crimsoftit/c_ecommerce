@@ -1,4 +1,5 @@
 import 'package:duara_ecommerce/common/widgets/appbar/appbar.dart';
+import 'package:duara_ecommerce/common/widgets/loaders/shimmer_effect.dart';
 import 'package:duara_ecommerce/common/widgets/products/cart/cart_menu_icon.dart';
 import 'package:duara_ecommerce/features/personalization/controllers/user_controller.dart';
 import 'package:duara_ecommerce/utils/constants/colors.dart';
@@ -26,15 +27,23 @@ class CHomeAppBarWidget extends StatelessWidget {
                   color: CColors.grey,
                 ),
           ),
-          Obx(
-            () => Text(
-              userController.user.value.fullName,
-              style: Theme.of(context).textTheme.headlineSmall!.apply(
-                    color: CColors.white,
-                    fontSizeFactor: 0.7,
-                  ),
-            ),
-          ),
+          Obx(() {
+            if (userController.profileLoading.value) {
+              // -- display a shimmer loader effect while loading user profile
+              return const CShimmerEffect(
+                width: 80.0,
+                height: 15.0,
+              );
+            } else {
+              return Text(
+                userController.user.value.fullName,
+                style: Theme.of(context).textTheme.headlineSmall!.apply(
+                      color: CColors.white,
+                      fontSizeFactor: 0.7,
+                    ),
+              );
+            }
+          }),
           // Text(
           //   userController.user.value.email,
           //   style: Theme.of(context).textTheme.headlineSmall!.apply(

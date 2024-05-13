@@ -49,7 +49,7 @@ class CProfileMenu extends StatelessWidget {
             ),
             Expanded(
               child: IconButton(
-                onPressed: () {},
+                onPressed: onTap,
                 icon: Icon(
                   icon,
                   size: 18.0,

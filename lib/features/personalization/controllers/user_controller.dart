@@ -8,7 +8,7 @@ class CUserController extends GetxController {
   static CUserController get instance => Get.find();
 
   final userRepo = Get.put(CUserRepo());
-
+  final profileLoading = false.obs;
   Rx<CUserModel> user = CUserModel.empty().obs;
 
   @override
@@ -20,10 +20,14 @@ class CUserController extends GetxController {
   /// fetch user details
   Future<void> fetchUserDetails() async {
     try {
+      profileLoading.value = true;
       final user = await userRepo.fetchUserDetails();
       this.user(user);
+      //profileLoading.value = false;
     } catch (e) {
       user(CUserModel.empty());
+    } finally {
+      profileLoading.value = false;
     }
   }
 
