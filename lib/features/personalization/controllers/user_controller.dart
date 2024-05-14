@@ -1,15 +1,30 @@
+import 'package:duara_ecommerce/data/repositories/auth/auth_repo.dart';
 import 'package:duara_ecommerce/data/repositories/user/user_repo.dart';
+import 'package:duara_ecommerce/features/authentication/screens/login/login.dart';
 import 'package:duara_ecommerce/features/personalization/models/user_model.dart';
+import 'package:duara_ecommerce/features/personalization/screens/profile/widgets/re_authenticate_user_login_form.dart';
+import 'package:duara_ecommerce/utils/constants/image_strings.dart';
+import 'package:duara_ecommerce/utils/constants/sizes.dart';
+import 'package:duara_ecommerce/utils/helpers/network_manager.dart';
+import 'package:duara_ecommerce/utils/popups/full_screen_loader.dart';
 import 'package:duara_ecommerce/utils/popups/snackbars.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class CUserController extends GetxController {
   static CUserController get instance => Get.find();
 
-  final userRepo = Get.put(CUserRepo());
   final profileLoading = false.obs;
   Rx<CUserModel> user = CUserModel.empty().obs;
+
+  final hidePassword = true.obs;
+  final verifyEmail = TextEditingController();
+  final verifyPassword = TextEditingController();
+  final userRepo = Get.put(CUserRepo());
+  GlobalKey<FormState> reAuthFormKey = GlobalKey<FormState>();
+
+  final auth = AuthRepo.instance;
 
   @override
   void onInit() {
@@ -17,7 +32,7 @@ class CUserController extends GetxController {
     fetchUserDetails();
   }
 
-  /// fetch user details
+  /// -- fetch user details --
   Future<void> fetchUserDetails() async {
     try {
       profileLoading.value = true;
@@ -31,7 +46,7 @@ class CUserController extends GetxController {
     }
   }
 
-  /// save user details from any reg/authentication provider
+  /// -- save user details from any reg/authentication  provider --
   Future<void> saveUserDetails(UserCredential? userCredentials) async {
     try {
       if (userCredentials != null) {
@@ -56,6 +71,117 @@ class CUserController extends GetxController {
         title: 'login details not saved!',
         message:
             'something went wrong while saving your login info! you can re-save your info in your profile.',
+      );
+    }
+  }
+
+  /// -- delete account warning popup snackbar --
+  void deleteAccountWarningPopup() {
+    Get.defaultDialog(
+      contentPadding: const EdgeInsets.all(CSizes.md),
+      title: 'Delete account?',
+      middleText:
+          'Are you certain you want to permanently delete your account? This action can\'t be undone and all of your data will be removed permanently!',
+      confirm: ElevatedButton(
+        onPressed: () async {
+          deleteUserAccount();
+        },
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.red,
+          side: const BorderSide(
+            color: Colors.red,
+          ),
+        ),
+        child: const Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: CSizes.lg,
+          ),
+          child: Text('delete'),
+        ),
+      ),
+      cancel: OutlinedButton(
+        onPressed: () {
+          Navigator.of(Get.overlayContext!).pop();
+        },
+        child: const Text('cancel'),
+      ),
+    );
+  }
+
+  /// -- re-authenticate user before deleting --
+  Future<void> reAuthEmailAndPasswordUser() async {
+    try {
+      CFullScreenLoader.openLoadingDialog(
+        'processing...',
+        CImages.docerAnimation,
+      );
+
+      // check internet connectivity
+      final isConnected = await CNetworkManager.instance.isConnected();
+      if (!isConnected) {
+        CFullScreenLoader.stopLoading();
+        return;
+      }
+
+      // validate form
+      if (!reAuthFormKey.currentState!.validate()) {
+        CFullScreenLoader.stopLoading();
+        return;
+      }
+
+      await auth.reAuthWithEmailAndPassword(
+        verifyEmail.text.trim(),
+        verifyPassword.text.trim(),
+      );
+      await auth.deleteAccount();
+      CFullScreenLoader.stopLoading();
+      Get.offAll(() => const LoginScreen());
+    } catch (e) {
+      CFullScreenLoader.stopLoading();
+      CPopupSnackBar.errorSnackBar(
+        title: 'Oh Snap!',
+        message: e.toString(),
+      );
+    }
+  }
+
+  /// -- delete user account --
+  void deleteUserAccount() async {
+    try {
+      CFullScreenLoader.openLoadingDialog(
+        'processing...',
+        CImages.docerAnimation,
+      );
+
+      // -- re-authenticate user first
+      final auth = AuthRepo.instance;
+      final provider =
+          auth.authUser!.providerData.map((e) => e.providerId).first;
+
+      if (provider.isNotEmpty) {
+        // re-verify auth email
+        if (provider == 'google.com') {
+          await auth.loginInWithGoogle();
+          await auth.deleteAccount();
+          CFullScreenLoader.stopLoading();
+          Get.offAll(() => const LoginScreen());
+        } else if (provider == 'password') {
+          CFullScreenLoader.stopLoading();
+          Get.to(() => const CReAuthLoginForm());
+        }
+      } else {
+        CFullScreenLoader.stopLoading();
+        CPopupSnackBar.warningSnackBar(
+          title: "No Provider!",
+          message: 'auth provider not found!',
+        );
+        return;
+      }
+    } catch (e) {
+      CFullScreenLoader.stopLoading();
+      CPopupSnackBar.errorSnackBar(
+        title: "Oh Snap!",
+        message: e.toString(),
       );
     }
   }

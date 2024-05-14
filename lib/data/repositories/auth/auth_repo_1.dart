@@ -1,4 +1,3 @@
-import 'package:duara_ecommerce/data/repositories/user/user_repo.dart';
 import 'package:duara_ecommerce/features/authentication/screens/login/login.dart';
 import 'package:duara_ecommerce/features/authentication/screens/onboarding/onboarding_screen.dart';
 import 'package:duara_ecommerce/features/authentication/screens/signup/verify_email.dart';
@@ -282,7 +281,7 @@ class AuthRepo extends GetxController {
       return await FirebaseAuth.instance.signInWithCredential(credential);
     } on FirebaseAuthException catch (e) {
       final exception = CExceptions.fromCode(e.code);
-      CPopupSnackBar.customToast(message: 'FIREBASE AUTH ERROR!');
+      CPopupSnackBar.customToast(message: 'AUTH ERROR!');
       throw exception.message;
     } catch (_) {
       const exception = CExceptions();
@@ -291,21 +290,21 @@ class AuthRepo extends GetxController {
     }
   }
 
-  // Future<User?> signInWithGoogle() async {
-  //   final googleAccount = await GoogleSignIn().signIn();
+  Future<User?> signInWithGoogle() async {
+    final googleAccount = await GoogleSignIn().signIn();
 
-  //   final googleAuth = await googleAccount?.authentication;
+    final googleAuth = await googleAccount?.authentication;
 
-  //   final credential = GoogleAuthProvider.credential(
-  //     accessToken: googleAuth?.accessToken,
-  //     idToken: googleAuth?.idToken,
-  //   );
+    final credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth?.accessToken,
+      idToken: googleAuth?.idToken,
+    );
 
-  //   final userCredential = await FirebaseAuth.instance.signInWithCredential(
-  //     credential,
-  //   );
-  //   return userCredential.user;
-  // }
+    final userCredential = await FirebaseAuth.instance.signInWithCredential(
+      credential,
+    );
+    return userCredential.user;
+  }
 
   /// -- [FacebookAuthentication] - FACEBOOK --
 
@@ -333,25 +332,7 @@ class AuthRepo extends GetxController {
     }
   }
 
-  /// -- remove user Auth & Firestore account --
-  Future<void> deleteAccount() async {
-    try {
-      await CUserRepo.instance.deleteUserRecord(_auth.currentUser!.uid);
-      await _auth.currentUser?.delete();
-    } on FirebaseAuthException catch (e) {
-      throw CFirebaseAuthExceptions(e.code).message;
-    } on FirebaseException catch (e) {
-      throw CFirebaseExceptions(e.code).message;
-    } on FormatException catch (e) {
-      throw CFormatExceptions(e.message);
-    } on PlatformException catch (e) {
-      throw CPlatformExceptions(e.code).message;
-    } catch (e) {
-      CPopupSnackBar.errorSnackBar(
-        title: 'unknown error!',
-        message: e.toString(),
-      );
-      throw 'something went wrong! please try again later';
-    }
-  }
+  /// -- re-authenticate user --
+
+  /// -- [DeleteUser] - remove user Auth & Firestore account --
 }
