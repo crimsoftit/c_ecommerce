@@ -11,11 +11,13 @@ import 'package:duara_ecommerce/utils/popups/snackbars.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
 class CUserController extends GetxController {
   static CUserController get instance => Get.find();
 
   final profileLoading = false.obs;
+  final imgUploading = false.obs;
   Rx<CUserModel> user = CUserModel.empty().obs;
 
   final hidePassword = true.obs;
@@ -49,22 +51,29 @@ class CUserController extends GetxController {
   /// -- save user details from any reg/authentication  provider --
   Future<void> saveUserDetails(UserCredential? userCredentials) async {
     try {
-      if (userCredentials != null) {
-        // -- map user data
-        final user = CUserModel(
-          id: userCredentials.user!.uid,
-          fullName: userCredentials.user!.displayName ?? '',
-          email: userCredentials.user!.email ?? '',
-          phoneNo: userCredentials.user!.phoneNumber ?? '',
-          profPic: userCredentials.user!.photoURL ?? '',
-        );
-        // -- save user data
-        await userRepo.saveUserDetails(user);
-      } else {
-        CPopupSnackBar.warningSnackBar(
-          title: 'userCredentials NULL',
-          message: 'userCredentials NULL',
-        );
+      // -- first update Rx User then check if user details are already stored. if not, store new data --
+      await fetchUserDetails();
+
+      // -- if no record is already stored for the user --
+      if (user.value.id.isEmpty) {
+        if (userCredentials != null) {
+          // -- map user data
+          final user = CUserModel(
+            id: userCredentials.user!.uid,
+            fullName: userCredentials.user!.displayName ?? '',
+            email: userCredentials.user!.email ?? '',
+            phoneNo: userCredentials.user!.phoneNumber ?? '',
+            profPic: userCredentials.user!.photoURL ?? '',
+          );
+
+          // -- save user data
+          await userRepo.saveUserDetails(user);
+        } else {
+          CPopupSnackBar.warningSnackBar(
+            title: 'userCredentials NULL',
+            message: 'userCredentials NULL',
+          );
+        }
       }
     } catch (e) {
       CPopupSnackBar.warningSnackBar(
@@ -135,6 +144,10 @@ class CUserController extends GetxController {
       );
       await auth.deleteAccount();
       CFullScreenLoader.stopLoading();
+      CPopupSnackBar.successSnackBar(
+        title: 'Account deleted',
+        message: 'your account was successfully deleted.',
+      );
       Get.offAll(() => const LoginScreen());
     } catch (e) {
       CFullScreenLoader.stopLoading();
@@ -183,6 +196,47 @@ class CUserController extends GetxController {
         title: "Oh Snap!",
         message: e.toString(),
       );
+    }
+  }
+
+  /// -- upload user's profile picture --
+  uploadUserProfPic() async {
+    try {
+      final img = await ImagePicker().pickImage(
+        source: ImageSource.gallery,
+        imageQuality: 70,
+        maxWidth: 512.0,
+        maxHeight: 512.0,
+      );
+
+      if (img != null) {
+        imgUploading.value = true;
+        // -- upload image
+        final imgUrl = await userRepo.uploadImage(
+          'users/images/profile',
+          img,
+        );
+
+        // -- update user profile picture data
+        Map<String, dynamic> json = {
+          'ProfPic': imgUrl,
+        };
+        await userRepo.updateSpecificUser(json);
+
+        user.value.profPic = imgUrl;
+        user.refresh();
+
+        CPopupSnackBar.successSnackBar(
+            title: 'congrats!',
+            message: 'your profile picture was updated successfully!');
+      }
+    } catch (e) {
+      CPopupSnackBar.errorSnackBar(
+        title: 'Oh Snap!',
+        message: 'an unknown error occurred: $e',
+      );
+    } finally {
+      imgUploading.value = false;
     }
   }
 }

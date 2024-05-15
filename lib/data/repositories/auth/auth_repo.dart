@@ -291,22 +291,6 @@ class AuthRepo extends GetxController {
     }
   }
 
-  // Future<User?> signInWithGoogle() async {
-  //   final googleAccount = await GoogleSignIn().signIn();
-
-  //   final googleAuth = await googleAccount?.authentication;
-
-  //   final credential = GoogleAuthProvider.credential(
-  //     accessToken: googleAuth?.accessToken,
-  //     idToken: googleAuth?.idToken,
-  //   );
-
-  //   final userCredential = await FirebaseAuth.instance.signInWithCredential(
-  //     credential,
-  //   );
-  //   return userCredential.user;
-  // }
-
   /// -- [FacebookAuthentication] - FACEBOOK --
 
   /* ===== ./end federated identity & social media sign-in ===== */

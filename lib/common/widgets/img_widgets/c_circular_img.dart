@@ -1,3 +1,5 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:duara_ecommerce/common/widgets/loaders/shimmer_effect.dart';
 import 'package:duara_ecommerce/utils/constants/colors.dart';
 import 'package:duara_ecommerce/utils/constants/sizes.dart';
 import 'package:duara_ecommerce/utils/helpers/helper_functions.dart';
@@ -35,13 +37,30 @@ class CCircularImg extends StatelessWidget {
             isDarkTheme ? CColors.rBrown.withOpacity(0.3) : Colors.transparent,
         borderRadius: BorderRadius.circular(100),
       ),
-      child: Center(
-        child: Image(
-          fit: fit,
-          image: isNetworkImg
-              ? NetworkImage(img)
-              : AssetImage(img) as ImageProvider,
-          color: overlayColor,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(100.0),
+        child: Center(
+          child: isNetworkImg
+              ? CachedNetworkImage(
+                  fit: fit,
+                  color: overlayColor,
+                  imageUrl: img,
+                  progressIndicatorBuilder: (context, url, progress) {
+                    return const CShimmerEffect(
+                      width: 55.0,
+                      height: 55.0,
+                      radius: 55.0,
+                    );
+                  },
+                  errorWidget: (context, url, error) {
+                    return const Icon(Icons.error);
+                  },
+                )
+              : Image(
+                  fit: fit,
+                  image: AssetImage(img),
+                  color: overlayColor,
+                ),
         ),
       ),
     );

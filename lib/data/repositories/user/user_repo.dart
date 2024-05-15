@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:duara_ecommerce/data/repositories/auth/auth_repo.dart';
 import 'package:duara_ecommerce/features/personalization/models/user_model.dart';
@@ -6,8 +8,10 @@ import 'package:duara_ecommerce/utils/exceptions/format_exceptions.dart';
 import 'package:duara_ecommerce/utils/exceptions/platform_exceptions.dart';
 import 'package:duara_ecommerce/utils/popups/snackbars.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
 class CUserRepo extends GetxController {
   static CUserRepo get instance => Get.find();
@@ -204,4 +208,42 @@ class CUserRepo extends GetxController {
   }
 
   /* == upload user profile pic (or any image) == */
+  Future<String> uploadImage(String imgPath, XFile imgFile) async {
+    try {
+      final ref = FirebaseStorage.instance.ref(imgPath).child(imgFile.name);
+      await ref.putFile(File(imgFile.path));
+      final url = await ref.getDownloadURL();
+      return url;
+    } on FirebaseAuthException catch (e) {
+      CPopupSnackBar.errorSnackBar(
+        title: "firebaseAuth exception error",
+        message: e.code.toString(),
+      );
+      throw CFirebaseAuthExceptions(e.code).message;
+    } on FirebaseException catch (e) {
+      CPopupSnackBar.errorSnackBar(
+        title: "firebase exception error",
+        message: e.code.toString(),
+      );
+      throw CFirebaseAuthExceptions(e.code).message;
+    } on FormatException catch (e) {
+      CPopupSnackBar.errorSnackBar(
+        title: "platform exception error",
+        message: e.message,
+      );
+      throw CFormatExceptions(e.message);
+    } on PlatformException catch (e) {
+      CPopupSnackBar.errorSnackBar(
+        title: "platform exception error",
+        message: e.code.toString(),
+      );
+      throw CPlatformExceptions(e.code).message;
+    } catch (e) {
+      CPopupSnackBar.errorSnackBar(
+        title: "An error occurred",
+        message: e.toString(),
+      );
+      throw 'something went wrong! please try again!';
+    }
+  }
 }

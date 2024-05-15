@@ -1,6 +1,7 @@
 import 'package:duara_ecommerce/common/widgets/appbar/appbar.dart';
 import 'package:duara_ecommerce/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:duara_ecommerce/common/widgets/img_widgets/c_circular_img.dart';
+import 'package:duara_ecommerce/common/widgets/loaders/shimmer_effect.dart';
 import 'package:duara_ecommerce/common/widgets/text_widgets/section_headings.dart';
 import 'package:duara_ecommerce/features/personalization/controllers/user_controller.dart';
 import 'package:duara_ecommerce/features/personalization/screens/profile/widgets/c_profile_menu.dart';
@@ -48,11 +49,28 @@ class ProfileScreen extends StatelessWidget {
                       borderColor: CColors.rBrown.withOpacity(0.3),
                       child: Stack(
                         children: [
-                          const CCircularImg(
-                            img: CImages.user,
-                            width: 60.0,
-                            height: 60.0,
-                            padding: 10.0,
+                          Obx(
+                            () {
+                              final networkImg =
+                                  userController.user.value.profPic;
+                              final dpImg = networkImg.isNotEmpty
+                                  ? networkImg
+                                  : CImages.user;
+
+                              return userController.imgUploading.value
+                                  ? const CShimmerEffect(
+                                      width: 80.0,
+                                      height: 80.0,
+                                      radius: 80.0,
+                                    )
+                                  : CCircularImg(
+                                      img: dpImg,
+                                      width: 80.0,
+                                      height: 80.0,
+                                      padding: 10.0,
+                                      isNetworkImg: networkImg.isNotEmpty,
+                                    );
+                            },
                           ),
                           Positioned(
                             right: 2,
@@ -61,11 +79,15 @@ class ProfileScreen extends StatelessWidget {
                               width: 20,
                               height: 20,
                               child: IconButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  userController.uploadUserProfPic();
+                                },
                                 icon: Icon(
                                   Iconsax.edit,
                                   size: 18.0,
-                                  color: CColors.rBrown.withOpacity(0.6),
+                                  color: isDarkTheme
+                                      ? CColors.white
+                                      : CColors.rBrown.withOpacity(0.6),
                                 ),
                               ),
                             ),
@@ -76,11 +98,16 @@ class ProfileScreen extends StatelessWidget {
                     const SizedBox(
                       height: CSizes.spaceBtnItems / 4,
                     ),
-                    Text(
-                      'Retail Intelligence',
-                      style: Theme.of(context).textTheme.labelMedium!.apply(
-                            color: CColors.darkGrey,
-                          ),
+                    TextButton(
+                      onPressed: () {
+                        userController.uploadUserProfPic();
+                      },
+                      child: Text(
+                        'change profile picture',
+                        style: Theme.of(context).textTheme.labelMedium!.apply(
+                              color: CColors.darkGrey,
+                            ),
+                      ),
                     ),
 
                     const SizedBox(
