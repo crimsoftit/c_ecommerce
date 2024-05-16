@@ -1,6 +1,6 @@
 import 'package:duara_ecommerce/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:duara_ecommerce/common/widgets/img_widgets/c_circular_img.dart';
-import 'package:duara_ecommerce/common/widgets/loaders/shimmer_effect.dart';
+import 'package:duara_ecommerce/common/widgets/shimmers/shimmer_effect.dart';
 import 'package:duara_ecommerce/features/personalization/controllers/user_controller.dart';
 import 'package:duara_ecommerce/utils/constants/colors.dart';
 import 'package:duara_ecommerce/utils/constants/image_strings.dart';

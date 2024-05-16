@@ -22,6 +22,12 @@ class CUserRepo extends GetxController {
   Future<void> saveUserDetails(CUserModel users) async {
     try {
       await _db.collection("users").doc(users.id).set(users.toJson());
+    } on FirebaseAuthException catch (e) {
+      CPopupSnackBar.errorSnackBar(
+        title: "firebaseAuth exception error",
+        message: e.code.toString(),
+      );
+      throw CFirebaseAuthExceptions(e.code).message;
     } on FirebaseException catch (e) {
       throw CPopupSnackBar.errorSnackBar(
         title: "firebase exception error",
@@ -36,6 +42,12 @@ class CUserRepo extends GetxController {
         title: "format exception error",
         message: e.message,
       );
+    } on PlatformException catch (e) {
+      CPopupSnackBar.errorSnackBar(
+        title: "platform exception error",
+        message: e.code.toString(),
+      );
+      throw CPlatformExceptions(e.code).message;
     } catch (e) {
       CPopupSnackBar.errorSnackBar(
         title: "An error occurred",

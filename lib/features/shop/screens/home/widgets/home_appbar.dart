@@ -1,5 +1,5 @@
 import 'package:duara_ecommerce/common/widgets/appbar/appbar.dart';
-import 'package:duara_ecommerce/common/widgets/loaders/shimmer_effect.dart';
+import 'package:duara_ecommerce/common/widgets/shimmers/shimmer_effect.dart';
 import 'package:duara_ecommerce/common/widgets/products/cart/cart_menu_icon.dart';
 import 'package:duara_ecommerce/features/personalization/controllers/user_controller.dart';
 import 'package:duara_ecommerce/utils/constants/colors.dart';

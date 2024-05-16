@@ -178,4 +178,8 @@ class CImages {
       "assets/images/products/iphone8_mobile_front.png";
   static const String pImg31 = "assets/images/products/iphone8_mobile.png";
   static const String pImg32 = "assets/images/products/kitchen_counter.png";
+
+  // -- no data screen images --
+  static const String noData = "assets/images/no-data.png";
+  static const String noDataLottie = "assets/images/no_data.json";
 }

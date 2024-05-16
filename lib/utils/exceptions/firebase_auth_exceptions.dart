@@ -8,6 +8,12 @@ class CFirebaseAuthExceptions implements Exception {
   // -- get the corresponding error message based on the error code --
   String get message {
     switch (code) {
+      case 'unknown':
+        return 'an unknown database error occurred! please try again';
+      case 'invalid-custom-token':
+        return 'the custom token format is invalid! please check your custom token and try again.';
+      case 'custom-token-mismatch':
+        return 'the custom token corresponds to a different audience!';
       case 'email-already-in-use':
         return 'the email address is already registered! please use a different e-mail address.';
       case 'invalid-email':

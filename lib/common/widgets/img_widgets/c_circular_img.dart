@@ -1,5 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:duara_ecommerce/common/widgets/loaders/shimmer_effect.dart';
+import 'package:duara_ecommerce/common/widgets/shimmers/shimmer_effect.dart';
 import 'package:duara_ecommerce/utils/constants/colors.dart';
 import 'package:duara_ecommerce/utils/constants/sizes.dart';
 import 'package:duara_ecommerce/utils/helpers/helper_functions.dart';

@@ -1,11 +1,10 @@
-import 'package:duara_ecommerce/common/widgets/img_widgets/c_circular_img.dart';
 import 'package:duara_ecommerce/utils/constants/colors.dart';
 import 'package:duara_ecommerce/utils/constants/sizes.dart';
 import 'package:duara_ecommerce/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 
-class CVerticalImgTxt extends StatelessWidget {
-  const CVerticalImgTxt({
+class CVerticalImgTxt1 extends StatelessWidget {
+  const CVerticalImgTxt1({
     super.key,
     required this.img,
     required this.title,
@@ -34,14 +33,6 @@ class CVerticalImgTxt extends StatelessWidget {
         child: Column(
           children: [
             // -- circular icon --
-            CCircularImg(
-              img: img,
-              fit: BoxFit.fitWidth,
-              padding: CSizes.sm * 1.4,
-              isNetworkImg: isNetworkImage,
-              bgColor: bgColor,
-            ),
-
             Container(
               width: 56.0,
               height: 56.0,
