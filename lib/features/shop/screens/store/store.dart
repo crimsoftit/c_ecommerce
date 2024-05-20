@@ -4,8 +4,8 @@ import 'package:duara_ecommerce/common/widgets/custom_shapes/containers/search_c
 import 'package:duara_ecommerce/common/widgets/layouts/grid_layout.dart';
 import 'package:duara_ecommerce/common/widgets/brands/c_brand_cards.dart';
 import 'package:duara_ecommerce/common/widgets/products/cart/cart_menu_icon.dart';
-import 'package:duara_ecommerce/common/widgets/text_widgets/c_tabbar_headings.dart';
 import 'package:duara_ecommerce/common/widgets/text_widgets/section_headings.dart';
+import 'package:duara_ecommerce/features/shop/controllers/categories_controller.dart';
 import 'package:duara_ecommerce/features/shop/screens/brands/all_brands.dart';
 import 'package:duara_ecommerce/features/shop/screens/brands/brand_products.dart';
 import 'package:duara_ecommerce/features/shop/screens/store/widgets/categories_tab.dart';
@@ -22,16 +22,17 @@ class CStoreScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDarkTheme = CHelperFunctions.isDarkMode(context);
+    final categories = CCatsController.instance.featuredCategories;
 
     return DefaultTabController(
-      length: 5,
+      length: categories.length,
       child: Scaffold(
         backgroundColor: isDarkTheme ? CColors.dark : CColors.white,
         appBar: CAppBar(
           showBackArrow: true,
           backIconColor: isDarkTheme ? CColors.white : CColors.rBrown,
           title: Text(
-            'store',
+            'me store',
             style: Theme.of(context).textTheme.headlineSmall,
           ),
           actions: [
@@ -111,47 +112,27 @@ class CStoreScreen extends StatelessWidget {
                   ),
 
                   // tabbed menu
-                  bottom: const CTabBar(
-                    tabs: [
-                      Tab(
-                        child: CTabMenuHeadings(
-                          title: 'furniture',
-                        ),
-                      ),
-                      Tab(
-                        child: CTabMenuHeadings(
-                          title: 'sports',
-                        ),
-                      ),
-                      Tab(
-                        child: CTabMenuHeadings(
-                          title: 'clothes',
-                        ),
-                      ),
-                      Tab(
-                        child: CTabMenuHeadings(
-                          title: 'electronics',
-                        ),
-                      ),
-                      Tab(
-                        child: CTabMenuHeadings(
-                          title: 'cosmetics',
-                        ),
-                      ),
-                    ],
+                  bottom: CTabBar(
+                    tabs: categories
+                        .map(
+                          (category) => Tab(
+                            child: Text(category.pName),
+                          ),
+                        )
+                        .toList(),
                   ),
                 ),
               ];
             },
-            body: const TabBarView(
-              physics: NeverScrollableScrollPhysics(),
-              children: [
-                CCategoriesTab(),
-                CCategoriesTab(),
-                CCategoriesTab(),
-                CCategoriesTab(),
-                CCategoriesTab(),
-              ],
+            body: TabBarView(
+              physics: const NeverScrollableScrollPhysics(),
+              children: categories
+                  .map(
+                    (pCategory) => CCategoriesTab(
+                      category: pCategory,
+                    ),
+                  )
+                  .toList(),
             ),
           ),
         ),

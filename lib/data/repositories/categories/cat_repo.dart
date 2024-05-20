@@ -76,7 +76,7 @@ class CCategoriesRepo extends GetxController {
         // assign url to category.img attribute
         category.pImg = imgUrl;
 
-        // store category in firestore
+        // store category in firebase firestore database
         await _db
             .collection('categories')
             .doc(category.id)
