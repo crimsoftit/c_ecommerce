@@ -30,7 +30,7 @@ class CHomeCategories extends StatelessWidget {
           );
         } else {
           return SizedBox(
-            height: 100.0,
+            height: 160.0,
             child: ListView.builder(
               shrinkWrap: true,
               itemCount: catsController.featuredCategories.length,
@@ -43,6 +43,7 @@ class CHomeCategories extends StatelessWidget {
                   title: pCategory.pName,
                   txtColor: CColors.txtWhite,
                   bgColor: CColors.white,
+                  isNetworkImage: true,
                   onTap: () {
                     Get.to(() => const CSubCategoriesScreen());
                   },

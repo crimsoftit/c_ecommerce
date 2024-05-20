@@ -8,7 +8,6 @@ import 'package:duara_ecommerce/features/shop/screens/home/widgets/home_appbar.d
 import 'package:duara_ecommerce/features/shop/screens/home/widgets/home_categories.dart';
 import 'package:duara_ecommerce/features/shop/screens/home/widgets/promo_slider.dart';
 import 'package:duara_ecommerce/utils/constants/colors.dart';
-import 'package:duara_ecommerce/utils/constants/image_strings.dart';
 import 'package:duara_ecommerce/utils/constants/sizes.dart';
 import 'package:duara_ecommerce/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
@@ -85,13 +84,7 @@ class HomeScreen extends StatelessWidget {
               child: Column(
                 children: [
                   // -- promo slider --
-                  const CPromoSlider(
-                    banners: [
-                      CImages.promoBanner1,
-                      CImages.promoBanner2,
-                      CImages.promoBanner3,
-                    ],
-                  ),
+                  const CPromoSlider(),
 
                   const SizedBox(
                     height: CSizes.spaceBtnSections,
