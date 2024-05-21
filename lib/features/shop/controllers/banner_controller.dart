@@ -31,7 +31,7 @@ class CBannerController extends GetxController {
       final allBanners = await bannerRepo.fetchBanners();
 
       // asign banners
-      this.banners.assignAll(allBanners);
+      banners.assignAll(allBanners);
     } catch (e) {
       isLoading.value = false;
       CPopupSnackBar.errorSnackBar(
