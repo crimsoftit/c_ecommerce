@@ -22,7 +22,7 @@ class CBannerModel {
   factory CBannerModel.fromSnapshot(DocumentSnapshot snapshot) {
     final data = snapshot.data() as Map<String, dynamic>;
     return CBannerModel(
-      imgUrl: data["imgUrl"] ?? "",
+      imgUrl: data["imageUrl"] ?? "",
       targetScreen: data["targetScreen"] ?? "",
       isActive: data["isActive"] ?? false,
     );

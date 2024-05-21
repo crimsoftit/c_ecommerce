@@ -10,7 +10,7 @@ class CCircularImg extends StatelessWidget {
     super.key,
     this.fit = BoxFit.cover,
     required this.img,
-    this.isNetworkImg = false,
+    this.isNetworkImg = true,
     this.overlayColor,
     this.bgColor,
     this.width,

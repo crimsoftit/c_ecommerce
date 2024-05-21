@@ -1,7 +1,5 @@
 import 'package:duara_ecommerce/common/widgets/img_widgets/c_circular_img.dart';
-import 'package:duara_ecommerce/utils/constants/colors.dart';
 import 'package:duara_ecommerce/utils/constants/sizes.dart';
-import 'package:duara_ecommerce/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 
 class CVerticalImgTxt extends StatelessWidget {
@@ -23,7 +21,7 @@ class CVerticalImgTxt extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = CHelperFunctions.isDarkMode(context);
+    //final isDark = CHelperFunctions.isDarkMode(context);
 
     return GestureDetector(
       onTap: onTap,
@@ -32,40 +30,26 @@ class CVerticalImgTxt extends StatelessWidget {
           right: CSizes.spaceBtnItems,
         ),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             // -- circular icon --
             CCircularImg(
               img: img,
-              fit: BoxFit.fitWidth,
+              width: 74.0,
+              height: 74.0,
+              fit: BoxFit.fill,
               padding: CSizes.sm * 1.4,
               isNetworkImg: isNetworkImage,
               bgColor: bgColor,
             ),
 
-            Container(
-              width: 56.0,
-              height: 56.0,
-              padding: const EdgeInsets.all(CSizes.sm),
-              decoration: BoxDecoration(
-                color: bgColor ?? (isDark ? CColors.darkerGrey : CColors.white),
-                borderRadius: BorderRadius.circular(100),
-              ),
-              child: Center(
-                child: Image(
-                  image: AssetImage(img),
-                  fit: BoxFit.cover,
-                  color: CColors.rBrown,
-                ),
-              ),
-            ),
-
             const SizedBox(
-              height: CSizes.spaceBtnItems / 2,
+              height: CSizes.spaceBtnItems / 4,
             ),
 
             // -- categories texts --
             SizedBox(
-              width: 55,
+              width: 60.0,
               child: Text(
                 title,
                 style: Theme.of(context).textTheme.labelMedium!.apply(
@@ -73,6 +57,7 @@ class CVerticalImgTxt extends StatelessWidget {
                     ),
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
+                textAlign: TextAlign.center,
               ),
             ),
           ],
