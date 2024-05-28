@@ -39,8 +39,8 @@ class CHomeCategories extends StatelessWidget {
                 final pCategory = catsController.featuredCategories[index];
 
                 return CVerticalImgTxt(
-                  img: pCategory.pImg,
-                  title: pCategory.pName,
+                  img: pCategory.cImg,
+                  title: pCategory.cName,
                   txtColor: CColors.txtWhite,
                   bgColor: CColors.white,
                   isNetworkImage: true,

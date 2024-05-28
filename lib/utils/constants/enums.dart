@@ -1,6 +1,11 @@
 /* -- list of enums -- */
 // cannot be created inside a class
 
+enum CProductType {
+  single,
+  variable,
+}
+
 enum CTextSizes {
   small,
   medium,

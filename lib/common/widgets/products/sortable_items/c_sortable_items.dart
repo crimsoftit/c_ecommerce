@@ -1,5 +1,6 @@
 import 'package:duara_ecommerce/common/widgets/layouts/grid_layout.dart';
 import 'package:duara_ecommerce/common/widgets/products/product_cards/p_card_vert.dart';
+import 'package:duara_ecommerce/features/shop/models/product_model.dart';
 import 'package:duara_ecommerce/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
@@ -52,7 +53,9 @@ class CSortableItems extends StatelessWidget {
         CGridLayout(
           itemCount: 10,
           itemBuilder: (_, index) {
-            return const CProductCardVertical();
+            return CProductCardVertical(
+              product: CProductModel.empty(),
+            );
           },
         ),
       ],

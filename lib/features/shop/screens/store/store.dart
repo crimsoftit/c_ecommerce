@@ -116,7 +116,7 @@ class CStoreScreen extends StatelessWidget {
                     tabs: categories
                         .map(
                           (category) => Tab(
-                            child: Text(category.pName),
+                            child: Text(category.cName),
                           ),
                         )
                         .toList(),

@@ -2,6 +2,8 @@ import 'package:duara_ecommerce/common/widgets/appbar/appbar.dart';
 import 'package:duara_ecommerce/common/widgets/icons/circular_icon.dart';
 import 'package:duara_ecommerce/common/widgets/layouts/grid_layout.dart';
 import 'package:duara_ecommerce/common/widgets/products/product_cards/p_card_vert.dart';
+import 'package:duara_ecommerce/features/shop/controllers/products_controller.dart';
+import 'package:duara_ecommerce/features/shop/models/product_model.dart';
 import 'package:duara_ecommerce/features/shop/screens/home/home.dart';
 import 'package:duara_ecommerce/utils/constants/colors.dart';
 import 'package:duara_ecommerce/utils/constants/sizes.dart';
@@ -16,6 +18,7 @@ class WishlistScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDarkTheme = CHelperFunctions.isDarkMode(context);
+    final productsController = Get.put(CProductsController());
 
     return Scaffold(
       appBar: CAppBar(
@@ -43,7 +46,9 @@ class WishlistScreen extends StatelessWidget {
               CGridLayout(
                 itemCount: 4,
                 itemBuilder: (_, index) {
-                  return const CProductCardVertical();
+                  return CProductCardVertical(
+                    product: CProductModel.empty(),
+                  );
                 },
               ),
             ],

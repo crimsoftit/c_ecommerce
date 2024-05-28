@@ -3,28 +3,28 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class CCategoriesModel {
   CCategoriesModel({
     required this.id,
-    required this.pName,
-    required this.pImg,
+    required this.cName,
+    required this.cImg,
     required this.isFeatured,
     this.parentId = '',
   });
 
-  String id, pName, pImg, parentId;
+  String id, cName, cImg, parentId;
   bool isFeatured;
 
   /// -- empty helper function --
   static CCategoriesModel empty() => CCategoriesModel(
         id: '',
-        pName: '',
-        pImg: '',
+        cName: '',
+        cImg: '',
         isFeatured: false,
       );
 
   /// -- convert model to Json structure to store data --
   Map<String, dynamic> toJson() {
     return {
-      'productName': pName,
-      'productImage': pImg,
+      'categoryName': cName,
+      'Thumbnail': cImg,
       'isFeatured': isFeatured,
       'parentId': parentId,
     };
@@ -39,8 +39,8 @@ class CCategoriesModel {
       // -- map JSON record to the CCategories model --
       return CCategoriesModel(
         id: document.id,
-        pName: data!['productName'] ?? '',
-        pImg: data['productImage'] ?? '',
+        cName: data!['categoryName'] ?? '',
+        cImg: data['Thumbnail'] ?? '',
         isFeatured: data['isFeatured'] ?? false,
         parentId: data['parentId'] ?? '',
       );

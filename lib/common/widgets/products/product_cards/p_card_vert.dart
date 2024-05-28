@@ -5,25 +5,38 @@ import 'package:duara_ecommerce/common/widgets/img_widgets/c_rounded_img.dart';
 import 'package:duara_ecommerce/common/widgets/text_widgets/c_brand_title_with_verified_icon.dart';
 import 'package:duara_ecommerce/common/widgets/text_widgets/p_price_txt.dart';
 import 'package:duara_ecommerce/common/widgets/text_widgets/product_title_texts.dart';
+import 'package:duara_ecommerce/features/shop/controllers/products_controller.dart';
+import 'package:duara_ecommerce/features/shop/models/product_model.dart';
 import 'package:duara_ecommerce/features/shop/screens/p_details/p_details.dart';
 import 'package:duara_ecommerce/utils/constants/colors.dart';
-import 'package:duara_ecommerce/utils/constants/image_strings.dart';
+import 'package:duara_ecommerce/utils/constants/enums.dart';
 import 'package:duara_ecommerce/utils/constants/sizes.dart';
 import 'package:duara_ecommerce/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class CProductCardVertical extends StatelessWidget {
-  const CProductCardVertical({super.key});
+  const CProductCardVertical({
+    super.key,
+    required this.product,
+  });
+
+  final CProductModel product;
 
   @override
   Widget build(BuildContext context) {
     final isDark = CHelperFunctions.isDarkMode(context);
 
+    final productController = CProductsController.instance;
+
+    final discount = productController.calculateDiscountPercentage(
+        product.pPrice, product.salePrice);
+
     return GestureDetector(
       onTap: () {
-        Get.to(() => const ProductDetailsScreen());
+        Get.to(() => ProductDetailsScreen(product: product));
       },
       child: Container(
         width: 180,
@@ -44,11 +57,12 @@ class CProductCardVertical extends StatelessWidget {
               child: Stack(
                 children: [
                   // thumbnail image
-                  const CRoundedImages(
-                    imgUrl: CImages.pImg1,
+                  CRoundedImages(
+                    imgUrl: product.thumbnail,
                     applyImgRadius: true,
+                    isNetworkImg: true,
                     width: 180,
-                    padding: EdgeInsets.all(2.0),
+                    padding: const EdgeInsets.all(2.0),
                     //height: 120,
                   ),
 
@@ -63,7 +77,7 @@ class CProductCardVertical extends StatelessWidget {
                         vertical: CSizes.xs,
                       ),
                       child: Text(
-                        '25%',
+                        '$discount%',
                         style: Theme.of(context).textTheme.labelSmall!.apply(
                               color: CColors.black,
                               //fontSizeFactor: 0.7,
@@ -89,25 +103,27 @@ class CProductCardVertical extends StatelessWidget {
             ),
 
             // -- product details --
-            const Padding(
-              padding: EdgeInsets.symmetric(
+            Padding(
+              padding: const EdgeInsets.symmetric(
                 horizontal: CSizes.sm,
               ),
+
+              // sizedbox used to make column full-width
               child: SizedBox(
                 width: double.infinity,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     CProductTitleText(
-                      title: 'Acer laptop gen 10 with backlit keyboard',
+                      title: product.pName,
                       smallSize: false,
                       txtAlign: TextAlign.left,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: CSizes.spaceBtnItems / 4,
                     ),
                     CBrandTitleWithVerifiedIcon(
-                      title: 'acer',
+                      title: product.pBrand!.brandName,
                     ),
                   ],
                 ),
@@ -120,12 +136,36 @@ class CProductCardVertical extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Padding(
-                  padding: EdgeInsets.only(
-                    left: CSizes.sm,
-                  ),
-                  child: CProductPriceText(
-                    price: '30000',
+                // price
+                Flexible(
+                  child: Column(
+                    children: [
+                      if (product.productType ==
+                              CProductType.single.toString() &&
+                          product.salePrice > 0)
+                        Padding(
+                          padding: const EdgeInsets.only(
+                            left: CSizes.sm,
+                          ),
+                          child: Text(
+                            product.pPrice.toString(),
+                            style:
+                                Theme.of(context).textTheme.labelMedium!.apply(
+                                      decoration: TextDecoration.lineThrough,
+                                    ),
+                          ),
+                        ),
+
+                      // display sale price if discount exists
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          left: CSizes.sm,
+                        ),
+                        child: CProductPriceText(
+                          price: productController.fetchProductPrice(product),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
 

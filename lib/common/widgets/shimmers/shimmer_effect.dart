@@ -20,8 +20,8 @@ class CShimmerEffect extends StatelessWidget {
     final isDarkTheme = CHelperFunctions.isDarkMode(context);
 
     return Shimmer.fromColors(
-      baseColor: isDarkTheme ? Colors.grey[850]! : Colors.grey[300]!,
-      highlightColor: isDarkTheme ? Colors.grey[700]! : Colors.grey[100]!,
+      baseColor: isDarkTheme ? Colors.brown[850]! : Colors.brown[300]!,
+      highlightColor: isDarkTheme ? Colors.brown[700]! : Colors.grey[100]!,
       child: Container(
         width: width,
         height: height,

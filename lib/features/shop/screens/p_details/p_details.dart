@@ -1,4 +1,5 @@
 import 'package:duara_ecommerce/common/widgets/text_widgets/section_headings.dart';
+import 'package:duara_ecommerce/features/shop/models/product_model.dart';
 import 'package:duara_ecommerce/features/shop/screens/p_details/widgets/add_to_cart_bottom_nav.dart';
 import 'package:duara_ecommerce/features/shop/screens/p_details/widgets/p_attributes.dart';
 import 'package:duara_ecommerce/features/shop/screens/p_details/widgets/p_details_img_slider.dart';
@@ -14,7 +15,12 @@ import 'package:iconsax/iconsax.dart';
 import 'package:readmore/readmore.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
-  const ProductDetailsScreen({super.key});
+  const ProductDetailsScreen({
+    super.key,
+    required this.product,
+  });
+
+  final CProductModel product;
 
   @override
   Widget build(BuildContext context) {

@@ -67,14 +67,14 @@ class CCategoriesRepo extends GetxController {
       // - loop through each category
       for (var category in categories) {
         // get image url from local assets
-        final file = await storage.getImageDataFromAssets(category.pImg);
+        final file = await storage.getImageDataFromAssets(category.cImg);
 
         // upload image and retrieve its url
         final imgUrl =
-            await storage.uploadImageData('categories', file, category.pName);
+            await storage.uploadImageData('categories', file, category.cName);
 
         // assign url to category.img attribute
-        category.pImg = imgUrl;
+        category.cImg = imgUrl;
 
         // store category in firebase firestore database
         await _db
