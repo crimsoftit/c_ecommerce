@@ -6,6 +6,7 @@ import 'package:duara_ecommerce/common/widgets/brands/c_brand_cards.dart';
 import 'package:duara_ecommerce/common/widgets/products/cart/cart_menu_icon.dart';
 import 'package:duara_ecommerce/common/widgets/text_widgets/section_headings.dart';
 import 'package:duara_ecommerce/features/shop/controllers/categories_controller.dart';
+import 'package:duara_ecommerce/features/shop/controllers/products_controller.dart';
 import 'package:duara_ecommerce/features/shop/screens/brands/all_brands.dart';
 import 'package:duara_ecommerce/features/shop/screens/brands/brand_products.dart';
 import 'package:duara_ecommerce/features/shop/screens/store/widgets/categories_tab.dart';
@@ -23,6 +24,8 @@ class CStoreScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDarkTheme = CHelperFunctions.isDarkMode(context);
     final categories = CCatsController.instance.featuredCategories;
+
+    final productsController = Get.put(CProductsController());
 
     return DefaultTabController(
       length: categories.length,

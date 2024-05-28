@@ -70,7 +70,7 @@ class CProductsController extends GetxController {
         return highestPrice.toString();
       } else {
         // otherwise, return a price range
-        return '$lowestPrice - \Ksh.$highestPrice';
+        return '$lowestPrice - Ksh.$highestPrice';
       }
     }
   }
