@@ -5,7 +5,7 @@ import 'package:duara_ecommerce/common/widgets/products/product_cards/p_card_ver
 import 'package:duara_ecommerce/common/widgets/shimmers/vertical_product_shimmer.dart';
 import 'package:duara_ecommerce/common/widgets/text_widgets/section_headings.dart';
 import 'package:duara_ecommerce/features/personalization/screens/no_data/no_data.dart';
-import 'package:duara_ecommerce/features/shop/controllers/products_controller.dart';
+import 'package:duara_ecommerce/features/shop/controllers/product/products_controller.dart';
 import 'package:duara_ecommerce/features/shop/screens/all_products/all_products.dart';
 import 'package:duara_ecommerce/features/shop/screens/home/widgets/home_appbar.dart';
 import 'package:duara_ecommerce/features/shop/screens/home/widgets/home_categories.dart';

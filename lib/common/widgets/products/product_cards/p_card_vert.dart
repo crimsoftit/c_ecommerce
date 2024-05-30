@@ -5,7 +5,7 @@ import 'package:duara_ecommerce/common/widgets/img_widgets/c_rounded_img.dart';
 import 'package:duara_ecommerce/common/widgets/text_widgets/c_brand_title_with_verified_icon.dart';
 import 'package:duara_ecommerce/common/widgets/text_widgets/p_price_txt.dart';
 import 'package:duara_ecommerce/common/widgets/text_widgets/product_title_texts.dart';
-import 'package:duara_ecommerce/features/shop/controllers/products_controller.dart';
+import 'package:duara_ecommerce/features/shop/controllers/product/products_controller.dart';
 import 'package:duara_ecommerce/features/shop/models/product_model.dart';
 import 'package:duara_ecommerce/features/shop/screens/p_details/p_details.dart';
 import 'package:duara_ecommerce/utils/constants/colors.dart';
@@ -49,52 +49,55 @@ class CProductCardVertical extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // -- thumbnail, wishlist button, and discount tag --
-            CRoundedContainer(
-              height: 127,
-              padding: const EdgeInsets.all(CSizes.sm),
-              //bgColor: isDark ? CColors.dark : CColors.light,
-              child: Stack(
-                children: [
-                  // thumbnail image
-                  CRoundedImages(
-                    imgUrl: product.thumbnail,
-                    applyImgRadius: true,
-                    isNetworkImg: true,
-                    width: 180,
-                    padding: const EdgeInsets.all(2.0),
-                    //height: 120,
-                  ),
+            Center(
+              child: CRoundedContainer(
+                height: 130,
+                //width: 130,
+                padding: const EdgeInsets.all(CSizes.sm),
+                //bgColor: isDark ? CColors.dark : CColors.light,
+                child: Stack(
+                  children: [
+                    // thumbnail image
+                    CRoundedImages(
+                      imgUrl: product.thumbnail,
+                      applyImgRadius: true,
+                      isNetworkImg: true,
+                      width: 180,
+                      padding: const EdgeInsets.all(2.0),
+                      //height: 120,
+                    ),
 
-                  // sale tag
-                  Positioned(
-                    top: 12.0,
-                    child: CRoundedContainer(
-                      radius: CSizes.sm,
-                      bgColor: CColors.secondary.withOpacity(0.8),
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: CSizes.sm,
-                        vertical: CSizes.xs,
-                      ),
-                      child: Text(
-                        '$discount%',
-                        style: Theme.of(context).textTheme.labelSmall!.apply(
-                              color: CColors.black,
-                              //fontSizeFactor: 0.7,
-                            ),
+                    // sale tag
+                    Positioned(
+                      top: 12.0,
+                      child: CRoundedContainer(
+                        radius: CSizes.sm,
+                        bgColor: CColors.secondary.withOpacity(0.8),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: CSizes.sm,
+                          vertical: CSizes.xs,
+                        ),
+                        child: Text(
+                          '$discount%',
+                          style: Theme.of(context).textTheme.labelSmall!.apply(
+                                color: CColors.black,
+                                //fontSizeFactor: 0.7,
+                              ),
+                        ),
                       ),
                     ),
-                  ),
 
-                  // favorite icon button
-                  const Positioned(
-                    top: 0,
-                    right: 0,
-                    child: CCircularIcon(
-                      icon: Iconsax.heart5,
-                      color: Colors.red,
+                    // favorite icon button
+                    const Positioned(
+                      top: 0,
+                      right: 0,
+                      child: CCircularIcon(
+                        icon: Iconsax.heart5,
+                        color: Colors.red,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
             const SizedBox(

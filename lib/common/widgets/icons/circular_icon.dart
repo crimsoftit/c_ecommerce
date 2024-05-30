@@ -35,7 +35,7 @@ class CCircularIcon extends StatelessWidget {
         color: bgColor != null
             ? bgColor!
             : isDark
-                ? CColors.rBrown.withOpacity(0.2)
+                ? CColors.rBrown.withOpacity(0.6)
                 : CColors.white.withOpacity(0.9),
       ),
       child: IconButton(

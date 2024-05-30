@@ -4,6 +4,7 @@ import 'package:duara_ecommerce/common/widgets/list_tiles/settings_menu_tile.dar
 import 'package:duara_ecommerce/common/widgets/list_tiles/user_profile_tile.dart';
 import 'package:duara_ecommerce/common/widgets/text_widgets/section_headings.dart';
 import 'package:duara_ecommerce/data/repositories/auth/auth_repo.dart';
+import 'package:duara_ecommerce/data/repositories/products/products_repo.dart';
 import 'package:duara_ecommerce/features/personalization/screens/addresses/addresses.dart';
 import 'package:duara_ecommerce/features/personalization/screens/profile/profile.dart';
 import 'package:duara_ecommerce/features/shop/screens/orders/orders.dart';
@@ -20,6 +21,8 @@ class SettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDarkTheme = CHelperFunctions.isDarkMode(context);
+
+    Get.put(CProductsRepo());
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -130,10 +133,15 @@ class SettingsScreen extends StatelessWidget {
                   const SizedBox(
                     height: CSizes.spaceBtnItems,
                   ),
-                  const CSettingsMenuTile(
+                  CSettingsMenuTile(
                     icon: Iconsax.document_upload,
                     title: 'upload data',
                     subTitle: 'upload data to your cloud firebase',
+                    trailing: IconButton(
+                      onPressed: () {},
+                      icon: const Icon(Iconsax.arrow_right),
+                    ),
+                    onTap: () {},
                   ),
                   CSettingsMenuTile(
                     icon: Iconsax.location,

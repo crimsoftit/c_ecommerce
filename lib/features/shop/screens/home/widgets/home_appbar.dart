@@ -27,23 +27,25 @@ class CHomeAppBarWidget extends StatelessWidget {
                   color: CColors.grey,
                 ),
           ),
-          Obx(() {
-            if (userController.profileLoading.value) {
-              // -- display a shimmer loader effect while loading user profile
-              return const CShimmerEffect(
-                width: 80.0,
-                height: 15.0,
-              );
-            } else {
-              return Text(
-                userController.user.value.fullName,
-                style: Theme.of(context).textTheme.headlineSmall!.apply(
-                      color: CColors.white,
-                      fontSizeFactor: 0.7,
-                    ),
-              );
-            }
-          }),
+          Obx(
+            () {
+              if (userController.profileLoading.value) {
+                // -- display a shimmer loader effect while loading user profile
+                return const CShimmerEffect(
+                  width: 80.0,
+                  height: 15.0,
+                );
+              } else {
+                return Text(
+                  userController.user.value.fullName,
+                  style: Theme.of(context).textTheme.headlineSmall!.apply(
+                        color: CColors.white,
+                        fontSizeFactor: 0.7,
+                      ),
+                );
+              }
+            },
+          ),
           // Text(
           //   userController.user.value.email,
           //   style: Theme.of(context).textTheme.headlineSmall!.apply(

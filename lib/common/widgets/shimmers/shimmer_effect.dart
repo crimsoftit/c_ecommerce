@@ -5,12 +5,12 @@ import 'package:shimmer/shimmer.dart';
 
 class CShimmerEffect extends StatelessWidget {
   const CShimmerEffect({
-    super.key,
+    Key? key,
     required this.width,
     required this.height,
     this.radius = 15.0,
     this.color,
-  });
+  }) : super(key: key);
 
   final double width, height, radius;
   final Color? color;
@@ -20,13 +20,13 @@ class CShimmerEffect extends StatelessWidget {
     final isDarkTheme = CHelperFunctions.isDarkMode(context);
 
     return Shimmer.fromColors(
-      baseColor: isDarkTheme ? Colors.brown[850]! : Colors.brown[300]!,
-      highlightColor: isDarkTheme ? Colors.brown[700]! : Colors.grey[100]!,
+      baseColor: isDarkTheme ? Colors.grey[850]! : Colors.grey[300]!,
+      highlightColor: isDarkTheme ? Colors.grey[700]! : Colors.grey[100]!,
       child: Container(
         width: width,
         height: height,
         decoration: BoxDecoration(
-          color: color ?? (isDarkTheme ? CColors.darkGrey : CColors.white),
+          color: color ?? (isDarkTheme ? CColors.darkGrey : Colors.white),
           borderRadius: BorderRadius.circular(radius),
         ),
       ),

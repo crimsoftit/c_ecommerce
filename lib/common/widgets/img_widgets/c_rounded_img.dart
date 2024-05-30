@@ -1,3 +1,5 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:duara_ecommerce/common/widgets/shimmers/shimmer_effect.dart';
 import 'package:duara_ecommerce/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 
@@ -45,12 +47,23 @@ class CRoundedImages extends StatelessWidget {
           borderRadius: applyImgRadius
               ? BorderRadius.circular(borderRadius)
               : BorderRadius.zero,
-          child: Image(
-            fit: fit,
-            image: isNetworkImg
-                ? NetworkImage(imgUrl)
-                : AssetImage(imgUrl) as ImageProvider,
-          ),
+          child: isNetworkImg
+              ? CachedNetworkImage(
+                  imageUrl: imgUrl,
+                  progressIndicatorBuilder: (context, url, progress) {
+                    return CShimmerEffect(
+                      width: width ?? double.infinity,
+                      height: height ?? 160,
+                    );
+                  },
+                  errorWidget: (context, url, error) => const Icon(
+                    Icons.error,
+                  ),
+                )
+              : Image(
+                  fit: fit,
+                  image: AssetImage(imgUrl),
+                ),
         ),
       ),
     );

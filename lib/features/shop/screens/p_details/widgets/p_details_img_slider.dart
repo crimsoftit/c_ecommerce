@@ -1,36 +1,58 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:duara_ecommerce/common/widgets/appbar/appbar.dart';
 import 'package:duara_ecommerce/common/widgets/custom_shapes/curved_edges/curved_edges_widget.dart';
 import 'package:duara_ecommerce/common/widgets/icons/circular_icon.dart';
 import 'package:duara_ecommerce/common/widgets/img_widgets/c_rounded_img.dart';
+import 'package:duara_ecommerce/features/shop/controllers/product/images_controller.dart';
+import 'package:duara_ecommerce/features/shop/models/product_model.dart';
 import 'package:duara_ecommerce/utils/constants/colors.dart';
-import 'package:duara_ecommerce/utils/constants/image_strings.dart';
 import 'package:duara_ecommerce/utils/constants/sizes.dart';
 import 'package:duara_ecommerce/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class CProductImgSlider extends StatelessWidget {
   const CProductImgSlider({
     super.key,
+    required this.product,
   });
+
+  final CProductModel product;
 
   @override
   Widget build(BuildContext context) {
     final isDarkTheme = CHelperFunctions.isDarkMode(context);
+
+    final imgController = Get.put(CImagesController());
+    final pImages = imgController.fetchAllProductImages(product);
+
     return CCurvedEdgeWidget(
       child: Container(
         color: isDarkTheme ? CColors.rBrown : CColors.light,
         child: Stack(
           children: [
             // main large image
-            const SizedBox(
+            SizedBox(
               height: 400.0,
               child: Padding(
-                padding: EdgeInsets.all(CSizes.pImgRadius * 2),
+                padding: const EdgeInsets.all(CSizes.pImgRadius * 2),
                 child: Center(
-                  child: Image(
-                    image: AssetImage(CImages.pImg5),
-                  ),
+                  child: Obx(() {
+                    final selectedImg = imgController.selectedProductImg.value;
+
+                    return GestureDetector(
+                      onTap: () => imgController.showEnlargedImage(selectedImg),
+                      child: CachedNetworkImage(
+                        imageUrl: selectedImg,
+                        progressIndicatorBuilder: (_, __, downloadProgress) =>
+                            CircularProgressIndicator(
+                          value: downloadProgress.progress,
+                          color: CColors.rBrown,
+                        ),
+                      ),
+                    );
+                  }),
                 ),
               ),
             ),
@@ -43,7 +65,7 @@ class CProductImgSlider extends StatelessWidget {
               child: SizedBox(
                 height: 100.0,
                 child: ListView.separated(
-                  itemCount: 8,
+                  itemCount: pImages.length,
                   shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
                   physics: const AlwaysScrollableScrollPhysics(),
@@ -53,16 +75,28 @@ class CProductImgSlider extends StatelessWidget {
                     );
                   },
                   itemBuilder: (_, index) {
-                    return CRoundedImages(
-                      width: 100.0,
-                      //height: 80.0,
-                      bgColor: isDarkTheme ? CColors.dark : CColors.white,
-                      border: Border.all(
-                        color: CColors.rBrown.withOpacity(0.1),
-                      ),
-                      borderRadius: 100,
-                      padding: const EdgeInsets.all(CSizes.sm),
-                      imgUrl: CImages.pImg2,
+                    return Obx(
+                      () {
+                        final selectedImg =
+                            imgController.selectedProductImg.value ==
+                                pImages[index];
+
+                        return CRoundedImages(
+                          width: 100.0,
+                          bgColor: isDarkTheme ? CColors.dark : CColors.white,
+                          isNetworkImg: true,
+                          borderRadius: 100,
+                          padding: const EdgeInsets.all(CSizes.sm),
+                          imgUrl: pImages[index],
+                          border: Border.all(
+                            color: selectedImg
+                                ? CColors.rBrown
+                                : Colors.transparent,
+                          ),
+                          onPressed: () => imgController
+                              .selectedProductImg.value = pImages[index],
+                        );
+                      },
                     );
                   },
                 ),

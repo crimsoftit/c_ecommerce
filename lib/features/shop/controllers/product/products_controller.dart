@@ -18,6 +18,8 @@ class CProductsController extends GetxController {
     super.onInit();
   }
 
+  /// --
+
   /// -- fetch all featured products --
   void fetchFeaturedProducts() async {
     try {
@@ -28,7 +30,7 @@ class CProductsController extends GetxController {
       final fetchedProducts = await productsRepo.fetchFeaturedProducts();
 
       // assign products
-      fetchedProducts.assignAll(fetchedProducts);
+      featuredProducts.assignAll(fetchedProducts);
     } catch (e) {
       isLoading.value = false;
       CPopupSnackBar.errorSnackBar(

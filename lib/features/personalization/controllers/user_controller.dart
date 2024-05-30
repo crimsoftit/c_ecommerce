@@ -40,7 +40,7 @@ class CUserController extends GetxController {
       profileLoading.value = true;
       final user = await userRepo.fetchUserDetails();
       this.user(user);
-      //profileLoading.value = false;
+      profileLoading.value = false;
     } catch (e) {
       user(CUserModel.empty());
     } finally {

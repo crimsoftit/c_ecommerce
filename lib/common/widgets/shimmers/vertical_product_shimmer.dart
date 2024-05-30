@@ -23,8 +23,8 @@ class CVerticalProductShimmer extends StatelessWidget {
             children: [
               // -- image section --
               CShimmerEffect(
-                width: 180.0,
-                height: 180.0,
+                width: 160.0,
+                height: 160.0,
               ),
 
               SizedBox(

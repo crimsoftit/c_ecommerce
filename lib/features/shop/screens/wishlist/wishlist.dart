@@ -4,8 +4,7 @@ import 'package:duara_ecommerce/common/widgets/layouts/grid_layout.dart';
 import 'package:duara_ecommerce/common/widgets/products/product_cards/p_card_vert.dart';
 import 'package:duara_ecommerce/common/widgets/shimmers/vertical_product_shimmer.dart';
 import 'package:duara_ecommerce/features/personalization/screens/no_data/no_data.dart';
-import 'package:duara_ecommerce/features/shop/controllers/products_controller.dart';
-import 'package:duara_ecommerce/features/shop/models/product_model.dart';
+import 'package:duara_ecommerce/features/shop/controllers/product/products_controller.dart';
 import 'package:duara_ecommerce/features/shop/screens/home/home.dart';
 import 'package:duara_ecommerce/utils/constants/colors.dart';
 import 'package:duara_ecommerce/utils/constants/image_strings.dart';
@@ -46,29 +45,56 @@ class WishlistScreen extends StatelessWidget {
           padding: const EdgeInsets.all(CSizes.defaultSpace),
           child: Column(
             children: [
-              Obx(() {
-                if (productsController.isLoading.value) {
-                  return const CVerticalProductShimmer(itemCount: 4);
-                } else {
-                  if (productsController.featuredProducts.isEmpty) {
-                    return const Center(
-                      child: NoDataScreen(
-                        image: CImages.noData,
-                        txt: 'No data found!',
-                      ),
-                    );
+              Obx(
+                () {
+                  if (productsController.isLoading.value) {
+                    return const CVerticalProductShimmer(itemCount: 4);
                   } else {
-                    return CGridLayout(
-                      itemCount: 4,
-                      itemBuilder: (_, index) {
-                        return CProductCardVertical(
-                          product: CProductModel.empty(),
-                        );
-                      },
-                    );
+                    if (productsController.featuredProducts.isEmpty) {
+                      return const Center(
+                        child: NoDataScreen(
+                          image: CImages.noData,
+                          txt: 'No data found!',
+                        ),
+                      );
+                    } else {
+                      return CGridLayout(
+                        itemCount: productsController.featuredProducts.length,
+                        itemBuilder: (_, index) {
+                          return CProductCardVertical(
+                            product: productsController.featuredProducts[index],
+                          );
+                        },
+                      );
+                    }
                   }
-                }
-              }),
+                },
+              ),
+              // Obx(
+              //   () {
+              //     if (productsController.isLoading.value) {
+              //       return const CVerticalProductShimmer(itemCount: 4);
+              //     } else {
+              //       if (productsController.featuredProducts.isEmpty) {
+              //         return const Center(
+              //           child: NoDataScreen(
+              //             image: CImages.noData,
+              //             txt: 'No data found!',
+              //           ),
+              //         );
+              //       } else {
+              //         return CGridLayout(
+              //           itemCount: 4,
+              //           itemBuilder: (_, index) {
+              //             return CProductCardVertical(
+              //               product: CProductModel.empty(),
+              //             );
+              //           },
+              //         );
+              //       }
+              //     }
+              //   },
+              // ),
             ],
           ),
         ),

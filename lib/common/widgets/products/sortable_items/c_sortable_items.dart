@@ -1,7 +1,7 @@
 import 'package:duara_ecommerce/common/widgets/layouts/grid_layout.dart';
 import 'package:duara_ecommerce/common/widgets/products/product_cards/p_card_vert.dart';
 import 'package:duara_ecommerce/common/widgets/shimmers/vertical_product_shimmer.dart';
-import 'package:duara_ecommerce/features/shop/controllers/products_controller.dart';
+import 'package:duara_ecommerce/features/shop/controllers/product/products_controller.dart';
 import 'package:duara_ecommerce/features/shop/models/product_model.dart';
 import 'package:duara_ecommerce/utils/constants/image_strings.dart';
 import 'package:duara_ecommerce/utils/constants/sizes.dart';
