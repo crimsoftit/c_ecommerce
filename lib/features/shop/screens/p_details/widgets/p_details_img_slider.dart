@@ -38,21 +38,25 @@ class CProductImgSlider extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(CSizes.pImgRadius * 2),
                 child: Center(
-                  child: Obx(() {
-                    final selectedImg = imgController.selectedProductImg.value;
+                  child: Obx(
+                    () {
+                      final selectedImg =
+                          imgController.selectedProductImg.value;
 
-                    return GestureDetector(
-                      onTap: () => imgController.showEnlargedImage(selectedImg),
-                      child: CachedNetworkImage(
-                        imageUrl: selectedImg,
-                        progressIndicatorBuilder: (_, __, downloadProgress) =>
-                            CircularProgressIndicator(
-                          value: downloadProgress.progress,
-                          color: CColors.rBrown,
+                      return GestureDetector(
+                        onTap: () =>
+                            imgController.showEnlargedImage(selectedImg),
+                        child: CachedNetworkImage(
+                          imageUrl: selectedImg,
+                          progressIndicatorBuilder: (_, __, downloadProgress) =>
+                              CircularProgressIndicator(
+                            value: downloadProgress.progress,
+                            color: CColors.rBrown,
+                          ),
                         ),
-                      ),
-                    );
-                  }),
+                      );
+                    },
+                  ),
                 ),
               ),
             ),

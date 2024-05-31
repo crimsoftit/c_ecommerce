@@ -7,6 +7,7 @@ import 'package:duara_ecommerce/features/shop/screens/p_details/widgets/p_metada
 import 'package:duara_ecommerce/features/shop/screens/p_details/widgets/rating_share_widget.dart';
 import 'package:duara_ecommerce/features/shop/screens/p_reviews/p_reviews.dart';
 import 'package:duara_ecommerce/utils/constants/colors.dart';
+import 'package:duara_ecommerce/utils/constants/enums.dart';
 import 'package:duara_ecommerce/utils/constants/sizes.dart';
 import 'package:duara_ecommerce/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
@@ -54,13 +55,19 @@ class ProductDetailsScreen extends StatelessWidget {
                   const CProductRatingWidget(),
 
                   // - price, title, stock, and brand
-                  const CProductMetaData(),
+                  CProductMetaData(
+                    product: product,
+                  ),
 
                   // - product attributes
-                  const CProductAttributes(),
-                  const SizedBox(
-                    height: CSizes.spaceBtnSections / 3,
-                  ),
+                  if (product.productType == CProductType.variable.toString())
+                    CProductAttributes(
+                      product: product,
+                    ),
+                  if (product.productType == CProductType.variable.toString())
+                    const SizedBox(
+                      height: CSizes.spaceBtnSections / 3,
+                    ),
 
                   // - checkout button
                   SizedBox(
@@ -91,7 +98,7 @@ class ProductDetailsScreen extends StatelessWidget {
                   ),
 
                   ReadMoreText(
-                    'this is a product description for acer generation 10 laptop with backlit keyboard. ',
+                    '${product.pDescription ?? ''} ',
                     trimLines: 2,
                     trimMode: TrimMode.Line,
                     trimCollapsedText: ' show more',

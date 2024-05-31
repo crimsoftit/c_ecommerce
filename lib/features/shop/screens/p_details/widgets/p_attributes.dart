@@ -3,13 +3,19 @@ import 'package:duara_ecommerce/common/widgets/custom_shapes/containers/rounded_
 import 'package:duara_ecommerce/common/widgets/text_widgets/p_price_txt.dart';
 import 'package:duara_ecommerce/common/widgets/text_widgets/product_title_texts.dart';
 import 'package:duara_ecommerce/common/widgets/text_widgets/section_headings.dart';
+import 'package:duara_ecommerce/features/shop/models/product_model.dart';
 import 'package:duara_ecommerce/utils/constants/colors.dart';
 import 'package:duara_ecommerce/utils/constants/sizes.dart';
 import 'package:duara_ecommerce/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 
 class CProductAttributes extends StatelessWidget {
-  const CProductAttributes({super.key});
+  const CProductAttributes({
+    super.key,
+    required this.product,
+  });
+
+  final CProductModel product;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +34,7 @@ class CProductAttributes extends StatelessWidget {
                 children: [
                   const CSectionHeading(
                     showActionBtn: false,
-                    title: 'variation',
+                    title: 'variations',
                     btnTitle: '',
                     editFontSize: true,
                     fSize: 10.0,
@@ -113,92 +119,76 @@ class CProductAttributes extends StatelessWidget {
         // -- product attributes
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const CSectionHeading(
-              showActionBtn: false,
-              title: 'Colors',
-              btnTitle: '',
-              editFontSize: false,
-            ),
-            const SizedBox(
-              height: CSizes.spaceBtnItems / 2,
-            ),
-            Wrap(
-              spacing: 8,
-              children: [
-                CChoiceChip(
-                  txt: 'green',
-                  selected: false,
-                  onSelected: (value) {},
+          children: product.pAttributes!
+              .map(
+                (attribute) => Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    CSectionHeading(
+                      showActionBtn: false,
+                      title: attribute.pName ?? '',
+                      btnTitle: '',
+                      editFontSize: false,
+                    ),
+                    const SizedBox(
+                      height: CSizes.spaceBtnItems / 2,
+                    ),
+                    Wrap(
+                      spacing: 8,
+                      children: attribute.pValues!
+                          .map(
+                            (aValue) => CChoiceChip(
+                              txt: aValue,
+                              selected: false,
+                              onSelected: (value) {},
+                            ),
+                          )
+                          .toList(),
+                    ),
+                  ],
                 ),
-                CChoiceChip(
-                  txt: 'blue',
-                  selected: true,
-                  onSelected: (value) {},
-                ),
-                CChoiceChip(
-                  txt: 'brown',
-                  selected: false,
-                  onSelected: (value) {},
-                ),
-                CChoiceChip(
-                  txt: 'orange',
-                  selected: false,
-                  onSelected: (value) {},
-                ),
-                CChoiceChip(
-                  txt: 'pink',
-                  selected: false,
-                  onSelected: (value) {},
-                ),
-                CChoiceChip(
-                  txt: 'purple',
-                  selected: false,
-                  onSelected: (value) {},
-                ),
-              ],
-            ),
-          ],
+              )
+              .toList(),
         ),
 
         const SizedBox(
           height: CSizes.spaceBtnSections / 2,
         ),
 
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const CSectionHeading(
-              showActionBtn: false,
-              title: 'Sizes',
-              btnTitle: '',
-              editFontSize: false,
-            ),
-            const SizedBox(
-              height: CSizes.spaceBtnItems / 2,
-            ),
-            Wrap(
-              spacing: 8,
-              children: [
-                CChoiceChip(
-                  txt: 'eu 34',
-                  selected: false,
-                  onSelected: (value) {},
-                ),
-                CChoiceChip(
-                  txt: 'eu 37',
-                  selected: false,
-                  onSelected: (value) {},
-                ),
-                CChoiceChip(
-                  txt: 'eu 41',
-                  selected: true,
-                  onSelected: (value) {},
-                ),
-              ],
-            ),
-          ],
-        ),
+        // Column(
+        //   crossAxisAlignment: CrossAxisAlignment.start,
+        //   children: [
+        //     const CSectionHeading(
+        //       showActionBtn: false,
+        //       title: 'Sizes',
+        //       btnTitle: '',
+        //       editFontSize: false,
+        //     ),
+        //     const SizedBox(
+        //       height: CSizes.spaceBtnItems / 2,
+        //     ),
+        //     Wrap(
+        //       spacing: 8,
+        //       children: [
+        //         CChoiceChip(
+        //           txt: 'eu 34',
+        //           selected: false,
+        //           onSelected: (value) {},
+        //         ),
+        //         CChoiceChip(
+        //           txt: 'eu 37',
+        //           selected: false,
+        //           onSelected: (value) {},
+        //         ),
+        //         CChoiceChip(
+        //           txt: 'eu 41',
+        //           selected: true,
+        //           onSelected: (value) {},
+        //         ),
+        //       ],
+        //     ),
+        //   ],
+        // ),
       ],
     );
   }

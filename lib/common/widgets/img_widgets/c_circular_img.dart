@@ -13,8 +13,8 @@ class CCircularImg extends StatelessWidget {
     this.isNetworkImg = true,
     this.overlayColor,
     this.bgColor,
-    this.width,
-    this.height,
+    this.width = 56,
+    this.height = 56,
     this.padding = CSizes.sm,
   });
 
@@ -22,8 +22,7 @@ class CCircularImg extends StatelessWidget {
   final String img;
   final bool isNetworkImg;
   final Color? overlayColor, bgColor;
-  final double? width, height;
-  final double padding;
+  final double width, height, padding;
 
   @override
   Widget build(BuildContext context) {
@@ -33,8 +32,7 @@ class CCircularImg extends StatelessWidget {
       height: height,
       padding: EdgeInsets.all(padding),
       decoration: BoxDecoration(
-        color:
-            isDarkTheme ? CColors.rBrown.withOpacity(0.3) : Colors.transparent,
+        color: bgColor ?? (isDarkTheme ? CColors.rBrown : Colors.white),
         borderRadius: BorderRadius.circular(100),
       ),
       child: ClipRRect(
@@ -45,16 +43,13 @@ class CCircularImg extends StatelessWidget {
                   fit: fit,
                   color: overlayColor,
                   imageUrl: img,
-                  progressIndicatorBuilder: (context, url, progress) {
-                    return const CShimmerEffect(
-                      width: 55.0,
-                      height: 55.0,
-                      radius: 55.0,
-                    );
-                  },
-                  errorWidget: (context, url, error) {
-                    return const Icon(Icons.error);
-                  },
+                  progressIndicatorBuilder: (context, url, progress) =>
+                      const CShimmerEffect(
+                    width: 55.0,
+                    height: 55.0,
+                    radius: 55.0,
+                  ),
+                  errorWidget: (context, url, error) => const Icon(Icons.error),
                 )
               : Image(
                   fit: fit,

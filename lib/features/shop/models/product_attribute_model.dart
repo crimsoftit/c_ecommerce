@@ -18,8 +18,8 @@ class CProductAttributeModel {
   /// -- convert to Json format --
   toJson() {
     return {
-      'productName': pName,
-      'productValues': pValues,
+      'attributeName': pName,
+      'attributeValues': pValues,
     };
   }
 
@@ -31,8 +31,8 @@ class CProductAttributeModel {
       return CProductAttributeModel.empty();
     } else {
       return CProductAttributeModel(
-        pName: data.containsKey('productName') ? data['productName'] : '',
-        pValues: List<String>.from(data['productValues']),
+        pName: data.containsKey('attributeName') ? data['attributeName'] : '',
+        pValues: List<String>.from(data['attributeValues']),
       );
     }
   }

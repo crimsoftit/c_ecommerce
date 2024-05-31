@@ -3,19 +3,29 @@ import 'package:duara_ecommerce/common/widgets/img_widgets/c_circular_img.dart';
 import 'package:duara_ecommerce/common/widgets/text_widgets/c_brand_title_with_verified_icon.dart';
 import 'package:duara_ecommerce/common/widgets/text_widgets/p_price_txt.dart';
 import 'package:duara_ecommerce/common/widgets/text_widgets/product_title_texts.dart';
+import 'package:duara_ecommerce/features/shop/controllers/product/products_controller.dart';
+import 'package:duara_ecommerce/features/shop/models/product_model.dart';
 import 'package:duara_ecommerce/utils/constants/colors.dart';
 import 'package:duara_ecommerce/utils/constants/enums.dart';
-import 'package:duara_ecommerce/utils/constants/image_strings.dart';
 import 'package:duara_ecommerce/utils/constants/sizes.dart';
 import 'package:duara_ecommerce/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 
 class CProductMetaData extends StatelessWidget {
-  const CProductMetaData({super.key});
+  const CProductMetaData({
+    super.key,
+    required this.product,
+  });
+
+  final CProductModel product;
 
   @override
   Widget build(BuildContext context) {
     final isDarkTheme = CHelperFunctions.isDarkMode(context);
+    final productController = CProductsController.instance;
+
+    final discount = productController.calculateDiscountPercentage(
+        product.pPrice, product.salePrice);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -32,7 +42,7 @@ class CProductMetaData extends StatelessWidget {
                 vertical: CSizes.xs,
               ),
               child: Text(
-                '25%',
+                '$discount%',
                 style: Theme.of(context).textTheme.labelSmall!.apply(
                       color: CColors.rBrown,
                       //fontSizeFactor: 0.7,
@@ -45,17 +55,21 @@ class CProductMetaData extends StatelessWidget {
             ),
 
             // price
-            Text(
-              'ksh.2500',
-              style: Theme.of(context).textTheme.labelSmall!.apply(
-                    decoration: TextDecoration.lineThrough,
-                  ),
-            ),
-            const SizedBox(
-              width: CSizes.spaceBtnItems,
-            ),
-            const CProductPriceText(
-              price: '2000',
+            if (product.productType == CProductType.single.toString() &&
+                product.salePrice > 0)
+              Text(
+                'Ksh.${product.pPrice}',
+                style: Theme.of(context).textTheme.labelSmall!.apply(
+                      decoration: TextDecoration.lineThrough,
+                    ),
+              ),
+            if (product.productType == CProductType.single.toString() &&
+                product.salePrice > 0)
+              const SizedBox(
+                width: CSizes.spaceBtnItems,
+              ),
+            CProductPriceText(
+              price: productController.fetchProductPrice(product),
               isLarge: true,
             ),
           ],
@@ -66,8 +80,8 @@ class CProductMetaData extends StatelessWidget {
         ),
 
         // -- title
-        const CProductTitleText(
-          title: 'Acer laptop gen 10 with backlit keyboard',
+        CProductTitleText(
+          title: product.pName,
         ),
 
         const SizedBox(
@@ -84,7 +98,7 @@ class CProductMetaData extends StatelessWidget {
               width: CSizes.spaceBtnItems,
             ),
             Text(
-              'in stock (20 available)',
+              '${productController.checkProductStockStatus(product.stockCount)} (${product.stockCount} available)',
               style: Theme.of(context).textTheme.titleMedium!.apply(
                     fontSizeFactor: 0.7,
                   ),
@@ -99,16 +113,19 @@ class CProductMetaData extends StatelessWidget {
         Row(
           children: [
             CCircularImg(
-              img: CImages.cosmeticsIcon,
+              img: product.pBrand != null ? product.pBrand!.brandImage : '',
               width: 32.0,
               height: 32.0,
-              overlayColor: isDarkTheme ? CColors.white : CColors.rBrown,
+              isNetworkImg: true,
+              bgColor: CColors.white,
+              overlayColor:
+                  isDarkTheme ? CColors.white : CColors.rBrown.withOpacity(0.2),
             ),
             const SizedBox(
               width: CSizes.spaceBtnItems / 4,
             ),
-            const CBrandTitleWithVerifiedIcon(
-              title: 'Acer',
+            CBrandTitleWithVerifiedIcon(
+              title: product.pBrand!.brandName,
               brandTxtSize: CTextSizes.medium,
             ),
           ],
