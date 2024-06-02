@@ -8,7 +8,6 @@ import 'package:duara_ecommerce/features/shop/models/product_model.dart';
 import 'package:duara_ecommerce/utils/constants/colors.dart';
 import 'package:duara_ecommerce/utils/constants/enums.dart';
 import 'package:duara_ecommerce/utils/constants/sizes.dart';
-import 'package:duara_ecommerce/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 
 class CProductMetaData extends StatelessWidget {
@@ -21,7 +20,6 @@ class CProductMetaData extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDarkTheme = CHelperFunctions.isDarkMode(context);
     final productController = CProductsController.instance;
 
     final discount = productController.calculateDiscountPercentage(
@@ -114,12 +112,13 @@ class CProductMetaData extends StatelessWidget {
           children: [
             CCircularImg(
               img: product.pBrand != null ? product.pBrand!.brandImage : '',
-              width: 32.0,
-              height: 32.0,
+              width: 24.0,
+              height: 24.0,
               isNetworkImg: true,
-              bgColor: CColors.white,
-              overlayColor:
-                  isDarkTheme ? CColors.white : CColors.rBrown.withOpacity(0.2),
+              bgColor: CColors.rBrown,
+              overlayColor: CColors.white,
+              // overlayColor:
+              //     isDarkTheme ? CColors.white : CColors.rBrown.withOpacity(0.2),
             ),
             const SizedBox(
               width: CSizes.spaceBtnItems / 4,

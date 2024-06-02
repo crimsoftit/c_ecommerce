@@ -1,25 +1,25 @@
 class CProductAttributeModel {
-  String? pName;
-  final List<String>? pValues;
+  String? aName;
+  final List<String>? aValues;
 
   CProductAttributeModel({
-    this.pName,
-    this.pValues,
+    this.aName,
+    this.aValues,
   });
 
   /// -- empty helper function --
   static CProductAttributeModel empty() {
     return CProductAttributeModel(
-      pName: '',
-      pValues: [],
+      aName: '',
+      aValues: [],
     );
   }
 
   /// -- convert to Json format --
   toJson() {
     return {
-      'attributeName': pName,
-      'attributeValues': pValues,
+      'attributeName': aName,
+      'attributeValues': aValues,
     };
   }
 
@@ -31,8 +31,8 @@ class CProductAttributeModel {
       return CProductAttributeModel.empty();
     } else {
       return CProductAttributeModel(
-        pName: data.containsKey('attributeName') ? data['attributeName'] : '',
-        pValues: List<String>.from(data['attributeValues']),
+        aName: data.containsKey('attributeName') ? data['attributeName'] : '',
+        aValues: List<String>.from(data['attributeValues']),
       );
     }
   }

@@ -5,7 +5,7 @@ class CProductTitleText extends StatelessWidget {
     super.key,
     required this.title,
     this.smallSize = false,
-    this.maxLines = 2,
+    this.maxLines = 1,
     this.txtAlign = TextAlign.left,
     this.overflow = TextOverflow.ellipsis,
   });
