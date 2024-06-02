@@ -32,7 +32,7 @@ class CPromoSlider extends StatelessWidget {
           if (bannerController.banners.isEmpty) {
             return const Center(
               child: NoDataScreen(
-                image: CImages.noData,
+                lottieImage: CImages.noDataLottie,
                 txt: 'No data found!',
               ),
             );

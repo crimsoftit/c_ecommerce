@@ -2,8 +2,8 @@ import 'package:duara_ecommerce/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
-class NoDataScreen extends StatelessWidget {
-  const NoDataScreen({
+class DataErrorScreen extends StatelessWidget {
+  const DataErrorScreen({
     super.key,
     required this.lottieImage,
     required this.txt,

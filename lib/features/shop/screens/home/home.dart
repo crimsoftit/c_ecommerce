@@ -104,7 +104,17 @@ class HomeScreen extends StatelessWidget {
                     btnTitle: 'view all...',
                     btnTxtColor: CColors.darkerGrey,
                     onPressed: () {
-                      Get.to(() => const CAllProducts());
+                      Get.to(
+                        () => CAllProducts(
+                          title: 'popular products',
+                          // query: FirebaseFirestore.instance
+                          //     .collection('products')
+                          //     .where('isFeatured', isEqualTo: true)
+                          //     .limit(8),
+                          futureMethod:
+                              productsController.fetchAllFeaturedProducts(),
+                        ),
+                      );
                     },
                     editFontSize: true,
                   ),
@@ -121,7 +131,7 @@ class HomeScreen extends StatelessWidget {
                         if (productsController.featuredProducts.isEmpty) {
                           return const Center(
                             child: NoDataScreen(
-                              image: CImages.noData,
+                              lottieImage: CImages.noDataLottie,
                               txt: 'No data found!',
                             ),
                           );

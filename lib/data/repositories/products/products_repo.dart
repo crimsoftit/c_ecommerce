@@ -15,7 +15,7 @@ class CProductsRepo extends GetxController {
   /// -- firestore instance for db interaction --
   final _db = FirebaseFirestore.instance;
 
-  /// -- get limited featured products --
+  /// -- fetch a limited no. of featured products --
   Future<List<CProductModel>> fetchFeaturedProducts() async {
     try {
       final snapshot = await _db
@@ -24,6 +24,41 @@ class CProductsRepo extends GetxController {
           .limit(4)
           .get();
       return snapshot.docs.map((e) => CProductModel.fromSnapshot(e)).toList();
+    } on FirebaseException catch (e) {
+      throw CFirebaseExceptions(e.code).message;
+    } on PlatformException catch (e) {
+      throw CPlatformExceptions(e.code).message;
+    } catch (e) {
+      throw 'something went wrong! ${e.toString()}';
+    }
+  }
+
+  /// -- fetch all featured products --
+  Future<List<CProductModel>> fetchAllFeaturedProducts() async {
+    try {
+      final snapshot = await _db
+          .collection('products')
+          .where('isFeatured', isEqualTo: true)
+          .get();
+      return snapshot.docs.map((e) => CProductModel.fromSnapshot(e)).toList();
+    } on FirebaseException catch (e) {
+      throw CFirebaseExceptions(e.code).message;
+    } on PlatformException catch (e) {
+      throw CPlatformExceptions(e.code).message;
+    } catch (e) {
+      throw 'something went wrong! ${e.toString()}';
+    }
+  }
+
+  /// -- fetch products by query --
+  Future<List<CProductModel>> fetchProductsByQuery(Query query) async {
+    try {
+      final querySnapshot = await query.get();
+      final List<CProductModel> productsList = querySnapshot.docs
+          .map((doc) => CProductModel.fromQuerySnapshot(doc))
+          .toList();
+
+      return productsList;
     } on FirebaseException catch (e) {
       throw CFirebaseExceptions(e.code).message;
     } on PlatformException catch (e) {

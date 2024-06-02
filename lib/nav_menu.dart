@@ -1,9 +1,11 @@
+import 'package:duara_ecommerce/features/personalization/screens/data_error/data_error.dart';
 import 'package:duara_ecommerce/features/personalization/screens/profile/profile.dart';
 import 'package:duara_ecommerce/features/personalization/screens/settings/settings.dart';
 import 'package:duara_ecommerce/features/shop/screens/home/home.dart';
 import 'package:duara_ecommerce/features/shop/screens/store/store.dart';
 import 'package:duara_ecommerce/features/shop/screens/wishlist/wishlist.dart';
 import 'package:duara_ecommerce/utils/constants/colors.dart';
+import 'package:duara_ecommerce/utils/constants/image_strings.dart';
 import 'package:duara_ecommerce/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -52,6 +54,10 @@ class NavMenu extends StatelessWidget {
               icon: Icon(Iconsax.user),
               label: 'profile',
             ),
+            NavigationDestination(
+              icon: Icon(Iconsax.warning_2),
+              label: 'error',
+            ),
           ],
         ),
       ),
@@ -69,5 +75,9 @@ class NavMenuController extends GetxController {
     const WishlistScreen(),
     const SettingsScreen(),
     const ProfileScreen(),
+    const DataErrorScreen(
+      lottieImage: CImages.errorDataLottie,
+      txt: 'error',
+    ),
   ];
 }

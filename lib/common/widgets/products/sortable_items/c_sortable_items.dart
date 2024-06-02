@@ -1,24 +1,23 @@
 import 'package:duara_ecommerce/common/widgets/layouts/grid_layout.dart';
 import 'package:duara_ecommerce/common/widgets/products/product_cards/p_card_vert.dart';
-import 'package:duara_ecommerce/common/widgets/shimmers/vertical_product_shimmer.dart';
-import 'package:duara_ecommerce/features/shop/controllers/product/products_controller.dart';
+import 'package:duara_ecommerce/features/shop/controllers/product/all_products_controller.dart';
 import 'package:duara_ecommerce/features/shop/models/product_model.dart';
-import 'package:duara_ecommerce/utils/constants/image_strings.dart';
 import 'package:duara_ecommerce/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
-import '../../../../features/personalization/screens/no_data/no_data.dart';
-
 class CSortableItems extends StatelessWidget {
   const CSortableItems({
     super.key,
+    required this.allProducts,
   });
+
+  final List<CProductModel> allProducts;
 
   @override
   Widget build(BuildContext context) {
-    final productsController = Get.put(CProductsController());
+    final allProductsController = Get.put(CAllProductsController());
 
     return Column(
       children: [
@@ -34,8 +33,8 @@ class CSortableItems extends StatelessWidget {
           ),
           items: [
             'name',
-            'higher price',
-            'lower price',
+            'highest price',
+            'lowest price',
             'sale',
             'newest',
             'popularity'
@@ -59,27 +58,14 @@ class CSortableItems extends StatelessWidget {
 
         // -- products --
         Obx(() {
-          if (productsController.isLoading.value) {
-            return const CVerticalProductShimmer(itemCount: 4);
-          } else {
-            if (productsController.featuredProducts.isEmpty) {
-              return const Center(
-                child: NoDataScreen(
-                  image: CImages.noData,
-                  txt: 'No data found!',
-                ),
+          return CGridLayout(
+            itemCount: 10,
+            itemBuilder: (_, index) {
+              return CProductCardVertical(
+                product: allProductsController.products[index],
               );
-            } else {
-              return CGridLayout(
-                itemCount: 10,
-                itemBuilder: (_, index) {
-                  return CProductCardVertical(
-                    product: CProductModel.empty(),
-                  );
-                },
-              );
-            }
-          }
+            },
+          );
         }),
       ],
     );

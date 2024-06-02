@@ -18,9 +18,7 @@ class CProductsController extends GetxController {
     super.onInit();
   }
 
-  /// --
-
-  /// -- fetch all featured products --
+  /// -- fetch a limited no. of featured products --
   void fetchFeaturedProducts() async {
     try {
       // start loader while products are fetched
@@ -39,6 +37,22 @@ class CProductsController extends GetxController {
       );
     } finally {
       isLoading.value = false;
+    }
+  }
+
+  /// -- fetch all of featured products --
+  Future<List<CProductModel>> fetchAllFeaturedProducts() async {
+    try {
+      // fetch all featured products
+      final fetchedProducts = await productsRepo.fetchAllFeaturedProducts();
+
+      return fetchedProducts;
+    } catch (e) {
+      CPopupSnackBar.errorSnackBar(
+        title: 'Oh Snap!',
+        message: e.toString(),
+      );
+      return [];
     }
   }
 

@@ -38,7 +38,9 @@ class CBrandProducts extends StatelessWidget {
                 height: CSizes.spaceBtnSections,
               ),
 
-              CSortableItems(),
+              CSortableItems(
+                allProducts: [],
+              ),
             ],
           ),
         ),

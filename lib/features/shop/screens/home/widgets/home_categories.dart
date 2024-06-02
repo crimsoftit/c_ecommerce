@@ -24,7 +24,7 @@ class CHomeCategories extends StatelessWidget {
         if (catsController.featuredCategories.isEmpty) {
           return const Center(
             child: NoDataScreen(
-              image: CImages.noData,
+              lottieImage: CImages.noDataLottie,
               txt: 'No data found!',
             ),
           );

@@ -36,11 +36,6 @@ class CImages {
   static const user = "assets/images/profile/user.jpg";
   static const rUserProfileImg = "assets/images/profile/dp_new.jpg";
 
-  // -- animated loaders
-  static const aLoader_1 = "assets/images/animations/loader_1.gif";
-  static const aLoader_2 = "assets/images/animations/loader_2.gif";
-  static const aLoader_3 = "assets/images/animations/loading_duck.gif";
-
   // -- lottie animations
   static String cartAnimation =
       "assets/images/animations/lady-adding-product-in-cart-animation.json";
@@ -180,6 +175,6 @@ class CImages {
   static const String pImg32 = "assets/images/products/kitchen_counter.png";
 
   // -- no data screen images --
-  static const String noData = "assets/images/no-data.png";
   static const String noDataLottie = "assets/images/no_data.json";
+  static const String errorDataLottie = "assets/images/data_error.json";
 }
