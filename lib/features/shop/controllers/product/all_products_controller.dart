@@ -11,7 +11,7 @@ class CAllProductsController extends GetxController {
 
   /// -- variables --
   final productsRepo = CProductsRepo.instance;
-  final RxString selectedSortOption = 'name'.obs;
+  final RxString selectedSortOption = 'sort by:'.obs;
   final RxList<CProductModel> products = <CProductModel>[].obs;
 
   Future<List<CProductModel>> fetchProductsByQuery(Query? query) async {
@@ -36,6 +36,9 @@ class CAllProductsController extends GetxController {
     selectedSortOption.value = sortOption;
 
     switch (sortOption) {
+      case 'sort by:':
+        products.sort((a, b) => a.pName.compareTo(b.pName));
+        break;
       case 'name':
         products.sort((a, b) => a.pName.compareTo(b.pName));
         break;
@@ -52,15 +55,17 @@ class CAllProductsController extends GetxController {
         products.sort((a, b) => a.pName.compareTo(b.pName));
         break;
       case 'sale':
-        products.sort((a, b) {
-          if (b.salePrice > 0) {
-            return b.salePrice.compareTo(a.salePrice);
-          } else if (a.salePrice > 0) {
-            return -1;
-          } else {
-            return 1;
-          }
-        });
+        products.sort(
+          (a, b) {
+            if (b.salePrice > 0) {
+              return b.salePrice.compareTo(a.salePrice);
+            } else if (a.salePrice > 0) {
+              return -1;
+            } else {
+              return 1;
+            }
+          },
+        );
         break;
 
       default:

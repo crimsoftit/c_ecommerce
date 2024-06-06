@@ -112,8 +112,8 @@ class CProductMetaData extends StatelessWidget {
           children: [
             CCircularImg(
               img: product.pBrand != null ? product.pBrand!.brandImage : '',
-              width: 24.0,
-              height: 24.0,
+              width: 40.0,
+              height: 40.0,
               isNetworkImg: true,
               bgColor: CColors.rBrown,
               overlayColor: CColors.white,

@@ -18,6 +18,7 @@ class CSortableItems extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final allProductsController = Get.put(CAllProductsController());
+    allProductsController.assignProducts(allProducts);
 
     return Column(
       children: [
@@ -32,6 +33,7 @@ class CSortableItems extends StatelessWidget {
             ),
           ),
           items: [
+            'sort by:',
             'name',
             'highest price',
             'lowest price',
@@ -49,7 +51,10 @@ class CSortableItems extends StatelessWidget {
                 ),
               )
               .toList(),
-          onChanged: (value) {},
+          value: allProductsController.selectedSortOption.value,
+          onChanged: (value) {
+            allProductsController.sortProductsBy(value!);
+          },
         ),
 
         const SizedBox(
@@ -57,16 +62,16 @@ class CSortableItems extends StatelessWidget {
         ),
 
         // -- products --
-        Obx(() {
-          return CGridLayout(
-            itemCount: 10,
+        Obx(
+          () => CGridLayout(
+            itemCount: allProductsController.products.length,
             itemBuilder: (_, index) {
               return CProductCardVertical(
                 product: allProductsController.products[index],
               );
             },
-          );
-        }),
+          ),
+        ),
       ],
     );
   }

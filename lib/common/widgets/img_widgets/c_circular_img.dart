@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 class CCircularImg extends StatelessWidget {
   const CCircularImg({
     super.key,
-    this.fit = BoxFit.cover,
+    this.fit = BoxFit.fill,
     required this.img,
     this.isNetworkImg = true,
     this.overlayColor,
