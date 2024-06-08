@@ -3,7 +3,6 @@ import 'package:duara_ecommerce/common/widgets/img_widgets/c_circular_img.dart';
 import 'package:duara_ecommerce/common/widgets/shimmers/shimmer_effect.dart';
 import 'package:duara_ecommerce/features/personalization/controllers/user_controller.dart';
 import 'package:duara_ecommerce/utils/constants/colors.dart';
-import 'package:duara_ecommerce/utils/constants/image_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -26,8 +25,8 @@ class CUserProfileTile extends StatelessWidget {
         showBorder: true,
         radius: 120,
         borderColor: CColors.rBrown.withOpacity(0.3),
-        child: const CCircularImg(
-          img: CImages.user,
+        child: CCircularImg(
+          img: userController.user.value.profPic,
           width: 47.0,
           height: 47.0,
           //padding: 10.0,

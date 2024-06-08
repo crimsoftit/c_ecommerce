@@ -143,4 +143,33 @@ class CProductsRepo extends GetxController {
       throw e.toString();
     }
   }
+
+  /// -- fetch brand-specific products --
+  Future<List<CProductModel>> fetchProductsByBrand(
+      {required String bId, int limit = -1}) async {
+    try {
+      final querySnapshot = limit == -1
+          ? await _db
+              .collection('products')
+              .where('productBrand.id', isEqualTo: bId)
+              .get()
+          : await _db
+              .collection('products')
+              .where('productBrand.id', isEqualTo: bId)
+              .limit(limit)
+              .get();
+
+      final bProducts = querySnapshot.docs
+          .map((doc) => CProductModel.fromSnapshot(doc))
+          .toList();
+
+      return bProducts;
+    } on FirebaseException catch (e) {
+      throw CFirebaseExceptions(e.code).message;
+    } on PlatformException catch (e) {
+      throw CPlatformExceptions(e.code).message;
+    } catch (e) {
+      throw 'an unknown error occurred! please try again later';
+    }
+  }
 }

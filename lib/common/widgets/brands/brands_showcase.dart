@@ -1,5 +1,6 @@
 import 'package:duara_ecommerce/common/widgets/brands/c_brand_cards.dart';
 import 'package:duara_ecommerce/common/widgets/custom_shapes/containers/rounded_container.dart';
+import 'package:duara_ecommerce/features/shop/models/brands_model.dart';
 import 'package:duara_ecommerce/utils/constants/colors.dart';
 import 'package:duara_ecommerce/utils/constants/sizes.dart';
 import 'package:duara_ecommerce/utils/helpers/helper_functions.dart';
@@ -28,8 +29,9 @@ class CBrandedShowcase extends StatelessWidget {
       child: Column(
         children: [
           // brand with products count
-          const CBrandCard(
+          CBrandCard(
             showBorder: false,
+            brand: CBrandModel.empty(),
           ),
           const SizedBox(
             height: CSizes.spaceBtnItems,

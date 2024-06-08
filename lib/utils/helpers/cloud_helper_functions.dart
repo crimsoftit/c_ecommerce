@@ -1,11 +1,9 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:duara_ecommerce/features/personalization/screens/data_error/data_error.dart';
 import 'package:duara_ecommerce/features/personalization/screens/no_data/no_data.dart';
 import 'package:duara_ecommerce/utils/constants/image_strings.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 
 /// -- helper functions for cloud-related operations --
 
@@ -79,8 +77,9 @@ class CCloudHelperFunctions {
         );
       }
       return const Center(
-        child: Text(
-          'no data found!',
+        child: NoDataScreen(
+          lottieImage: CImages.noDataLottie,
+          txt: 'no data found!',
         ),
       );
     }

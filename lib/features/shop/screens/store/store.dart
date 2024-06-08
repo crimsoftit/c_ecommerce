@@ -4,13 +4,16 @@ import 'package:duara_ecommerce/common/widgets/custom_shapes/containers/search_c
 import 'package:duara_ecommerce/common/widgets/layouts/grid_layout.dart';
 import 'package:duara_ecommerce/common/widgets/brands/c_brand_cards.dart';
 import 'package:duara_ecommerce/common/widgets/products/cart/cart_menu_icon.dart';
+import 'package:duara_ecommerce/common/widgets/shimmers/brands_shimmer.dart';
 import 'package:duara_ecommerce/common/widgets/text_widgets/section_headings.dart';
+import 'package:duara_ecommerce/features/personalization/screens/no_data/no_data.dart';
+import 'package:duara_ecommerce/features/shop/controllers/brands_controller.dart';
 import 'package:duara_ecommerce/features/shop/controllers/categories_controller.dart';
-import 'package:duara_ecommerce/features/shop/controllers/product/products_controller.dart';
 import 'package:duara_ecommerce/features/shop/screens/brands/all_brands.dart';
 import 'package:duara_ecommerce/features/shop/screens/brands/brand_products.dart';
 import 'package:duara_ecommerce/features/shop/screens/store/widgets/categories_tab.dart';
 import 'package:duara_ecommerce/utils/constants/colors.dart';
+import 'package:duara_ecommerce/utils/constants/image_strings.dart';
 import 'package:duara_ecommerce/utils/constants/sizes.dart';
 import 'package:duara_ecommerce/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +28,9 @@ class CStoreScreen extends StatelessWidget {
     final isDarkTheme = CHelperFunctions.isDarkMode(context);
     final categories = CCatsController.instance.featuredCategories;
 
-    Get.put(CProductsController());
+    final brandsController = Get.put(CBrandsController());
+
+    //Get.put(CProductsController());
 
     return DefaultTabController(
       length: categories.length,
@@ -63,9 +68,9 @@ class CStoreScreen extends StatelessWidget {
                       physics: const NeverScrollableScrollPhysics(),
                       children: [
                         // -- search bar --
-                        const SizedBox(
-                          height: CSizes.spaceBtnItems / 4,
-                        ),
+                        // const SizedBox(
+                        //   height: CSizes.spaceBtnItems / 4,
+                        // ),
                         CSearchContainer(
                           text: 'search store',
                           icon: Iconsax.search_favorite,
@@ -94,16 +99,41 @@ class CStoreScreen extends StatelessWidget {
                         ),
 
                         // -- brands grid layout display --
-                        CGridLayout(
-                          itemCount: 4,
-                          mainAxisExtent: 80,
-                          itemBuilder: (_, index) {
-                            return CBrandCard(
-                              showBorder: true,
-                              onTap: () {
-                                Get.to(() => const CBrandProducts());
-                              },
-                            );
+                        Obx(
+                          () {
+                            if (brandsController.isLoading.value) {
+                              return const CbrandsShimmer(
+                                itemCount: 4,
+                              );
+                            } else {
+                              if (brandsController.featuredBrands.isEmpty) {
+                                return const Center(
+                                  child: NoDataScreen(
+                                    lottieImage: CImages.noDataLottie,
+                                    txt: 'No data found!',
+                                  ),
+                                );
+                              } else {
+                                return CGridLayout(
+                                  itemCount:
+                                      brandsController.featuredBrands.length,
+                                  mainAxisExtent: 80,
+                                  itemBuilder: (_, index) {
+                                    final brand =
+                                        brandsController.featuredBrands[index];
+                                    return CBrandCard(
+                                      showBorder: true,
+                                      onTap: () {
+                                        Get.to(() => CBrandProducts(
+                                              brand: brand,
+                                            ));
+                                      },
+                                      brand: brand,
+                                    );
+                                  },
+                                );
+                              }
+                            }
                           },
                         ),
 
