@@ -19,10 +19,10 @@ class CCategoriesRepo extends GetxController {
   Future<List<CCategoriesModel>> fetchAllCategories() async {
     try {
       final snapshot = await _db.collection('categories').get();
-      final productsList = snapshot.docs
+      final catsList = snapshot.docs
           .map((document) => CCategoriesModel.fromSnapshot(document))
           .toList();
-      return productsList;
+      return catsList;
     } on FirebaseAuthException catch (e) {
       CPopupSnackBar.errorSnackBar(
         title: "firebaseAuth exception error",

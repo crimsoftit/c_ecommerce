@@ -45,13 +45,28 @@ class CBrandsController extends GetxController {
     }
   }
 
-  /// -- fetch brands for category --
+  /// -- fetch category-specific brand --
+  Future<List<CBrandModel>> fetchCategorySpecificBrands(
+      String categoryId) async {
+    try {
+      final cBrands = await brandsRepo.fetchCategorySpecificBrands(categoryId);
+
+      return cBrands;
+    } catch (e) {
+      CPopupSnackBar.errorSnackBar(
+        title: 'Oh Snap!',
+        message: e.toString(),
+      );
+      return [];
+    }
+  }
 
   /// -- fetch brand-specific products from ua data source --
-  Future<List<CProductModel>> fetchBrandProducts(String brandId) async {
+  Future<List<CProductModel>> fetchBrandSpecificProducts(
+      {required String brandId, int limit = -1}) async {
     try {
-      final bProducts =
-          await CProductsRepo.instance.fetchProductsByBrand(bId: brandId);
+      final bProducts = await CProductsRepo.instance
+          .fetchProductsByBrand(bId: brandId, limit: limit);
 
       return bProducts;
     } catch (e) {

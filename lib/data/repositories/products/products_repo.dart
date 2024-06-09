@@ -172,4 +172,45 @@ class CProductsRepo extends GetxController {
       throw 'an unknown error occurred! please try again later';
     }
   }
+
+  /// -- fetch category-specific products --
+  Future<List<CProductModel>> fetchProductsByCategory(
+      {required String categoryId, int limit = 4}) async {
+    try {
+      QuerySnapshot productCategoryQuery = limit == -1
+          ? await _db
+              .collection('productCategory')
+              .where('categoryId', isEqualTo: categoryId)
+              .get()
+          : await _db
+              .collection('productCategory')
+              .where('categoryId', isEqualTo: categoryId)
+              .limit(limit)
+              .get();
+
+      // extract productIds from the documents
+      List<String> productIds = productCategoryQuery.docs
+          .map((doc) => doc['productId'] as String)
+          .toList();
+
+      // query to fetch all documents where the brandId is in the list of brandIds, FieldPath.documentId to query documents in collection
+      final productsQuery = await _db
+          .collection('products')
+          .where(FieldPath.documentId, whereIn: productIds)
+          .get();
+
+      // extract brand names & other relevant data from the documents
+      List<CProductModel> cProducts = productsQuery.docs
+          .map((doc) => CProductModel.fromSnapshot(doc))
+          .toList();
+
+      return cProducts;
+    } on FirebaseException catch (e) {
+      throw CFirebaseExceptions(e.code).message;
+    } on PlatformException catch (e) {
+      throw CPlatformExceptions(e.code).message;
+    } catch (e) {
+      throw 'an unknown error occurred! please try again later';
+    }
+  }
 }

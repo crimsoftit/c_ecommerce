@@ -1,5 +1,7 @@
 import 'package:duara_ecommerce/data/repositories/categories/cat_repo.dart';
+import 'package:duara_ecommerce/data/repositories/products/products_repo.dart';
 import 'package:duara_ecommerce/features/shop/models/categories_model.dart';
+import 'package:duara_ecommerce/features/shop/models/product_model.dart';
 import 'package:duara_ecommerce/utils/popups/snackbars.dart';
 import 'package:get/get.dart';
 
@@ -49,4 +51,11 @@ class CCatsController extends GetxController {
   // -- load selected categories data --
 
   // -- get category or sub-category products --
+  Future<List<CProductModel>> fetchProductsByCategory(
+      {required String categoryId, int limit = 4}) async {
+    // fetch a limit of 4 products associated with the category
+    final cProducts = await CProductsRepo.instance
+        .fetchProductsByCategory(categoryId: categoryId, limit: limit);
+    return cProducts;
+  }
 }

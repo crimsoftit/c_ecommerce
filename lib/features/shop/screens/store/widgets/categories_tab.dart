@@ -1,14 +1,15 @@
-import 'package:duara_ecommerce/common/widgets/brands/brands_showcase.dart';
 import 'package:duara_ecommerce/common/widgets/layouts/grid_layout.dart';
 import 'package:duara_ecommerce/common/widgets/products/product_cards/p_card_vert.dart';
 import 'package:duara_ecommerce/common/widgets/shimmers/vertical_product_shimmer.dart';
 import 'package:duara_ecommerce/common/widgets/text_widgets/section_headings.dart';
-import 'package:duara_ecommerce/features/personalization/screens/no_data/no_data.dart';
-import 'package:duara_ecommerce/features/shop/controllers/product/products_controller.dart';
+import 'package:duara_ecommerce/features/shop/controllers/categories_controller.dart';
 import 'package:duara_ecommerce/features/shop/models/categories_model.dart';
-import 'package:duara_ecommerce/utils/constants/image_strings.dart';
+import 'package:duara_ecommerce/features/shop/screens/all_products/all_products.dart';
+import 'package:duara_ecommerce/features/shop/screens/store/widgets/category_brands.dart';
 import 'package:duara_ecommerce/utils/constants/sizes.dart';
+import 'package:duara_ecommerce/utils/helpers/cloud_helper_functions.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 class CCategoriesTab extends StatelessWidget {
@@ -21,77 +22,75 @@ class CCategoriesTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final productsController = Get.put(CProductsController());
+    final catsController = CCatsController.instance;
 
-    return Scaffold(
-      body: SingleChildScrollView(
-        physics: const NeverScrollableScrollPhysics(),
-        child: Padding(
+    return ListView(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      children: [
+        Padding(
           padding: const EdgeInsets.all(CSizes.defaultSpace),
           child: Column(
             children: [
               // -- brands --
-              const CBrandedShowcase(
-                productImages: [
-                  CImages.pImg26,
-                  CImages.pImg27,
-                  CImages.pImg28,
-                ],
-              ),
-
+              CCategoryBrands(category: category),
               const SizedBox(
                 height: CSizes.spaceBtnItems,
               ),
 
               // -- products --
-              CSectionHeading(
-                showActionBtn: true,
-                title: 'you might also like ...',
-                btnTitle: 'view all',
-                editFontSize: false,
-                onPressed: () {},
-              ),
-              const SizedBox(
-                height: CSizes.spaceBtnItems,
-              ),
+              FutureBuilder(
+                  future: catsController.fetchProductsByCategory(
+                      categoryId: category.id),
+                  builder: (context, snapshot) {
+                    // helper function: handle loader, no data, and errored data
+                    final response =
+                        CCloudHelperFunctions.checkMultipleRecordsState(
+                      snapshot: snapshot,
+                      loader: const CVerticalProductShimmer(itemCount: 8),
+                    );
 
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: // -- popular products grid display --
-                    Obx(
-                  () {
-                    if (productsController.isLoading.value) {
-                      return const CVerticalProductShimmer(itemCount: 4);
-                    } else {
-                      if (productsController.featuredProducts.isEmpty) {
-                        return const Center(
-                          child: NoDataScreen(
-                            lottieImage: CImages.noDataLottie,
-                            txt: 'No data found!',
-                          ),
-                        );
-                      } else {
-                        return CGridLayout(
-                          itemCount: productsController.featuredProducts.length,
-                          itemBuilder: (_, index) {
-                            return CProductCardVertical(
-                              product:
-                                  productsController.featuredProducts[index],
+                    if (response != null) return response;
+
+                    // record found!
+                    final cProducts = snapshot.data!;
+
+                    return Column(
+                      children: [
+                        CSectionHeading(
+                          showActionBtn: true,
+                          title: 'you might also like...',
+                          btnTitle: 'view all',
+                          editFontSize: false,
+                          onPressed: () {
+                            Get.to(
+                              CAllProducts(
+                                title: category.cName,
+                                futureMethod:
+                                    catsController.fetchProductsByCategory(
+                                        categoryId: category.id, limit: -1),
+                              ),
                             );
                           },
-                        );
-                      }
-                    }
-                  },
-                ),
-              ),
-              const SizedBox(
-                height: CSizes.spaceBtnItems,
-              ),
+                        ),
+                        const SizedBox(
+                          height: CSizes.spaceBtnItems,
+                        ),
+                        CGridLayout(
+                          itemCount: cProducts.length,
+                          itemBuilder: (_, index) {
+                            return CProductCardVertical(
+                              product: cProducts[index],
+                            );
+                          },
+                        ),
+                      ],
+                    );
+                  }),
             ],
           ),
         ),
-      ),
+      ],
     );
   }
 }

@@ -68,24 +68,26 @@ class CProductCardVertical extends StatelessWidget {
                     ),
 
                     // sale tag
-                    Positioned(
-                      top: 12.0,
-                      child: CRoundedContainer(
-                        radius: CSizes.sm,
-                        bgColor: CColors.secondary.withOpacity(0.8),
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: CSizes.sm,
-                          vertical: CSizes.xs,
-                        ),
-                        child: Text(
-                          '$discount%',
-                          style: Theme.of(context).textTheme.labelSmall!.apply(
-                                color: CColors.black,
-                                //fontSizeFactor: 0.7,
-                              ),
+                    if (discount != null)
+                      Positioned(
+                        top: 12.0,
+                        child: CRoundedContainer(
+                          radius: CSizes.sm,
+                          bgColor: CColors.secondary.withOpacity(0.8),
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: CSizes.sm,
+                            vertical: CSizes.xs,
+                          ),
+                          child: Text(
+                            '$discount%',
+                            style:
+                                Theme.of(context).textTheme.labelSmall!.apply(
+                                      color: CColors.black,
+                                      //fontSizeFactor: 0.7,
+                                    ),
+                          ),
                         ),
                       ),
-                    ),
 
                     // favorite icon button
                     const Positioned(

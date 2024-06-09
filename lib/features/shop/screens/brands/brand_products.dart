@@ -53,7 +53,8 @@ class CBrandProducts extends StatelessWidget {
               ),
 
               FutureBuilder(
-                future: bController.fetchBrandProducts(brand.id),
+                future: bController.fetchBrandSpecificProducts(
+                    brandId: brand.id, limit: 3),
                 builder: (context, snapshot) {
                   // handle loader, no db record, data error msg
                   const loader = CVerticalProductShimmer(itemCount: 4);
