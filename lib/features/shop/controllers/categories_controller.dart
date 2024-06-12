@@ -49,13 +49,34 @@ class CCatsController extends GetxController {
   }
 
   // -- load selected categories data --
+  Future<List<CCategoriesModel>> fetchSubCategories(String categoryId) async {
+    try {
+      final subCategories = await _catsRepo.fetchSubCategories(categoryId);
+      return subCategories;
+    } catch (e) {
+      CPopupSnackBar.errorSnackBar(
+        title: 'Oh Snap!',
+        message: e.toString(),
+      );
+      return [];
+    }
+  }
 
   // -- get category or sub-category products --
   Future<List<CProductModel>> fetchProductsByCategory(
       {required String categoryId, int limit = 4}) async {
-    // fetch a limit of 4 products associated with the category
-    final cProducts = await CProductsRepo.instance
-        .fetchProductsByCategory(categoryId: categoryId, limit: limit);
-    return cProducts;
+    try {
+      // fetch a limit of 4 products associated with the category
+      final cProducts = await CProductsRepo.instance.fetchProductsByCategory(
+        categoryId: categoryId,
+      );
+      return cProducts;
+    } catch (e) {
+      CPopupSnackBar.errorSnackBar(
+        title: 'Oh Snap!',
+        message: e.toString(),
+      );
+      return [];
+    }
   }
 }

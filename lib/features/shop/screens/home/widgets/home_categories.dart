@@ -25,7 +25,7 @@ class CHomeCategories extends StatelessWidget {
           return const Center(
             child: NoDataScreen(
               lottieImage: CImages.noDataLottie,
-              txt: 'No data found!',
+              txt: 'no data found for categories!',
             ),
           );
         } else {
@@ -45,7 +45,11 @@ class CHomeCategories extends StatelessWidget {
                   bgColor: CColors.white,
                   isNetworkImage: true,
                   onTap: () {
-                    Get.to(() => const CSubCategoriesScreen());
+                    Get.to(
+                      () => CSubCategoriesScreen(
+                        category: pCategory,
+                      ),
+                    );
                   },
                 );
               },

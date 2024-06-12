@@ -1,9 +1,5 @@
-import 'package:duara_ecommerce/common/widgets/loaders/animation_loader.dart';
-import 'package:duara_ecommerce/nav_menu.dart';
-import 'package:duara_ecommerce/utils/constants/image_strings.dart';
 import 'package:duara_ecommerce/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
 class NoDataScreen extends StatelessWidget {
@@ -43,15 +39,15 @@ class NoDataScreen extends StatelessWidget {
               height: CSizes.spaceBtnSections / 8,
             ),
 
-            CAnimationLoaderWidget(
-              text: 'whoops! wishlist is empty...',
-              animation: CImages.pencilAnimation,
-              showActionBtn: true,
-              actionBtnText: "let's add some...",
-              onActionBtnPressed: () {
-                Get.off(() => const NavMenu());
-              },
-            ),
+            // CAnimationLoaderWidget(
+            //   text: 'whoops! wishlist is empty...',
+            //   animation: CImages.pencilAnimation,
+            //   showActionBtn: true,
+            //   actionBtnText: "let's add some...",
+            //   onActionBtnPressed: () {
+            //     Get.off(() => const NavMenu());
+            //   },
+            // ),
           ],
         ),
       ),

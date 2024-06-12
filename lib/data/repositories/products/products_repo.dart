@@ -169,7 +169,7 @@ class CProductsRepo extends GetxController {
     } on PlatformException catch (e) {
       throw CPlatformExceptions(e.code).message;
     } catch (e) {
-      throw 'an unknown error occurred! please try again later';
+      throw 'an unknown error occurred while fetching brand products!';
     }
   }
 
@@ -188,6 +188,7 @@ class CProductsRepo extends GetxController {
               .limit(limit)
               .get();
 
+    
       // extract productIds from the documents
       List<String> productIds = productCategoryQuery.docs
           .map((doc) => doc['productId'] as String)
@@ -200,17 +201,17 @@ class CProductsRepo extends GetxController {
           .get();
 
       // extract brand names & other relevant data from the documents
-      List<CProductModel> cProducts = productsQuery.docs
+      List<CProductModel> products = productsQuery.docs
           .map((doc) => CProductModel.fromSnapshot(doc))
           .toList();
 
-      return cProducts;
+      return products;
     } on FirebaseException catch (e) {
       throw CFirebaseExceptions(e.code).message;
     } on PlatformException catch (e) {
       throw CPlatformExceptions(e.code).message;
     } catch (e) {
-      throw 'an unknown error occurred! please try again later';
+      throw 'an error occurred while fetching category products! please try again later';
     }
   }
 

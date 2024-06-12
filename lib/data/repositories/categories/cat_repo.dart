@@ -57,6 +57,44 @@ class CCategoriesRepo extends GetxController {
   }
 
   // -- fetch sub-categories
+  Future<List<CCategoriesModel>> fetchSubCategories(String catId) async {
+    try {
+      final snapshot = await _db
+          .collection('categories')
+          .where('parentId', isEqualTo: catId)
+          .get();
+      final result = snapshot.docs
+          .map((doc) => CCategoriesModel.fromSnapshot(doc))
+          .toList();
+      return result;
+    } on FirebaseAuthException catch (e) {
+      CPopupSnackBar.errorSnackBar(
+        title: "firebaseAuth exception error",
+        message: e.code.toString(),
+      );
+      throw CFirebaseAuthExceptions(e.code).message;
+    } on FirebaseException catch (e) {
+      CPopupSnackBar.errorSnackBar(
+        title: "firebase exception error",
+        message: e.code.toString(),
+      );
+      throw CFirebaseAuthExceptions(e.code).message;
+    } on FormatException catch (e) {
+      CPopupSnackBar.errorSnackBar(
+        title: "platform exception error",
+        message: e.message,
+      );
+      throw CFormatExceptions(e.message);
+    } on PlatformException catch (e) {
+      CPopupSnackBar.errorSnackBar(
+        title: "platform exception error",
+        message: e.code.toString(),
+      );
+      throw CPlatformExceptions(e.code).message;
+    } catch (e) {
+      throw 'something went wrong! please try again!';
+    }
+  }
 
   // -- upload categories to firebase firestore cloud --
   Future<void> uploadDummyData(List<CCategoriesModel> categories) async {

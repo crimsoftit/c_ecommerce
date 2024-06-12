@@ -78,6 +78,6 @@ class CAllProductsController extends GetxController {
   /// -- assign products to the 'products' list --
   void assignProducts(List<CProductModel> products) {
     this.products.assignAll(products);
-    sortProductsBy('name');
+    sortProductsBy('sort by:');
   }
 }
