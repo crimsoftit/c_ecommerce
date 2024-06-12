@@ -1,6 +1,6 @@
 import 'package:duara_ecommerce/common/widgets/custom_shapes/containers/rounded_container.dart';
-import 'package:duara_ecommerce/common/widgets/icons/circular_icon.dart';
 import 'package:duara_ecommerce/common/widgets/img_widgets/c_rounded_img.dart';
+import 'package:duara_ecommerce/common/widgets/products/favorite_icon/favorite_icon.dart';
 import 'package:duara_ecommerce/common/widgets/text_widgets/c_brand_title_with_verified_icon.dart';
 import 'package:duara_ecommerce/common/widgets/text_widgets/p_price_txt.dart';
 import 'package:duara_ecommerce/common/widgets/text_widgets/product_title_texts.dart';
@@ -13,6 +13,8 @@ import 'package:iconsax/iconsax.dart';
 
 class CProductCardHorizontal extends StatelessWidget {
   const CProductCardHorizontal({super.key});
+
+  //final CProductModel product;
 
   @override
   Widget build(BuildContext context) {
@@ -69,9 +71,8 @@ class CProductCardHorizontal extends StatelessWidget {
                 const Positioned(
                   top: 0,
                   right: 0,
-                  child: CCircularIcon(
-                    icon: Iconsax.heart5,
-                    color: Colors.red,
+                  child: CFavoriteIcon(
+                    productId: '',
                   ),
                 ),
               ],

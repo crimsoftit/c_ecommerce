@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:duara_ecommerce/common/widgets/appbar/appbar.dart';
 import 'package:duara_ecommerce/common/widgets/custom_shapes/curved_edges/curved_edges_widget.dart';
-import 'package:duara_ecommerce/common/widgets/icons/circular_icon.dart';
 import 'package:duara_ecommerce/common/widgets/img_widgets/c_rounded_img.dart';
+import 'package:duara_ecommerce/common/widgets/products/favorite_icon/favorite_icon.dart';
 import 'package:duara_ecommerce/features/shop/controllers/product/images_controller.dart';
 import 'package:duara_ecommerce/features/shop/models/product_model.dart';
 import 'package:duara_ecommerce/utils/constants/colors.dart';
@@ -10,7 +10,6 @@ import 'package:duara_ecommerce/utils/constants/sizes.dart';
 import 'package:duara_ecommerce/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
 
 class CProductImgSlider extends StatelessWidget {
   const CProductImgSlider({
@@ -115,11 +114,9 @@ class CProductImgSlider extends StatelessWidget {
                 style: Theme.of(context).textTheme.headlineSmall,
               ),
               backIconColor: isDarkTheme ? CColors.white : CColors.rBrown,
-              actions: const [
-                CCircularIcon(
-                  icon: Iconsax.heart5,
-                  color: Colors.red,
-                  bgColor: CColors.white,
+              actions: [
+                CFavoriteIcon(
+                  productId: product.id,
                 ),
               ],
             ),

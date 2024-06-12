@@ -27,6 +27,7 @@ class CAdjustPQtyBtnWidget extends StatelessWidget {
               ? CColors.darkerGrey
               : CColors.rBrown.withOpacity(0.5),
         ),
+        //const CFavoriteIcon(),
         const SizedBox(
           width: CSizes.spaceBtnItems,
         ),
@@ -39,6 +40,7 @@ class CAdjustPQtyBtnWidget extends StatelessWidget {
         const SizedBox(
           width: CSizes.spaceBtnItems,
         ),
+        //const CFavoriteIcon(),
         const CCircularIcon(
           icon: Iconsax.add,
           width: 32.0,

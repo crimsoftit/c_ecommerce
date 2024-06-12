@@ -213,4 +213,25 @@ class CProductsRepo extends GetxController {
       throw 'an unknown error occurred! please try again later';
     }
   }
+
+  /// -- fetch items that are in the wishlist --
+  Future<List<CProductModel>> fetchWishlistItems(
+      List<String> productIds) async {
+    try {
+      final snapshot = await _db
+          .collection('products')
+          .where(FieldPath.documentId, whereIn: productIds)
+          .get();
+
+      return snapshot.docs
+          .map((querySnapshot) => CProductModel.fromSnapshot(querySnapshot))
+          .toList();
+    } on FirebaseException catch (e) {
+      throw CFirebaseExceptions(e.code).message;
+    } on PlatformException catch (e) {
+      throw CPlatformExceptions(e.code).message;
+    } catch (e) {
+      throw 'something went wrong! ${e.toString()}';
+    }
+  }
 }

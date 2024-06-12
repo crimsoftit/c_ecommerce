@@ -8,6 +8,7 @@ import 'package:duara_ecommerce/utils/exceptions/firebase_auth_exceptions.dart';
 import 'package:duara_ecommerce/utils/exceptions/firebase_exceptions.dart';
 import 'package:duara_ecommerce/utils/exceptions/format_exceptions.dart';
 import 'package:duara_ecommerce/utils/exceptions/platform_exceptions.dart';
+import 'package:duara_ecommerce/utils/local_storage/storage_utility.dart';
 import 'package:duara_ecommerce/utils/popups/snackbars.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
@@ -42,6 +43,9 @@ class AuthRepo extends GetxController {
 
     if (user != null) {
       if (user.emailVerified) {
+        // initialize user-specific local storage
+        await CLocalStorage.init(user.uid);
+
         Get.offAll(() => const NavMenu());
       } else {
         Get.offAll(() => VerifyEmailScreen(

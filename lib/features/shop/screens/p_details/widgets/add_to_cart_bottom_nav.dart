@@ -36,6 +36,7 @@ class CAddToCartBottomNavBar extends StatelessWidget {
                 width: 40.0,
                 height: 40.0,
               ),
+              //const CFavoriteIcon(),
               const SizedBox(
                 width: CSizes.spaceBtnItems,
               ),
@@ -48,6 +49,7 @@ class CAddToCartBottomNavBar extends StatelessWidget {
               const SizedBox(
                 width: CSizes.spaceBtnItems,
               ),
+
               const CCircularIcon(
                 icon: Iconsax.add,
                 color: CColors.white,
